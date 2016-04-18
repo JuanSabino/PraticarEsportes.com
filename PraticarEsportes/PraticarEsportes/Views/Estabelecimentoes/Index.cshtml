@@ -1,0 +1,93 @@
+﻿@model IEnumerable<PraticarEsportes.Models.Estabelecimento>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Endereco)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CEP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cidade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Habilitado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NomeFantasia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RazaoSocial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CNPJ)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TelComercial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataAbertura)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Endereco)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CEP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cidade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Habilitado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomeFantasia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RazaoSocial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CNPJ)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TelComercial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataAbertura)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PessoaId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PessoaId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PessoaId })
+        </td>
+    </tr>
+}
+
+</table>

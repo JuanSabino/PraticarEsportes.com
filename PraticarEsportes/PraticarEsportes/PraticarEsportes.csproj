@@ -136,8 +136,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\EstabelecimentoesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocaisController.cs" />
+    <Compile Include="Controllers\PessoasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -145,9 +147,20 @@
     <Compile Include="Migrations\201604072251316_Local.Designer.cs">
       <DependentUpon>201604072251316_Local.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604142305570_pessoa.cs" />
+    <Compile Include="Migrations\201604142305570_pessoa.Designer.cs">
+      <DependentUpon>201604142305570_pessoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604142317529_heranca.cs" />
+    <Compile Include="Migrations\201604142317529_heranca.Designer.cs">
+      <DependentUpon>201604142317529_heranca.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Context.cs" />
+    <Compile Include="Models\Estabelecimento.cs" />
     <Compile Include="Models\Local.cs" />
+    <Compile Include="Models\Pessoa.cs" />
+    <Compile Include="Models\Praticante.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -190,6 +203,16 @@
     <Content Include="Views\Locais\Details.cshtml" />
     <Content Include="Views\Locais\Edit.cshtml" />
     <Content Include="Views\Locais\Index.cshtml" />
+    <Content Include="Views\Pessoas\Create.cshtml" />
+    <Content Include="Views\Pessoas\Delete.cshtml" />
+    <Content Include="Views\Pessoas\Details.cshtml" />
+    <Content Include="Views\Pessoas\Edit.cshtml" />
+    <Content Include="Views\Pessoas\Index.cshtml" />
+    <Content Include="Views\Estabelecimentoes\Create.cshtml" />
+    <Content Include="Views\Estabelecimentoes\Delete.cshtml" />
+    <Content Include="Views\Estabelecimentoes\Details.cshtml" />
+    <Content Include="Views\Estabelecimentoes\Edit.cshtml" />
+    <Content Include="Views\Estabelecimentoes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -205,6 +228,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201604072251316_Local.resx">
       <DependentUpon>201604072251316_Local.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604142305570_pessoa.resx">
+      <DependentUpon>201604142305570_pessoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604142317529_heranca.resx">
+      <DependentUpon>201604142317529_heranca.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

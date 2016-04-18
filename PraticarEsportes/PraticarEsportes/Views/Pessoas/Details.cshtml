@@ -1,0 +1,66 @@
+﻿@model PraticarEsportes.Models.Pessoa
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Pessoa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CEP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CEP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Habilitado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Habilitado)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PessoaId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

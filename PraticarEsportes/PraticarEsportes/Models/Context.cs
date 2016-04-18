@@ -14,6 +14,7 @@ namespace PraticarEsportes.Models
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<Context>());
         }
         public DbSet<Local> Locais { get; set; }
+        public DbSet<Pessoa> Pessoas { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove();
