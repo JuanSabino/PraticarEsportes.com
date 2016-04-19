@@ -137,6 +137,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CategoriaController.cs" />
+    <Compile Include="Controllers\EventoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocalController.cs" />
     <Compile Include="Controllers\PessoasController.cs" />
@@ -230,11 +231,14 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\images\layers-2x.png" />
-    <Content Include="Content\images\layers.png" />
-    <Content Include="Content\images\marker-icon-2x.png" />
-    <Content Include="Content\images\marker-icon.png" />
-    <Content Include="Content\images\marker-shadow.png" />
+    <Content Include="Scripts\images\layers-2x.png" />
+    <Content Include="Scripts\images\layers.png" />
+    <Content Include="Scripts\images\marker-icon-2x.png" />
+    <Content Include="Scripts\images\marker-icon.png" />
+    <Content Include="Scripts\images\marker-shadow.png" />
+    <Content Include="Content\img\addLocation.png" />
+    <Content Include="Content\img\addSport.png" />
+    <Content Include="Content\img\iconStadium.png" />
     <Content Include="Content\leaflet.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -290,6 +294,11 @@
     <Content Include="Views\Categoria\Edit.cshtml" />
     <Content Include="Views\Categoria\Index.cshtml" />
     <Content Include="Views\Shared\Modal.cshtml" />
+    <Content Include="Views\Evento\Create.cshtml" />
+    <Content Include="Views\Evento\Delete.cshtml" />
+    <Content Include="Views\Evento\Details.cshtml" />
+    <Content Include="Views\Evento\Edit.cshtml" />
+    <Content Include="Views\Evento\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

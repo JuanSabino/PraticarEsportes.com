@@ -10,118 +10,116 @@ using PraticarEsportes.Models;
 
 namespace PraticarEsportes.Controllers
 {
-    public class LocalController : Controller
+    public class EventoController : Controller
     {
         private Context db = new Context();
 
-        // GET: Local
+        // GET: Evento
         public ActionResult Index()
         {
-            return View(db.Local.ToList());
+            var evento = db.Evento.Include(e => e.Categoria).Include(e => e.Local);
+            return View(evento.ToList());
         }
 
-        // GET: Local/Details/5
+        // GET: Evento/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Local local = db.Local.Find(id);
-            if (local == null)
+            Evento evento = db.Evento.Find(id);
+            if (evento == null)
             {
                 return HttpNotFound();
             }
-            return View(local);
+            return View(evento);
         }
 
-        // GET: Local/Create
+        // GET: Evento/Create
         public ActionResult Create()
         {
+            ViewBag.CategoriaID = new SelectList(db.Categoria, "CategoriaID", "Nome");
+            ViewBag.LocalID = new SelectList(db.Local, "ID", "Nome");
             return View();
         }
 
-        // POST: Local/Create
+        // POST: Evento/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Nome,Descricao,Latitude,Longitude,Habilitado")] Local local)
+        public ActionResult Create([Bind(Include = "ID,Nome,Descricao,DataInicio,DataTermino,Capacidade,Dificuldade,LocalID,CategoriaID")] Evento evento)
         {
-            //if (ModelState.IsValid)
-            //{
+            if (ModelState.IsValid)
+            {
+                db.Evento.Add(evento);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
 
-            string latitude = Request["Latitude"];
-            latitude = latitude.Replace(".", ",");
-
-            string longitude = Request["Longitude"];
-            longitude = longitude.Replace(".", ",");
-
-            local.Latitude = Convert.ToDouble(latitude);
-            local.Longitude = Convert.ToDouble(longitude);
-
-            db.Local.Add(local);
-            db.SaveChanges();
-            ViewBag.Mensagem = "Cadastrado com sucesso!";
-            return RedirectToAction("Index", "Home");
-            //}
-
-            //return View(local);
+            ViewBag.CategoriaID = new SelectList(db.Categoria, "CategoriaID", "Nome", evento.CategoriaID);
+            ViewBag.LocalID = new SelectList(db.Local, "ID", "Nome", evento.LocalID);
+            return View(evento);
         }
 
-        // GET: Local/Edit/5
+        // GET: Evento/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Local local = db.Local.Find(id);
-            if (local == null)
+            Evento evento = db.Evento.Find(id);
+            if (evento == null)
             {
                 return HttpNotFound();
             }
-            return View(local);
+            ViewBag.CategoriaID = new SelectList(db.Categoria, "CategoriaID", "Nome", evento.CategoriaID);
+            ViewBag.LocalID = new SelectList(db.Local, "ID", "Nome", evento.LocalID);
+            return View(evento);
         }
 
-        // POST: Local/Edit/5
+        // POST: Evento/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Nome,Descricao,Latitude,Longitude,Habilitado")] Local local)
+        public ActionResult Edit([Bind(Include = "ID,Nome,Descricao,DataInicio,DataTermino,Capacidade,Dificuldade,LocalID,CategoriaID")] Evento evento)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(local).State = EntityState.Modified;
+                db.Entry(evento).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(local);
+            ViewBag.CategoriaID = new SelectList(db.Categoria, "CategoriaID", "Nome", evento.CategoriaID);
+            ViewBag.LocalID = new SelectList(db.Local, "ID", "Nome", evento.LocalID);
+            return View(evento);
         }
 
-        // GET: Local/Delete/5
+        // GET: Evento/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Local local = db.Local.Find(id);
-            if (local == null)
+            Evento evento = db.Evento.Find(id);
+            if (evento == null)
             {
                 return HttpNotFound();
             }
-            return View(local);
+            return View(evento);
         }
 
-        // POST: Local/Delete/5
+        // POST: Evento/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Local local = db.Local.Find(id);
-            db.Local.Remove(local);
+            Evento evento = db.Evento.Find(id);
+            db.Evento.Remove(evento);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
