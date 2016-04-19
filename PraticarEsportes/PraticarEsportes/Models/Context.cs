@@ -13,12 +13,17 @@ namespace PraticarEsportes.Models
             Configuration.ProxyCreationEnabled = false;
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<Context>());
         }
+
         public DbSet<Local> Locais { get; set; }
         public DbSet<Pessoa> Pessoas { get; set; }
+        public DbSet<Checkin> Checkins { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove();
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
+
+        public System.Data.Entity.DbSet<PraticarEsportes.Models.Cupom> Cupoms { get; set; }
     }
 }

@@ -14,5 +14,7 @@ namespace PraticarEsportes.Models
         public string Cidade { get; set; }
         public string Estado { get; set; }
         public bool Habilitado { get; set; }
+
+        public virtual ICollection<Checkin> Checkins { get; set; }
     }
 }
