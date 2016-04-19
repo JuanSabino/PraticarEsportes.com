@@ -136,6 +136,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\EventoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocalController.cs" />
     <Compile Include="Controllers\PessoasController.cs" />
@@ -183,9 +184,14 @@
     <Compile Include="Migrations\201604190306376_local43.Designer.cs">
       <DependentUpon>201604190306376_local43.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604190311497_evento.cs" />
+    <Compile Include="Migrations\201604190311497_evento.Designer.cs">
+      <DependentUpon>201604190311497_evento.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Context.cs" />
     <Compile Include="Models\Estabelecimento.cs" />
+    <Compile Include="Models\Evento.cs" />
     <Compile Include="Models\Local.cs" />
     <Compile Include="Models\Pessoa.cs" />
     <Compile Include="Models\Praticante.cs" />
@@ -249,6 +255,11 @@
     <Content Include="Views\Local\Details.cshtml" />
     <Content Include="Views\Local\Edit.cshtml" />
     <Content Include="Views\Local\Index.cshtml" />
+    <Content Include="Views\Evento\Create.cshtml" />
+    <Content Include="Views\Evento\Delete.cshtml" />
+    <Content Include="Views\Evento\Details.cshtml" />
+    <Content Include="Views\Evento\Edit.cshtml" />
+    <Content Include="Views\Evento\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -291,6 +302,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604190306376_local43.resx">
       <DependentUpon>201604190306376_local43.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604190311497_evento.resx">
+      <DependentUpon>201604190311497_evento.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
