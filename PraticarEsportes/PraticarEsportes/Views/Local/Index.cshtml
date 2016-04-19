@@ -24,18 +24,6 @@
             @Html.DisplayNameFor(model => model.Longitude)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Endereco)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CEP)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cidade)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Estado)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Habilitado)
         </th>
         <th></th>
@@ -56,24 +44,12 @@
             @Html.DisplayFor(modelItem => item.Longitude)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Endereco)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CEP)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cidade)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Estado)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Habilitado)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CidadeId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CidadeId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CidadeId })
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
         </td>
     </tr>
 }

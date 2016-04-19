@@ -10,24 +10,24 @@ using PraticarEsportes.Models;
 
 namespace PraticarEsportes.Controllers
 {
-    public class LocaisController : Controller
+    public class LocalController : Controller
     {
         private Context db = new Context();
 
-        // GET: Locais
+        // GET: Local
         public ActionResult Index()
         {
-            return View(db.Locais.ToList());
+            return View(db.Local.ToList());
         }
 
-        // GET: Locais/Details/5
+        // GET: Local/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Local local = db.Locais.Find(id);
+            Local local = db.Local.Find(id);
             if (local == null)
             {
                 return HttpNotFound();
@@ -35,22 +35,22 @@ namespace PraticarEsportes.Controllers
             return View(local);
         }
 
-        // GET: Locais/Create
+        // GET: Local/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Locais/Create
+        // POST: Local/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CidadeId,Nome,Descricao,Latitude,Longitude,Endereco,CEP,Cidade,Estado,Habilitado")] Local local)
+        public ActionResult Create([Bind(Include = "ID,Nome,Descricao,Latitude,Longitude,Habilitado")] Local local)
         {
             if (ModelState.IsValid)
             {
-                db.Locais.Add(local);
+                db.Local.Add(local);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -58,14 +58,14 @@ namespace PraticarEsportes.Controllers
             return View(local);
         }
 
-        // GET: Locais/Edit/5
+        // GET: Local/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Local local = db.Locais.Find(id);
+            Local local = db.Local.Find(id);
             if (local == null)
             {
                 return HttpNotFound();
@@ -73,12 +73,12 @@ namespace PraticarEsportes.Controllers
             return View(local);
         }
 
-        // POST: Locais/Edit/5
+        // POST: Local/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CidadeId,Nome,Descricao,Latitude,Longitude,Endereco,CEP,Cidade,Estado,Habilitado")] Local local)
+        public ActionResult Edit([Bind(Include = "ID,Nome,Descricao,Latitude,Longitude,Habilitado")] Local local)
         {
             if (ModelState.IsValid)
             {
@@ -89,14 +89,14 @@ namespace PraticarEsportes.Controllers
             return View(local);
         }
 
-        // GET: Locais/Delete/5
+        // GET: Local/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Local local = db.Locais.Find(id);
+            Local local = db.Local.Find(id);
             if (local == null)
             {
                 return HttpNotFound();
@@ -104,13 +104,13 @@ namespace PraticarEsportes.Controllers
             return View(local);
         }
 
-        // POST: Locais/Delete/5
+        // POST: Local/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Local local = db.Locais.Find(id);
-            db.Locais.Remove(local);
+            Local local = db.Local.Find(id);
+            db.Local.Remove(local);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
