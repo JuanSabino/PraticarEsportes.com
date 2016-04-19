@@ -1,31 +1,179 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    List<PraticarEsportes.Models.Local> local = ViewBag.Local;
+    ViewBag.Title = "Mapa";
+
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+@Scripts.Render("~/Scripts/jquery-1.10.2.min.js")
+@Scripts.Render("~/Scripts/leaflet-0.7.3.js")
+<link rel="stylesheet" href="~/Content/leaflet.css" />
+<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/css/font-awesome.min.css' rel='stylesheet' />
+<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.min.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.mapbox.css' rel='stylesheet' />
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body, html {
+        height: 100%;
+        width: 100%;
+    }
+
+    .navbar {
+        margin-bottom: 0;
+        border-radius: 0;
+    }
+
+    #map {
+        min-height: 100%;
+        height: 100%;
+    }
+
+    .addLocation {
+        position: absolute;
+        top: 60px;
+        right: 5px;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.75);
+        border-radius: 3px;
+    }
+
+    .addSport {
+        position: absolute;
+        top: 150px;
+        right: 5px;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.75);
+        border-radius: 3px;
+    }
+
+    .addLocation:hover {
+        cursor: pointer;
+    }
+
+    .leaflet-control-locate a {
+        padding: 0;
+    }
+</style>
+
+<div id="map"></div>
+
+<div class="addLocation">
+    <a href="/Local/Create" class="openModal" title="Cadastro de Locais">
+        <img src="~/Content/img/addLocation.png" alt="" />
+    </a>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+<div class="addSport">
+    <a href="/Evento/Create" class="openModal" title="Cadastro de Eventos">
+        <img src="~/Content/img/addSport.png" alt="" />
+    </a>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                </p>
+            </div>
+            @*<div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>*@
+        </div>
+
     </div>
 </div>
+
+<script>
+    $('.openModal').click(function (e) {
+        e.preventDefault();
+
+        var title = $(this).attr("title");
+        console.log(title);
+        var url = $(this).attr("href");
+        console.log(url);
+
+        $("#myModal").find('.modal-title').html(title)
+        $('#myModal').modal('show').find('.modal-body').load(url);
+
+        //console.log(url);
+    })
+
+    $(document).ready(function () {
+        map.locate({ setView: true, maxZoom: 14 });
+    })
+
+    var map = L.map('map');
+
+    map.on('click', function (e) {
+        console.log("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
+    });
+
+    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+    }).addTo(map);
+
+    var LeafIcon = L.Icon.extend({
+        options: {
+            iconSize: [40, 40],
+        }
+    });
+
+    var estadio = new LeafIcon({ iconUrl: '../Content/img/iconStadium.png' });
+
+    @{
+
+        //if (ViewBag.Mensagem != "")
+        //{
+
+        //}
+    }
+
+    @*@{Html.RenderAction("ContadorEvento(@locais.ID)", "Home");}*@
+
+    @foreach (var locais in local){
+        <text>
+
+    var latitude = "@locais.Latitude";
+    latitude = latitude.replace(/,/g, '.');
+
+    var longitude = "@locais.Longitude";
+    longitude = longitude.replace(/,/g, '.');
+
+    L.marker([latitude, longitude], { icon: estadio }).addTo(map).bindPopup("@locais.Nome");
+    </text>
+    }
+
+    function onLocationFound(e) {
+        var radius = e.accuracy / 2;
+
+        L.marker(e.latlng).addTo(map)
+            .bindPopup("Você está aqui!").openPopup();
+
+        L.circle(e.latlng, radius).addTo(map);
+    }
+
+    function onLocationError(e) {
+        alert(e.message);
+    }
+
+    map.on('locationerror', onLocationError);
+    map.on('locationfound', onLocationFound);
+    //map.scrollWheelZoom.disable();
+    L.control.locate().addTo(map);
+
+    map.locate({ setView: true, maxZoom: 14 });
+
+    //$("#map").height($(window).height()).width($(window).width());
+    //map.invalidateSize();
+</script>

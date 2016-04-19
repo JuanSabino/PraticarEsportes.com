@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PraticarEsportes.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,8 +9,14 @@ namespace PraticarEsportes.Controllers
 {
     public class HomeController : Controller
     {
+
+        private Context db = new Context();
+
         public ActionResult Index()
         {
+            ViewBag.Categoria = db.Categoria.ToList();
+            ViewBag.Local = db.Local.ToList();
+            ViewBag.Evento = db.Evento.ToList();
             return View();
         }
 
