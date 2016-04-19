@@ -17,7 +17,7 @@ namespace PraticarEsportes.Controllers
         // GET: Cupons
         public ActionResult Index()
         {
-            return View(db.Cupoms.ToList());
+            return View(db.Cupons.ToList());
         }
 
         // GET: Cupons/Details/5
@@ -27,7 +27,7 @@ namespace PraticarEsportes.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cupom cupom = db.Cupoms.Find(id);
+            Cupom cupom = db.Cupons.Find(id);
             if (cupom == null)
             {
                 return HttpNotFound();
@@ -50,7 +50,7 @@ namespace PraticarEsportes.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Cupoms.Add(cupom);
+                db.Cupons.Add(cupom);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +65,7 @@ namespace PraticarEsportes.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cupom cupom = db.Cupoms.Find(id);
+            Cupom cupom = db.Cupons.Find(id);
             if (cupom == null)
             {
                 return HttpNotFound();
@@ -96,7 +96,7 @@ namespace PraticarEsportes.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cupom cupom = db.Cupoms.Find(id);
+            Cupom cupom = db.Cupons.Find(id);
             if (cupom == null)
             {
                 return HttpNotFound();
@@ -109,8 +109,8 @@ namespace PraticarEsportes.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Cupom cupom = db.Cupoms.Find(id);
-            db.Cupoms.Remove(cupom);
+            Cupom cupom = db.Cupons.Find(id);
+            db.Cupons.Remove(cupom);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

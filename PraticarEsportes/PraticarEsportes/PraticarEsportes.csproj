@@ -137,6 +137,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CategoriaController.cs" />
+    <Compile Include="Controllers\CuponsController.cs" />
     <Compile Include="Controllers\EventoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocalController.cs" />
@@ -219,6 +220,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
+    <Compile Include="Models\Checkin.cs" />
     <Compile Include="Models\Context.cs" />
     <Compile Include="Models\Cupom.cs" />
     <Compile Include="Models\Estabelecimento.cs" />
@@ -300,6 +302,11 @@
     <Content Include="Views\Evento\Details.cshtml" />
     <Content Include="Views\Evento\Edit.cshtml" />
     <Content Include="Views\Evento\Index.cshtml" />
+    <Content Include="Views\Cupons\Create.cshtml" />
+    <Content Include="Views\Cupons\Delete.cshtml" />
+    <Content Include="Views\Cupons\Details.cshtml" />
+    <Content Include="Views\Cupons\Edit.cshtml" />
+    <Content Include="Views\Cupons\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

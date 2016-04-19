@@ -76,7 +76,8 @@ namespace PraticarEsportes.Repositories
             HttpContext.Current.Session["Tipo"] = "";
             //HttpContext.Current.Response.Cookies["Usuario"].Value = "";
             FormsAuthentication.SignOut();
-        }
+        }
+
 
     }
 }
