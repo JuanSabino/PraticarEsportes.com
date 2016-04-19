@@ -6,14 +6,14 @@ namespace PraticarEsportes.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    [GeneratedCode("EntityFramework.Migrations", "6.0.0-20911")]
-    public sealed partial class Local : IMigrationMetadata
+    [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
+    public sealed partial class local : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Local));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(local));
         
         string IMigrationMetadata.Id
         {
-            get { return "201604072251316_Local"; }
+            get { return "201604140444273_local"; }
         }
         
         string IMigrationMetadata.Source

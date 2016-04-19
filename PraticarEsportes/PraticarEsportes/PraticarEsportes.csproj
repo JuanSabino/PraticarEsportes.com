@@ -137,17 +137,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CategoriaController.cs" />
-    <Compile Include="Controllers\EventoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocalController.cs" />
     <Compile Include="Controllers\PessoasController.cs" />
     <Compile Include="Controllers\PublicoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604072251316_Local.cs" />
-    <Compile Include="Migrations\201604072251316_Local.Designer.cs">
-      <DependentUpon>201604072251316_Local.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201604142305570_pessoa.cs" />
     <Compile Include="Migrations\201604142305570_pessoa.Designer.cs">
@@ -208,6 +203,18 @@
     <Compile Include="Migrations\201604190347010_eventoLocal.cs" />
     <Compile Include="Migrations\201604190347010_eventoLocal.Designer.cs">
       <DependentUpon>201604190347010_eventoLocal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604190402238_eventoBanco.cs" />
+    <Compile Include="Migrations\201604190402238_eventoBanco.Designer.cs">
+      <DependentUpon>201604190402238_eventoBanco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604190427390_evento1.cs" />
+    <Compile Include="Migrations\201604190427390_evento1.Designer.cs">
+      <DependentUpon>201604190427390_evento1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604190431170_evento2.cs" />
+    <Compile Include="Migrations\201604190431170_evento2.Designer.cs">
+      <DependentUpon>201604190431170_evento2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
@@ -282,11 +289,6 @@
     <Content Include="Views\Categoria\Details.cshtml" />
     <Content Include="Views\Categoria\Edit.cshtml" />
     <Content Include="Views\Categoria\Index.cshtml" />
-    <Content Include="Views\Evento\Create.cshtml" />
-    <Content Include="Views\Evento\Delete.cshtml" />
-    <Content Include="Views\Evento\Details.cshtml" />
-    <Content Include="Views\Evento\Edit.cshtml" />
-    <Content Include="Views\Evento\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -300,9 +302,6 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201604072251316_Local.resx">
-      <DependentUpon>201604072251316_Local.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604142305570_pessoa.resx">
       <DependentUpon>201604142305570_pessoa.cs</DependentUpon>
     </EmbeddedResource>
@@ -347,6 +346,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604190347010_eventoLocal.resx">
       <DependentUpon>201604190347010_eventoLocal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604190402238_eventoBanco.resx">
+      <DependentUpon>201604190402238_eventoBanco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604190427390_evento1.resx">
+      <DependentUpon>201604190427390_evento1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604190431170_evento2.resx">
+      <DependentUpon>201604190431170_evento2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
