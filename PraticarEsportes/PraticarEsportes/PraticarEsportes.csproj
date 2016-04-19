@@ -205,6 +205,10 @@
     <Compile Include="Migrations\201604190342544_eventoCategoria.Designer.cs">
       <DependentUpon>201604190342544_eventoCategoria.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604190347010_eventoLocal.cs" />
+    <Compile Include="Migrations\201604190347010_eventoLocal.Designer.cs">
+      <DependentUpon>201604190347010_eventoLocal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Context.cs" />
@@ -340,6 +344,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604190342544_eventoCategoria.resx">
       <DependentUpon>201604190342544_eventoCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604190347010_eventoLocal.resx">
+      <DependentUpon>201604190347010_eventoLocal.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

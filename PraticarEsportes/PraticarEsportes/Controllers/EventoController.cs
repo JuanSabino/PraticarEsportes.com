@@ -17,7 +17,7 @@ namespace PraticarEsportes.Controllers
         // GET: Evento
         public ActionResult Index()
         {
-            var evento = db.Evento.Include(e => e.Categoria);
+            var evento = db.Evento.Include(e => e.Categoria).Include(e => e.Local);
             return View(evento.ToList());
         }
 
@@ -40,6 +40,7 @@ namespace PraticarEsportes.Controllers
         public ActionResult Create()
         {
             ViewBag.CategoriaID = new SelectList(db.Categoria, "CategoriaID", "Nome");
+            ViewBag.LocalID = new SelectList(db.Local, "ID", "Nome");
             return View();
         }
 
@@ -48,7 +49,7 @@ namespace PraticarEsportes.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Nome,Descricao,DataInicio,DataTermino,Capacidade,Dificuldade,CategoriaID")] Evento evento)
+        public ActionResult Create([Bind(Include = "ID,Nome,Descricao,DataInicio,DataTermino,Capacidade,Dificuldade,LocalID,CategoriaID")] Evento evento)
         {
             if (ModelState.IsValid)
             {
@@ -58,6 +59,7 @@ namespace PraticarEsportes.Controllers
             }
 
             ViewBag.CategoriaID = new SelectList(db.Categoria, "CategoriaID", "Nome", evento.CategoriaID);
+            ViewBag.LocalID = new SelectList(db.Local, "ID", "Nome", evento.LocalID);
             return View(evento);
         }
 
@@ -74,6 +76,7 @@ namespace PraticarEsportes.Controllers
                 return HttpNotFound();
             }
             ViewBag.CategoriaID = new SelectList(db.Categoria, "CategoriaID", "Nome", evento.CategoriaID);
+            ViewBag.LocalID = new SelectList(db.Local, "ID", "Nome", evento.LocalID);
             return View(evento);
         }
 
@@ -82,7 +85,7 @@ namespace PraticarEsportes.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Nome,Descricao,DataInicio,DataTermino,Capacidade,Dificuldade,CategoriaID")] Evento evento)
+        public ActionResult Edit([Bind(Include = "ID,Nome,Descricao,DataInicio,DataTermino,Capacidade,Dificuldade,LocalID,CategoriaID")] Evento evento)
         {
             if (ModelState.IsValid)
             {
@@ -91,6 +94,7 @@ namespace PraticarEsportes.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.CategoriaID = new SelectList(db.Categoria, "CategoriaID", "Nome", evento.CategoriaID);
+            ViewBag.LocalID = new SelectList(db.Local, "ID", "Nome", evento.LocalID);
             return View(evento);
         }
 

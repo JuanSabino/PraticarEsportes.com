@@ -27,5 +27,7 @@ namespace PraticarEsportes.Models
 
         [DisplayName("Habilitado")]
         public Boolean Habilitado { get; set; }
+
+        public virtual ICollection<Evento> Evento { get; set; }
     }
 }

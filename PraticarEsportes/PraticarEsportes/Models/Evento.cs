@@ -40,6 +40,9 @@ namespace PraticarEsportes.Models
         [DisplayName("Dificuldade")]
         public int Dificuldade { get; set; }
 
+        public int LocalID { get; set; }
+        public virtual Local Local { get; set; }
+
         public int CategoriaID { get; set; }
         public virtual Categoria Categoria { get; set; }
     }
