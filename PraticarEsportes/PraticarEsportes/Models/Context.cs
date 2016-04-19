@@ -16,6 +16,7 @@ namespace PraticarEsportes.Models
         public DbSet<Pessoa> Pessoas { get; set; }
         public DbSet<Local> Local { get; set; }
         public DbSet<Evento> Evento { get; set; }
+        public DbSet<Categoria> Categoria { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove();

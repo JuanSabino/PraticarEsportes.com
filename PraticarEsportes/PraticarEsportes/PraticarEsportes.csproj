@@ -136,6 +136,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\EventoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocalController.cs" />
@@ -188,7 +189,16 @@
     <Compile Include="Migrations\201604190311497_evento.Designer.cs">
       <DependentUpon>201604190311497_evento.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604190317082_categoria.cs" />
+    <Compile Include="Migrations\201604190317082_categoria.Designer.cs">
+      <DependentUpon>201604190317082_categoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604190318023_categoria2.cs" />
+    <Compile Include="Migrations\201604190318023_categoria2.Designer.cs">
+      <DependentUpon>201604190318023_categoria2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Context.cs" />
     <Compile Include="Models\Estabelecimento.cs" />
     <Compile Include="Models\Evento.cs" />
@@ -260,6 +270,11 @@
     <Content Include="Views\Evento\Details.cshtml" />
     <Content Include="Views\Evento\Edit.cshtml" />
     <Content Include="Views\Evento\Index.cshtml" />
+    <Content Include="Views\Categoria\Create.cshtml" />
+    <Content Include="Views\Categoria\Delete.cshtml" />
+    <Content Include="Views\Categoria\Details.cshtml" />
+    <Content Include="Views\Categoria\Edit.cshtml" />
+    <Content Include="Views\Categoria\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -305,6 +320,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604190311497_evento.resx">
       <DependentUpon>201604190311497_evento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604190317082_categoria.resx">
+      <DependentUpon>201604190317082_categoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604190318023_categoria2.resx">
+      <DependentUpon>201604190318023_categoria2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
