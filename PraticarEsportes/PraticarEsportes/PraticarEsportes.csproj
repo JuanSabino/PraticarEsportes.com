@@ -136,10 +136,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\EstabelecimentoesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocaisController.cs" />
     <Compile Include="Controllers\PessoasController.cs" />
+    <Compile Include="Controllers\PublicoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -155,6 +155,10 @@
     <Compile Include="Migrations\201604142317529_heranca.Designer.cs">
       <DependentUpon>201604142317529_heranca.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604182236457_Pessoas1.cs" />
+    <Compile Include="Migrations\201604182236457_Pessoas1.Designer.cs">
+      <DependentUpon>201604182236457_Pessoas1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Context.cs" />
     <Compile Include="Models\Estabelecimento.cs" />
@@ -162,6 +166,7 @@
     <Compile Include="Models\Pessoa.cs" />
     <Compile Include="Models\Praticante.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Funcoes.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -216,11 +221,8 @@
     <Content Include="Views\Pessoas\Details.cshtml" />
     <Content Include="Views\Pessoas\Edit.cshtml" />
     <Content Include="Views\Pessoas\Index.cshtml" />
-    <Content Include="Views\Estabelecimentoes\Create.cshtml" />
-    <Content Include="Views\Estabelecimentoes\Delete.cshtml" />
-    <Content Include="Views\Estabelecimentoes\Details.cshtml" />
-    <Content Include="Views\Estabelecimentoes\Edit.cshtml" />
-    <Content Include="Views\Estabelecimentoes\Index.cshtml" />
+    <Content Include="Views\Publico\Logar.cshtml" />
+    <Content Include="Views\Publico\AcessoNegado.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -242,6 +244,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604142317529_heranca.resx">
       <DependentUpon>201604142317529_heranca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604182236457_Pessoas1.resx">
+      <DependentUpon>201604182236457_Pessoas1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

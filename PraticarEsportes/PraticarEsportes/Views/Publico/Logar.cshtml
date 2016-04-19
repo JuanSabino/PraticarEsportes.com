@@ -1,0 +1,37 @@
+﻿@model IEnumerable<PraticarEsportes.Models.Pessoa>
+@{
+    //Layout = "~/Views/Shared/_LayoutUser.cshtml";
+    ViewBag.Title = "Login";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <hr />
+        <h3 class="text-center">@ViewBag.Error</h3>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="control-label col-md-2">
+                Email
+            </label>
+            <div>
+                <div class="col-md-10 ">
+                    <input type="text" name="email" id="email" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">
+                Senha
+            </label>
+            <div class="col-md-10">
+                <input type="password" name="senha" id="senha" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Entrar" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
