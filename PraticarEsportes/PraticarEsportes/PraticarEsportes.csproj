@@ -197,6 +197,14 @@
     <Compile Include="Migrations\201604190318023_categoria2.Designer.cs">
       <DependentUpon>201604190318023_categoria2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604190336047_config.cs" />
+    <Compile Include="Migrations\201604190336047_config.Designer.cs">
+      <DependentUpon>201604190336047_config.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604190342544_eventoCategoria.cs" />
+    <Compile Include="Migrations\201604190342544_eventoCategoria.Designer.cs">
+      <DependentUpon>201604190342544_eventoCategoria.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Context.cs" />
@@ -265,16 +273,16 @@
     <Content Include="Views\Local\Details.cshtml" />
     <Content Include="Views\Local\Edit.cshtml" />
     <Content Include="Views\Local\Index.cshtml" />
-    <Content Include="Views\Evento\Create.cshtml" />
-    <Content Include="Views\Evento\Delete.cshtml" />
-    <Content Include="Views\Evento\Details.cshtml" />
-    <Content Include="Views\Evento\Edit.cshtml" />
-    <Content Include="Views\Evento\Index.cshtml" />
     <Content Include="Views\Categoria\Create.cshtml" />
     <Content Include="Views\Categoria\Delete.cshtml" />
     <Content Include="Views\Categoria\Details.cshtml" />
     <Content Include="Views\Categoria\Edit.cshtml" />
     <Content Include="Views\Categoria\Index.cshtml" />
+    <Content Include="Views\Evento\Create.cshtml" />
+    <Content Include="Views\Evento\Delete.cshtml" />
+    <Content Include="Views\Evento\Details.cshtml" />
+    <Content Include="Views\Evento\Edit.cshtml" />
+    <Content Include="Views\Evento\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -326,6 +334,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604190318023_categoria2.resx">
       <DependentUpon>201604190318023_categoria2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604190336047_config.resx">
+      <DependentUpon>201604190336047_config.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604190342544_eventoCategoria.resx">
+      <DependentUpon>201604190342544_eventoCategoria.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

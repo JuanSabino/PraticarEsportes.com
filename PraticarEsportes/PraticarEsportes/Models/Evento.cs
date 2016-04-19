@@ -39,5 +39,8 @@ namespace PraticarEsportes.Models
         [Required(ErrorMessage = "Escolha uma dificuldade para o evento")]
         [DisplayName("Dificuldade")]
         public int Dificuldade { get; set; }
+
+        public int CategoriaID { get; set; }
+        public virtual Categoria Categoria { get; set; }
     }
 }

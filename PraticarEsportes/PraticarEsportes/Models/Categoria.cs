@@ -15,5 +15,7 @@ namespace PraticarEsportes.Models
         [Required(ErrorMessage = "Preencha o campo nome")]
         [DisplayName("Nome")]
         public string Nome { get; set; }
+
+        public virtual ICollection<Evento> Evento { get; set; }
     }
 }

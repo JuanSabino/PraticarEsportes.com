@@ -17,7 +17,8 @@ namespace PraticarEsportes.Controllers
         // GET: Evento
         public ActionResult Index()
         {
-            return View(db.Evento.ToList());
+            var evento = db.Evento.Include(e => e.Categoria);
+            return View(evento.ToList());
         }
 
         // GET: Evento/Details/5
@@ -38,6 +39,7 @@ namespace PraticarEsportes.Controllers
         // GET: Evento/Create
         public ActionResult Create()
         {
+            ViewBag.CategoriaID = new SelectList(db.Categoria, "CategoriaID", "Nome");
             return View();
         }
 
@@ -46,7 +48,7 @@ namespace PraticarEsportes.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Nome,Descricao,DataInicio,DataTermino,Capacidade,Dificuldade")] Evento evento)
+        public ActionResult Create([Bind(Include = "ID,Nome,Descricao,DataInicio,DataTermino,Capacidade,Dificuldade,CategoriaID")] Evento evento)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +57,7 @@ namespace PraticarEsportes.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.CategoriaID = new SelectList(db.Categoria, "CategoriaID", "Nome", evento.CategoriaID);
             return View(evento);
         }
 
@@ -70,6 +73,7 @@ namespace PraticarEsportes.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.CategoriaID = new SelectList(db.Categoria, "CategoriaID", "Nome", evento.CategoriaID);
             return View(evento);
         }
 
@@ -78,7 +82,7 @@ namespace PraticarEsportes.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Nome,Descricao,DataInicio,DataTermino,Capacidade,Dificuldade")] Evento evento)
+        public ActionResult Edit([Bind(Include = "ID,Nome,Descricao,DataInicio,DataTermino,Capacidade,Dificuldade,CategoriaID")] Evento evento)
         {
             if (ModelState.IsValid)
             {
@@ -86,6 +90,7 @@ namespace PraticarEsportes.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.CategoriaID = new SelectList(db.Categoria, "CategoriaID", "Nome", evento.CategoriaID);
             return View(evento);
         }
 
