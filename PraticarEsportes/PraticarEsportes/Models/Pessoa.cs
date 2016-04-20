@@ -16,5 +16,7 @@ namespace PraticarEsportes.Models
         public string Email { get; set; }
         public string Senha { get; set; }
         public bool Habilitado { get; set; }
+
+        public virtual ICollection<Checkin> Checkins { get; set; }
     }
 }

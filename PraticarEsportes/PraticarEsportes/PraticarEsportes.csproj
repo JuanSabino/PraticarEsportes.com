@@ -68,12 +68,24 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -137,6 +149,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CategoriaController.cs" />
+    <Compile Include="Controllers\CheckinsController.cs" />
     <Compile Include="Controllers\CuponsController.cs" />
     <Compile Include="Controllers\EventoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -146,6 +159,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604140444273_local.Designer.cs" />
     <Compile Include="Migrations\201604142305570_pessoa.cs" />
     <Compile Include="Migrations\201604142305570_pessoa.Designer.cs">
       <DependentUpon>201604142305570_pessoa.cs</DependentUpon>
@@ -157,6 +171,10 @@
     <Compile Include="Migrations\201604182236457_Pessoas1.cs" />
     <Compile Include="Migrations\201604182236457_Pessoas1.Designer.cs">
       <DependentUpon>201604182236457_Pessoas1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604190055461_Checkin.cs" />
+    <Compile Include="Migrations\201604190055461_Checkin.Designer.cs">
+      <DependentUpon>201604190055461_Checkin.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201604190239328_local2.cs" />
     <Compile Include="Migrations\201604190239328_local2.Designer.cs">
@@ -307,6 +325,11 @@
     <Content Include="Views\Cupons\Details.cshtml" />
     <Content Include="Views\Cupons\Edit.cshtml" />
     <Content Include="Views\Cupons\Index.cshtml" />
+    <Content Include="Views\Checkins\Create.cshtml" />
+    <Content Include="Views\Checkins\Delete.cshtml" />
+    <Content Include="Views\Checkins\Details.cshtml" />
+    <Content Include="Views\Checkins\Edit.cshtml" />
+    <Content Include="Views\Checkins\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -328,6 +351,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604182236457_Pessoas1.resx">
       <DependentUpon>201604182236457_Pessoas1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604190055461_Checkin.resx">
+      <DependentUpon>201604190055461_Checkin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604190239328_local2.resx">
       <DependentUpon>201604190239328_local2.cs</DependentUpon>
