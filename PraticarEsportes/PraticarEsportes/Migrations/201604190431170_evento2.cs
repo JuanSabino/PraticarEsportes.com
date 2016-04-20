@@ -7,25 +7,6 @@ namespace PraticarEsportes.Migrations
     {
         public override void Up()
         {
-            CreateTable(
-                "dbo.Evento",
-                c => new
-                    {
-                        ID = c.Int(nullable: false, identity: true),
-                        Nome = c.String(nullable: false, unicode: false),
-                        Descricao = c.String(unicode: false),
-                        DataInicio = c.DateTime(nullable: false, precision: 0),
-                        DataTermino = c.DateTime(nullable: false, precision: 0),
-                        Capacidade = c.String(nullable: false, unicode: false),
-                        Dificuldade = c.Int(nullable: false),
-                        LocalID = c.Int(nullable: false),
-                        CategoriaID = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.Categoria", t => t.CategoriaID, cascadeDelete: true)
-                .ForeignKey("dbo.Local", t => t.LocalID, cascadeDelete: true)
-                .Index(t => t.LocalID)
-                .Index(t => t.CategoriaID);
             
         }
         
