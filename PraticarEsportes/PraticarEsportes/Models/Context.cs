@@ -23,5 +23,7 @@ namespace PraticarEsportes.Models
             modelBuilder.Conventions.Remove();
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
+
+        public System.Data.Entity.DbSet<PraticarEsportes.Models.Checkin> Checkins { get; set; }
     }
 }
