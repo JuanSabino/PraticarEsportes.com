@@ -13,6 +13,10 @@ namespace PraticarEsportes.Models
         public string CEP { get; set; }
         public string Cidade { get; set; }
         public string Estado { get; set; }
+        public string Email { get; set; }
+        public string Senha { get; set; }
         public bool Habilitado { get; set; }
+
+        public virtual ICollection<Checkin> Checkins { get; set; }
     }
 }

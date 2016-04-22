@@ -13,12 +13,17 @@ namespace PraticarEsportes.Models
             Configuration.ProxyCreationEnabled = false;
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<Context>());
         }
-        public DbSet<Local> Locais { get; set; }
         public DbSet<Pessoa> Pessoas { get; set; }
+        public DbSet<Local> Local { get; set; }
+        public DbSet<Evento> Evento { get; set; }
+        public DbSet<Categoria> Categoria { get; set; }
+        public DbSet<Cupom> Cupons { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove();
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
+
+        public System.Data.Entity.DbSet<PraticarEsportes.Models.Checkin> Checkins { get; set; }
     }
 }
