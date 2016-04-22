@@ -68,12 +68,24 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -137,6 +149,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CategoriaController.cs" />
+    <Compile Include="Controllers\CheckinsController.cs" />
     <Compile Include="Controllers\CuponsController.cs" />
     <Compile Include="Controllers\EventoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -146,77 +159,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201604142305570_pessoa.cs" />
-    <Compile Include="Migrations\201604142305570_pessoa.Designer.cs">
-      <DependentUpon>201604142305570_pessoa.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604142317529_heranca.cs" />
-    <Compile Include="Migrations\201604142317529_heranca.Designer.cs">
-      <DependentUpon>201604142317529_heranca.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604182236457_Pessoas1.cs" />
-    <Compile Include="Migrations\201604182236457_Pessoas1.Designer.cs">
-      <DependentUpon>201604182236457_Pessoas1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604190239328_local2.cs" />
-    <Compile Include="Migrations\201604190239328_local2.Designer.cs">
-      <DependentUpon>201604190239328_local2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604190243074_local3.cs" />
-    <Compile Include="Migrations\201604190243074_local3.Designer.cs">
-      <DependentUpon>201604190243074_local3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604190246500_local4.cs" />
-    <Compile Include="Migrations\201604190246500_local4.Designer.cs">
-      <DependentUpon>201604190246500_local4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604190255223_local41.cs" />
-    <Compile Include="Migrations\201604190255223_local41.Designer.cs">
-      <DependentUpon>201604190255223_local41.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604190258313_local42.cs" />
-    <Compile Include="Migrations\201604190258313_local42.Designer.cs">
-      <DependentUpon>201604190258313_local42.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604190306376_local43.cs" />
-    <Compile Include="Migrations\201604190306376_local43.Designer.cs">
-      <DependentUpon>201604190306376_local43.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604190311497_evento.cs" />
-    <Compile Include="Migrations\201604190311497_evento.Designer.cs">
-      <DependentUpon>201604190311497_evento.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604190317082_categoria.cs" />
-    <Compile Include="Migrations\201604190317082_categoria.Designer.cs">
-      <DependentUpon>201604190317082_categoria.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604190318023_categoria2.cs" />
-    <Compile Include="Migrations\201604190318023_categoria2.Designer.cs">
-      <DependentUpon>201604190318023_categoria2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604190336047_config.cs" />
-    <Compile Include="Migrations\201604190336047_config.Designer.cs">
-      <DependentUpon>201604190336047_config.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604190342544_eventoCategoria.cs" />
-    <Compile Include="Migrations\201604190342544_eventoCategoria.Designer.cs">
-      <DependentUpon>201604190342544_eventoCategoria.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604190347010_eventoLocal.cs" />
-    <Compile Include="Migrations\201604190347010_eventoLocal.Designer.cs">
-      <DependentUpon>201604190347010_eventoLocal.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604190402238_eventoBanco.cs" />
-    <Compile Include="Migrations\201604190402238_eventoBanco.Designer.cs">
-      <DependentUpon>201604190402238_eventoBanco.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604190427390_evento1.cs" />
-    <Compile Include="Migrations\201604190427390_evento1.Designer.cs">
-      <DependentUpon>201604190427390_evento1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604190431170_evento2.cs" />
-    <Compile Include="Migrations\201604190431170_evento2.Designer.cs">
-      <DependentUpon>201604190431170_evento2.cs</DependentUpon>
+    <Compile Include="Migrations\201604202313036_sdifojfo.cs" />
+    <Compile Include="Migrations\201604202313036_sdifojfo.Designer.cs">
+      <DependentUpon>201604202313036_sdifojfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
@@ -307,8 +252,11 @@
     <Content Include="Views\Cupons\Details.cshtml" />
     <Content Include="Views\Cupons\Edit.cshtml" />
     <Content Include="Views\Cupons\Index.cshtml" />
-    <Content Include="Views\Evento\Contador.cshtml" />
-    <Content Include="Views\Shared\FullPage.cshtml" />
+    <Content Include="Views\Checkins\Create.cshtml" />
+    <Content Include="Views\Checkins\Delete.cshtml" />
+    <Content Include="Views\Checkins\Details.cshtml" />
+    <Content Include="Views\Checkins\Edit.cshtml" />
+    <Content Include="Views\Checkins\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -322,59 +270,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201604142305570_pessoa.resx">
-      <DependentUpon>201604142305570_pessoa.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604142317529_heranca.resx">
-      <DependentUpon>201604142317529_heranca.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604182236457_Pessoas1.resx">
-      <DependentUpon>201604182236457_Pessoas1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604190239328_local2.resx">
-      <DependentUpon>201604190239328_local2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604190243074_local3.resx">
-      <DependentUpon>201604190243074_local3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604190246500_local4.resx">
-      <DependentUpon>201604190246500_local4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604190255223_local41.resx">
-      <DependentUpon>201604190255223_local41.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604190258313_local42.resx">
-      <DependentUpon>201604190258313_local42.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604190306376_local43.resx">
-      <DependentUpon>201604190306376_local43.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604190311497_evento.resx">
-      <DependentUpon>201604190311497_evento.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604190317082_categoria.resx">
-      <DependentUpon>201604190317082_categoria.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604190318023_categoria2.resx">
-      <DependentUpon>201604190318023_categoria2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604190336047_config.resx">
-      <DependentUpon>201604190336047_config.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604190342544_eventoCategoria.resx">
-      <DependentUpon>201604190342544_eventoCategoria.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604190347010_eventoLocal.resx">
-      <DependentUpon>201604190347010_eventoLocal.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604190402238_eventoBanco.resx">
-      <DependentUpon>201604190402238_eventoBanco.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604190427390_evento1.resx">
-      <DependentUpon>201604190427390_evento1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604190431170_evento2.resx">
-      <DependentUpon>201604190431170_evento2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201604202313036_sdifojfo.resx">
+      <DependentUpon>201604202313036_sdifojfo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
