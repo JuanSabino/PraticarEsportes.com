@@ -16,7 +16,7 @@ namespace PraticarEsportes.Controllers
         {
             ViewBag.Categoria = db.Categoria.ToList();
             ViewBag.Local = db.Local.ToList();
-            ViewBag.Evento = db.Evento.ToList();
+            //ViewBag.Evento = db.Evento.Count();
             return View();
         }
 

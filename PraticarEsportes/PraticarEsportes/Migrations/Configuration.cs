@@ -17,7 +17,7 @@ namespace PraticarEsportes.Migrations
         protected override void Seed(PraticarEsportes.Models.Context context)
         {
             //IList<Categoria> categorias = new List<Categoria>();
-            //categorias.Add(new Categoria() { Nome = "Caminhada"});
+            //categorias.Add(new Categoria() { Nome = "Caminhada" });
             //categorias.Add(new Categoria() { Nome = "Corrida" });
             //categorias.Add(new Categoria() { Nome = "Academia" });
             //categorias.Add(new Categoria() { Nome = "Futebol" });
@@ -44,8 +44,8 @@ namespace PraticarEsportes.Migrations
             //}
 
             IList<Evento> eventos = new List<Evento>();
-            eventos.Add(new Evento() { Nome = "Futeba da Galera", Descricao = "Teste", DataInicio = Convert.ToDateTime("2016-04-18 00:00:00"), DataTermino = Convert.ToDateTime("2016-04-18 00:00:00"), Capacidade = "20", Dificuldade = 1, LocalID = 2, CategoriaID = 17 });
-            eventos.Add(new Evento() { Nome = "Teste2", Descricao = "Teste", DataInicio = Convert.ToDateTime("2016-04-19 00:00:00"), DataTermino = Convert.ToDateTime("2016-04-19 00:00:00"), Capacidade = "15", Dificuldade = 2, LocalID = 2, CategoriaID = 17 });
+            eventos.Add(new Evento() { Nome = "Futeba da Galera", Descricao = "Teste", DataInicio = Convert.ToDateTime("2016-04-18 00:00:00"), DataTermino = Convert.ToDateTime("2016-04-18 00:00:00"), Capacidade = "20", Dificuldade = 1, LocalID = 2, CategoriaID = 16 });
+            eventos.Add(new Evento() { Nome = "Teste2", Descricao = "Teste", DataInicio = Convert.ToDateTime("2016-04-19 00:00:00"), DataTermino = Convert.ToDateTime("2016-04-19 00:00:00"), Capacidade = "15", Dificuldade = 2, LocalID = 2, CategoriaID = 16 });
 
             foreach (Evento evento in eventos)
             {
