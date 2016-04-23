@@ -24,27 +24,49 @@ namespace PraticarEsportes.Repositories
             //HttpContext.Current.Response.Cookies["Usuario"].Value = query.Email;
             //HttpContext.Current.Response.Cookies["Usuario"].Expires = DateTime.Now.AddDays(10);
             HttpContext.Current.Session["Usuario"] = query.Email;
+            if (( (Estabelecimento) (query)).CNPJ != null)
+            {
+                HttpContext.Current.Session["Tipo"] = 1;
+            }
+            else
+            {
+                HttpContext.Current.Session["Tipo"] = 2;
+            }
+            
             return true;
         }
 
-        public static Pessoa GetUsuario()
+        public static Object GetUsuario()
         {
             string _login = HttpContext.Current.User.Identity.Name;
+            int _tipo;
             if (HttpContext.Current.Session.Count > 0 || HttpContext.Current.Session["Usuario"] != null)
             {
                 _login = HttpContext.Current.Session["Usuario"].ToString();
-                //_login = HttpContext.Current.Request.Cookies["Usuario"].Value.ToString();
                 if (_login == "")
                 {
                     return null;
                 }
                 else
                 {
+                    _tipo = Convert.ToInt32(HttpContext.Current.Session["Tipo"].ToString());
                     Context _db = new Context();
-                    Pessoa cliente = (from u in _db.Pessoas
-                                       where u.Email == _login
-                                       select u).SingleOrDefault();
-                    return cliente;
+                    Object retorno;
+                    if (_tipo == 2)
+                    {
+                        Praticante cliente = (Praticante) (from u in _db.Pessoas
+                                              where u.Email == _login
+                                              select u).SingleOrDefault();
+                        retorno = cliente;
+                    }
+                    else
+                    {
+                        Estabelecimento cliente =(Estabelecimento) (from u in _db.Pessoas
+                                                   where u.Email == _login
+                                                   select u).SingleOrDefault();
+                        retorno = cliente;
+                    }               
+                    return retorno;
                 }
             }
             else

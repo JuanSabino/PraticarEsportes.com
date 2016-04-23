@@ -14,5 +14,8 @@ namespace PraticarEsportes.Models
         public int PessoaId { get; set; }
         public virtual Pessoa Pessoa { get; set; }
 
+        public int EventoId { get; set; }
+        public virtual Evento Evento { get; set; }
+
     }
 }
