@@ -24,7 +24,8 @@ namespace PraticarEsportes.Repositories
             //HttpContext.Current.Response.Cookies["Usuario"].Value = query.Email;
             //HttpContext.Current.Response.Cookies["Usuario"].Expires = DateTime.Now.AddDays(10);
             HttpContext.Current.Session["Usuario"] = query.Email;
-            if (( (Estabelecimento) (query)).CNPJ != null)
+            if (query.GetType().Name == "Estabelecimento")
+
             {
                 HttpContext.Current.Session["Tipo"] = 1;
             }
