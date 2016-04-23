@@ -3,7 +3,7 @@ namespace PraticarEsportes.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class principal : DbMigration
+    public partial class Checkin : DbMigration
     {
         public override void Up()
         {
