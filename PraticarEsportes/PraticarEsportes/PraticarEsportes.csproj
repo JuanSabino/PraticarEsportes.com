@@ -177,12 +177,16 @@
     <Compile Include="Models\Local.cs" />
     <Compile Include="Models\Pessoa.cs" />
     <Compile Include="Models\Praticante.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Funcoes.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\mapa.css" />
     <Content Include="Scripts\images\layers-2x.png" />
     <Content Include="Scripts\images\layers.png" />
     <Content Include="Scripts\images\marker-icon-2x.png" />
@@ -261,6 +265,26 @@
     <Content Include="Views\Checkins\Details.cshtml" />
     <Content Include="Views\Checkins\Edit.cshtml" />
     <Content Include="Views\Checkins\Index.cshtml" />
+    <Content Include="Views\Praticantes\Create.cshtml" />
+    <Content Include="Views\Praticantes\Delete.cshtml" />
+    <Content Include="Views\Praticantes\Details.cshtml" />
+    <Content Include="Views\Praticantes\Edit.cshtml" />
+    <Content Include="Views\Praticantes\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutMapas.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Shared\_LayoutUser.cshtml" />
+    <Content Include="Views\Shared\FullPage.cshtml" />
+    <Content Include="Views\Historicos\Create.cshtml" />
+    <Content Include="Views\Historicos\Delete.cshtml" />
+    <Content Include="Views\Historicos\Details.cshtml" />
+    <Content Include="Views\Historicos\Edit.cshtml" />
+    <Content Include="Views\Historicos\Index.cshtml" />
+    <Content Include="Views\Estabelecimentos\Create.cshtml" />
+    <Content Include="Views\Estabelecimentos\Delete.cshtml" />
+    <Content Include="Views\Estabelecimentos\Details.cshtml" />
+    <Content Include="Views\Estabelecimentos\Edit.cshtml" />
+    <Content Include="Views\Estabelecimentos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
