@@ -285,6 +285,7 @@
     <Content Include="Views\Estabelecimentos\Details.cshtml" />
     <Content Include="Views\Estabelecimentos\Edit.cshtml" />
     <Content Include="Views\Estabelecimentos\Index.cshtml" />
+    <Content Include="Views\Evento\Contador.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

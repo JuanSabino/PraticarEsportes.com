@@ -29,6 +29,9 @@ namespace PraticarEsportes.Controllers
             //Evento evento = db.Evento.Find(id);
             var evento = db.Evento.Include(e => e.Categoria).Include(e => e.Local);
             ViewBag.Contador = evento.Where(e => e.LocalID == id).ToList();
+
+            var local = db.Local.Include(e => e.Evento);
+            ViewBag.Local = local.Where(e => e.ID== id).ToList();
             return View();
         }
 
