@@ -281,6 +281,9 @@
     <Content Include="Views\Historicos\Index.cshtml" />
     <Content Include="Views\Publico\RecuperarSenha.cshtml" />
     <Content Include="Views\Publico\RecuperarSenha2.cshtml" />
+    <Content Include="Views\Evento\Contador.cshtml" />
+    <Content Include="Views\Evento\EventoCategoria.cshtml" />
+    <Content Include="Views\Shared\FullPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
