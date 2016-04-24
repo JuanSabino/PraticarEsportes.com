@@ -153,6 +153,7 @@
     <Compile Include="Controllers\CuponsController.cs" />
     <Compile Include="Controllers\EstabelecimentosController.cs" />
     <Compile Include="Controllers\EventoController.cs" />
+    <Compile Include="Controllers\HistoricosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocalController.cs" />
     <Compile Include="Controllers\PessoasController.cs" />
@@ -161,6 +162,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604241345506_historico.cs" />
+    <Compile Include="Migrations\201604241345506_historico.Designer.cs">
+      <DependentUpon>201604241345506_historico.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Checkin.cs" />
@@ -168,6 +173,7 @@
     <Compile Include="Models\Cupom.cs" />
     <Compile Include="Models\Estabelecimento.cs" />
     <Compile Include="Models\Evento.cs" />
+    <Compile Include="Models\Historico.cs" />
     <Compile Include="Models\Local.cs" />
     <Compile Include="Models\Pessoa.cs" />
     <Compile Include="Models\Praticante.cs" />
@@ -267,6 +273,11 @@
     <Content Include="Views\Praticantes\Details.cshtml" />
     <Content Include="Views\Praticantes\Edit.cshtml" />
     <Content Include="Views\Praticantes\Index.cshtml" />
+    <Content Include="Views\Historicos\Create.cshtml" />
+    <Content Include="Views\Historicos\Delete.cshtml" />
+    <Content Include="Views\Historicos\Details.cshtml" />
+    <Content Include="Views\Historicos\Edit.cshtml" />
+    <Content Include="Views\Historicos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -278,6 +289,11 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201604241345506_historico.resx">
+      <DependentUpon>201604241345506_historico.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

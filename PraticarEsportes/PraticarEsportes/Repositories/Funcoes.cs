@@ -21,17 +21,18 @@ namespace PraticarEsportes.Repositories
                 return false;
             }
             System.Web.Security.FormsAuthentication.SetAuthCookie(query.Email, false);
-            //HttpContext.Current.Response.Cookies["Usuario"].Value = query.Email;
-            //HttpContext.Current.Response.Cookies["Usuario"].Expires = DateTime.Now.AddDays(10);
             HttpContext.Current.Session["Usuario"] = query.Email;
+            HttpContext.Current.Session["Id"] = query.PessoaId;
             if (query.GetType().Name == "Estabelecimento")
 
             {
                 HttpContext.Current.Session["Tipo"] = 1;
+                HttpContext.Current.Session["Nome"] = ( (Estabelecimento) query).NomeFantasia;
             }
             else
             {
                 HttpContext.Current.Session["Tipo"] = 2;
+                HttpContext.Current.Session["Nome"] = ( (Praticante) query).Nome;
             }
             
             return true;
@@ -100,6 +101,19 @@ namespace PraticarEsportes.Repositories
             //HttpContext.Current.Response.Cookies["Usuario"].Value = "";
             FormsAuthentication.SignOut();
         }
+
+        public static void InsereHistorico(int PessoaId, string Descricao)
+        {
+            Context db = new Context();
+            Historico historico = new Historico();
+            historico.Horario = DateTime.Now;
+            historico.PessoaId = PessoaId;
+            historico.Descricao = Descricao;
+            db.Historicos.Add(historico);
+            db.SaveChanges();
+        }
+
+
 
 
     }

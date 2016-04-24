@@ -35,6 +35,8 @@ namespace PraticarEsportes.Models
         public virtual ICollection<Checkin> Checkins { get; set; }
 
 
+        public virtual ICollection<Historico> Historicos { get; set; }
+
         public Pessoa()
         {
             Habilitado = true;
