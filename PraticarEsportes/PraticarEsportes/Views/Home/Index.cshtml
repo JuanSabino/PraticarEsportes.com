@@ -84,18 +84,20 @@
     var estadio = new LeafIcon({ iconUrl: '../Content/img/iconStadium.png' });
 
     @foreach (var locais in local){
-        <text>
-            var latitude = "@locais.Latitude";
-            latitude = latitude.replace(/,/g, '.');
+        if (@locais.Habilitado == true) { 
+            <text>
+                var latitude = "@locais.Latitude";
+                latitude = latitude.replace(/,/g, '.');
 
-            var longitude = "@locais.Longitude";
-            longitude = longitude.replace(/,/g, '.');
+                var longitude = "@locais.Longitude";
+                longitude = longitude.replace(/,/g, '.');
 
-            var contentPopup = "<h4>@locais.Nome</h4>";
-            contentPopup += "<a href='/Evento/Contador?id=@locais.ID' class='openModal btn btn-primary' title='@locais.Nome'>Ver Local e Eventos</a>";
+                var contentPopup = "<h4>@locais.Nome</h4>";
+                contentPopup += "<a href='/Evento/Contador?id=@locais.ID' class='openModal btn btn-primary' title='@locais.Nome'>Ver Local e Eventos</a>";
 
-            L.marker([latitude, longitude], { icon: estadio }).addTo(map).bindPopup(contentPopup);
-        </text>
+                L.marker([latitude, longitude], { icon: estadio }).addTo(map).bindPopup(contentPopup);
+            </text>
+        }
     }
 
     function onLocationFound(e) {
