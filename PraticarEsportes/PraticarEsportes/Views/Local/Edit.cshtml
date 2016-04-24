@@ -1,8 +1,11 @@
 ﻿@model PraticarEsportes.Models.Local
 
 @{
+    Layout = "~/Views/Shared/FullPage.cshtml";
     ViewBag.Title = "Edit";
 }
+
+@Scripts.Render("~/Scripts/jquery-1.10.2.min.js")
 
 <h2>Edit</h2>
 
@@ -70,6 +73,29 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+<script>
+    $(document).ready(function () {
+
+        var latitude = $("#Latitude").val();
+        var longitude = $("#Longitude").val();
+
+        console.log(latitude, longitude);
+
+        latitude = latitude.replace(/,/g, '.');
+        longitude = longitude.replace(/,/g, '.');
+
+        console.log(latitude, longitude);
+
+        parseFloat(latitude);
+        parseFloat(longitude);
+
+        console.log(latitude, longitude);
+
+        $("#Latitude").val(latitude);
+        $("#Longitude").val(longitude);
+    });
+</script>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

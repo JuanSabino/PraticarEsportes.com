@@ -1,0 +1,110 @@
+﻿@model IEnumerable<PraticarEsportes.Models.Evento>
+@{
+    ViewBag.Title = "Contador";
+    List<PraticarEsportes.Models.Evento> evento = ViewBag.Contador;
+    List<PraticarEsportes.Models.Local> local = ViewBag.Local;
+    Layout = "~/Views/Shared/Modal.cshtml";
+    int contador = evento.Count;
+}
+
+<h3>Informações do Local</h3>
+@foreach (var locais in local){
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-3">Nome:</div>
+            <div class="col-md-9">
+                @locais.Nome
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-3">Descrição:</div>
+            <div class="col-md-9">
+                @locais.Descricao
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-3">Latitude:</div>
+            <div class="col-md-9">
+                @locais.Latitude
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-3">Longitude:</div>
+            <div class="col-md-9">
+                @locais.Longitude
+            </div>
+        </div>
+    </div>
+    
+    <hr />
+}
+
+<h3>Eventos</h3>
+@if (contador > 0) {
+    foreach (var eventos in evento)
+    {
+        <div class="form-horizontal">
+            <div class="form-group">
+                <div class="col-md-3">Nome:</div>
+                <div class="col-md-9">
+                    @eventos.Nome
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-3">Descrição:</div>
+                <div class="col-md-9">
+                    @eventos.Descricao
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-3">Data Início:</div>
+                <div class="col-md-9">
+                    @eventos.DataInicio
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-3">Data Término:</div>
+                <div class="col-md-9">
+                    @eventos.DataTermino
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-3">Capacidade:</div>
+                <div class="col-md-9">
+                    @eventos.Capacidade
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-3">Dificuldade:</div>
+                <div class="col-md-9">
+                    @eventos.Dificuldade
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-3">Categoria:</div>
+                <div class="col-md-9">
+                    @eventos.CategoriaID
+                </div>
+            </div>
+
+            @*<div class="form-group">
+                <div class="col-md-3">Local:</div>
+                <div class="col-md-9">
+                    @eventos.LocalID
+                </div>
+            </div>*@
+            <hr />
+        </div>
+    }
+}else {
+    @Html.Raw("Nenhum evento cadastrado nesse local.");
+}
