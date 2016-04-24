@@ -81,6 +81,7 @@ namespace PraticarEsportes.Controllers
             {
                 return HttpNotFound();
             }
+                        
             return View(local);
         }
 
@@ -91,13 +92,22 @@ namespace PraticarEsportes.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Nome,Descricao,Latitude,Longitude,Habilitado")] Local local)
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
+                string latitude = Request["Latitude"];
+                latitude = latitude.Replace(".", ",");
+
+                string longitude = Request["Longitude"];
+                longitude = longitude.Replace(".", ",");
+
+                local.Latitude = Convert.ToDouble(latitude);
+                local.Longitude = Convert.ToDouble(longitude);
+
                 db.Entry(local).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }
-            return View(local);
+            //}
+            //return View(local);
         }
 
         // GET: Local/Delete/5
