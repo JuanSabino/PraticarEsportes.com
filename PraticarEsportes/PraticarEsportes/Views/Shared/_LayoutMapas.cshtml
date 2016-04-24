@@ -10,8 +10,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <br /><br />
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -37,14 +36,13 @@
                                             List<PraticarEsportes.Models.Categoria> categoria = ViewBag.Categoria;
                                             foreach (var menu in categoria)
                                             {
-                                            <li><a href="#">@menu.Nome</a></li>
+                                                    <li><a href="/Evento/EventoCategoria?id=@menu.CategoriaID" class="openModal" title="@menu.Nome">@menu.Nome</a></li>
                                             }
                                         }
                                     }
 
                                 </ul>
                             </li>
-                            <li>@Html.ActionLink("Sair", "Logoff", "Publico")</li>
                             @*<li>@Html.ActionLink("Home", "Index", "Home")</li>
                             <li>@Html.ActionLink("Pessoas", "Index", "Pessoas")</li>
                             <li>@Html.ActionLink("Locais", "Index", "Local")</li>
@@ -52,6 +50,16 @@
                             <li>@Html.ActionLink("Categorias", "Index", "Categoria")</li>
                             <li>@Html.ActionLink("About", "About", "Home")</li>
                             <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bem-Vndo!<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Meus Dados</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li>@Html.ActionLink("Sair", "Logoff", "Publico")</li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                 }

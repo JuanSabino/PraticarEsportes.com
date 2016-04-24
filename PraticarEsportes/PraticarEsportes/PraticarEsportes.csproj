@@ -162,9 +162,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201604241345506_historico.cs" />
-    <Compile Include="Migrations\201604241345506_historico.Designer.cs">
-      <DependentUpon>201604241345506_historico.cs</DependentUpon>
+    <Compile Include="Migrations\201604241601531_pegandobanco.cs" />
+    <Compile Include="Migrations\201604241601531_pegandobanco.Designer.cs">
+      <DependentUpon>201604241601531_pegandobanco.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
@@ -274,8 +274,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201604241345506_historico.resx">
-      <DependentUpon>201604241345506_historico.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201604241601531_pegandobanco.resx">
+      <DependentUpon>201604241601531_pegandobanco.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
