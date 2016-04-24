@@ -95,19 +95,15 @@
         </div>
 
         <script>
-            $('.openModal').click(function (e) {
+            $(document).on('click', '.openModal', function (e) {
                 e.preventDefault();
 
                 var title = $(this).attr("title");
-                console.log(title);
                 var url = $(this).attr("href");
-                console.log(url);
 
                 $("#myModal").find('.modal-title').html(title)
                 $('#myModal').modal('show').find('.modal-body').load(url);
-
-                //console.log(url);
-            })
+            });
 
             $(document).ready(function () {
                 map.locate({ setView: true, maxZoom: 14 });
@@ -130,38 +126,21 @@
             });
 
             var estadio = new LeafIcon({ iconUrl: '../Content/img/iconStadium.png' });
-
-            @{
-
-    //if (ViewBag.Mensagem != "")
-        //{
-
-        //}
-    }
-
-            @*@{Html.RenderAction("ContadorEvento(@locais.ID)", "Home");}*@
-
+            
             @foreach (var locais in local){
-        <text>
-            $.ajax({
-                type: "POST",
-                url: '@Url.Action("Contador", "Evento")',
-                contentType: "application/json; charset=utf-8",
-                data: { id: @locais.ID },
-                dataType: "json",
-                success: function () { alert('Success'); },
-                error: function () { alert('Success'); },
-            });
+                <text>
+                    var latitude = "@locais.Latitude";
+                    latitude = latitude.replace(/,/g, '.');
 
-            var latitude = "@locais.Latitude";
-            latitude = latitude.replace(/,/g, '.');
+                    var longitude = "@locais.Longitude";
+                    longitude = longitude.replace(/,/g, '.');
 
-            var longitude = "@locais.Longitude";
-            longitude = longitude.replace(/,/g, '.');
+                    var contentPopup = "<h4>@locais.Nome</h4>";
+                    contentPopup += "<a href='/Evento/Contador?id=@locais.ID' class='openModal btn btn-primary' title='@locais.Nome'>Ver Local e Eventos</a>";
 
-            L.marker([latitude, longitude], { icon: estadio }).addTo(map).bindPopup("@locais.Nome");
-            </text>
-    }
+                    L.marker([latitude, longitude], { icon: estadio }).addTo(map).bindPopup(contentPopup);
+                </text>
+            }
 
             function onLocationFound(e) {
                 var radius = e.accuracy / 2;

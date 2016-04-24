@@ -257,6 +257,8 @@
     <Content Include="Views\Checkins\Details.cshtml" />
     <Content Include="Views\Checkins\Edit.cshtml" />
     <Content Include="Views\Checkins\Index.cshtml" />
+    <Content Include="Views\Evento\Contador.cshtml" />
+    <Content Include="Views\Evento\EventoCategoria.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

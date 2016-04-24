@@ -30,7 +30,7 @@
                                 List<PraticarEsportes.Models.Categoria> categoria = ViewBag.Categoria;
                                 foreach (var menu in categoria)
                                 {
-                                    <li><a href="#">@menu.Nome</a></li>
+                                    <li><a href="/Evento/EventoCategoria?id=@menu.CategoriaID" class="openModal" title="@menu.Nome">@menu.Nome</a></li>
                                 }
                             }
 

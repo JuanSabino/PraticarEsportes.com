@@ -14,10 +14,20 @@ namespace PraticarEsportes.Controllers
     {
         private Context db = new Context();
 
+        public ActionResult EventoCategoria(int? id)
+        {
+            //Evento evento = db.Evento.Find(id);
+            var evento = db.Evento.Include(e => e.Categoria).Include(e => e.Local);
+            ViewBag.EventoCategoria = evento.Where(e => e.CategoriaID == id).ToList();
+            return View();
+        }
+
         public ActionResult Contador(int? id)
         {
+            //Evento evento = db.Evento.Find(id);
             var evento = db.Evento.Include(e => e.Categoria).Include(e => e.Local);
-            return View(evento.ToList());
+            ViewBag.Contador = evento.Where(e => e.LocalID == id).ToList();
+            return View();
         }
 
         // GET: Evento
