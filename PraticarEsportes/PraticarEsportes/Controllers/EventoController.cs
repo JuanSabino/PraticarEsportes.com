@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PraticarEsportes.Models;
+using PraticarEsportes.Repositories;
+using System.Web.Security;
 
 namespace PraticarEsportes.Controllers
 {
@@ -69,8 +71,14 @@ namespace PraticarEsportes.Controllers
         {
             if (ModelState.IsValid)
             {
+                int PessoaId = Convert.ToInt32(System.Web.HttpContext.Current.Session["Id"]);
+                evento.PessoaId = PessoaId;
                 db.Evento.Add(evento);
                 db.SaveChanges();
+                //insere no historico
+                
+                string Descricao = "Criou evento #" + evento.ID.ToString() + " - " + evento.Nome;
+                Funcoes.InsereHistorico(PessoaId, Descricao);
                 return RedirectToAction("Index");
             }
 

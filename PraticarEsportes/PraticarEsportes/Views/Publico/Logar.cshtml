@@ -1,11 +1,12 @@
 ﻿@model IEnumerable<PraticarEsportes.Models.Pessoa>
 @{
-    //Layout = "~/Views/Shared/_LayoutUser.cshtml";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
     ViewBag.Title = "Login";
 }
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
+    <br /><br />
     <div class="form-horizontal">
         <hr />
         <h3 class="text-center">@ViewBag.Error</h3>

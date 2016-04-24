@@ -151,17 +151,20 @@
     <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\CheckinsController.cs" />
     <Compile Include="Controllers\CuponsController.cs" />
+    <Compile Include="Controllers\EstabelecimentosController.cs" />
     <Compile Include="Controllers\EventoController.cs" />
+    <Compile Include="Controllers\HistoricosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocalController.cs" />
     <Compile Include="Controllers\PessoasController.cs" />
+    <Compile Include="Controllers\PraticantesController.cs" />
     <Compile Include="Controllers\PublicoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201604202313036_sdifojfo.cs" />
-    <Compile Include="Migrations\201604202313036_sdifojfo.Designer.cs">
-      <DependentUpon>201604202313036_sdifojfo.cs</DependentUpon>
+    <Compile Include="Migrations\201604241345506_historico.cs" />
+    <Compile Include="Migrations\201604241345506_historico.Designer.cs">
+      <DependentUpon>201604241345506_historico.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
@@ -170,6 +173,7 @@
     <Compile Include="Models\Cupom.cs" />
     <Compile Include="Models\Estabelecimento.cs" />
     <Compile Include="Models\Evento.cs" />
+    <Compile Include="Models\Historico.cs" />
     <Compile Include="Models\Local.cs" />
     <Compile Include="Models\Pessoa.cs" />
     <Compile Include="Models\Praticante.cs" />
@@ -257,8 +261,6 @@
     <Content Include="Views\Checkins\Details.cshtml" />
     <Content Include="Views\Checkins\Edit.cshtml" />
     <Content Include="Views\Checkins\Index.cshtml" />
-    <Content Include="Views\Evento\Contador.cshtml" />
-    <Content Include="Views\Evento\EventoCategoria.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -272,8 +274,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201604202313036_sdifojfo.resx">
-      <DependentUpon>201604202313036_sdifojfo.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201604241345506_historico.resx">
+      <DependentUpon>201604241345506_historico.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

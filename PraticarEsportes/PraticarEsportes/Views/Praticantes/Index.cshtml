@@ -1,0 +1,111 @@
+﻿@model IEnumerable<PraticarEsportes.Models.Praticante>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Endereco)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CEP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cidade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Senha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Habilitado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CPF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataNascimento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Profissao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EstadoCivil)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pontos)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Endereco)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CEP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cidade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Senha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Habilitado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CPF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataNascimento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Profissao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EstadoCivil)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pontos)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PessoaId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PessoaId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PessoaId })
+        </td>
+    </tr>
+}
+
+</table>

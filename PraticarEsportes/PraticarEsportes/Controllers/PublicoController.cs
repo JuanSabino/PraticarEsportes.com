@@ -10,9 +10,11 @@ namespace PraticarEsportes.Controllers
 {
     public class PublicoController : Controller
     {
+        private Context db = new Context();
         // GET: Publico
         public ActionResult Logar()
         {
+            ViewBag.Categoria = db.Categoria.ToList();
             return View();
         }
 
@@ -33,11 +35,15 @@ namespace PraticarEsportes.Controllers
             {
                 return View();
             }
-        }        public ActionResult Logoff()
+        }
+
+        public ActionResult Logoff()
         {
             PraticarEsportes.Repositories.Funcoes.Deslogar();
             return RedirectToAction("Logar", "Publico");
-        }
+        }
+
+
 
     }
 }

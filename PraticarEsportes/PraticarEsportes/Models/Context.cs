@@ -18,12 +18,13 @@ namespace PraticarEsportes.Models
         public DbSet<Evento> Evento { get; set; }
         public DbSet<Categoria> Categoria { get; set; }
         public DbSet<Cupom> Cupons { get; set; }
+        public DbSet<Checkin> Checkins { get; set; }
+        public DbSet<Historico> Historicos { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove();
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
-
-        public System.Data.Entity.DbSet<PraticarEsportes.Models.Checkin> Checkins { get; set; }
     }
 }

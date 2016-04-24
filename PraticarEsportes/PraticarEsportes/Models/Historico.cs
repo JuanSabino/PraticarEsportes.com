@@ -5,17 +5,14 @@ using System.Web;
 
 namespace PraticarEsportes.Models
 {
-    public class Checkin
+    public class Historico
     {
+        public int HistoricoId { get; set; }        
+        public DateTime Horario { get; set; }
+        public string Descricao { get; set; }
 
-        public int CheckinId { get; set; }
-        public DateTime Data { get; set; }
 
         public int PessoaId { get; set; }
         public virtual Pessoa Pessoa { get; set; }
-
-        public int EventoId { get; set; }
-        public virtual Evento Evento { get; set; }
-
     }
 }

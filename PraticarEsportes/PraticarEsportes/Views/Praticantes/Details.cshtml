@@ -1,0 +1,130 @@
+﻿@model PraticarEsportes.Models.Praticante
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Praticante</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CEP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CEP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Senha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Senha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Habilitado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Habilitado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CPF)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CPF)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataNascimento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataNascimento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Profissao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Profissao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstadoCivil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstadoCivil)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pontos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pontos)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PessoaId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
