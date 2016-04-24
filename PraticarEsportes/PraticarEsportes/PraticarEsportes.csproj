@@ -179,6 +179,7 @@
     <Compile Include="Models\Praticante.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Funcoes.cs" />
+    <Compile Include="Repositories\GmailEmailService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -278,6 +279,8 @@
     <Content Include="Views\Historicos\Details.cshtml" />
     <Content Include="Views\Historicos\Edit.cshtml" />
     <Content Include="Views\Historicos\Index.cshtml" />
+    <Content Include="Views\Publico\RecuperarSenha.cshtml" />
+    <Content Include="Views\Publico\RecuperarSenha2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
