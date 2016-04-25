@@ -175,6 +175,7 @@
     <Compile Include="Models\Evento.cs" />
     <Compile Include="Models\Historico.cs" />
     <Compile Include="Models\Local.cs" />
+    <Compile Include="Models\Newsletter.cs" />
     <Compile Include="Models\Pessoa.cs" />
     <Compile Include="Models\Praticante.cs" />
     <Compile Include="Models\ViewModelPessoas.cs" />
@@ -294,6 +295,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Newsletter\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

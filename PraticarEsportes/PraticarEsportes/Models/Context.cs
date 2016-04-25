@@ -20,6 +20,7 @@ namespace PraticarEsportes.Models
         public DbSet<Cupom> Cupons { get; set; }
         public DbSet<Checkin> Checkins { get; set; }
         public DbSet<Historico> Historicos { get; set; }
+        public DbSet<Newsletter> Newsletters { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

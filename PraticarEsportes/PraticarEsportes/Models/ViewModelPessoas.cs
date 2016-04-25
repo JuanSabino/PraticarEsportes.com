@@ -64,10 +64,10 @@ namespace PraticarEsportes.Models
         [ValidaCPF]
         public string CPF { get; set; }
 
-        [DisplayName("Data de Nascimento")]
-        [DataType(DataType.DateTime, ErrorMessage = "Formato de data inválido")]
-        [ScaffoldColumn(false)]
+        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "Preencha a data de nascimento")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        [DisplayName("Data de Nascimento:")]
         public DateTime DataNascimento { get; set; }
 
         [Required(ErrorMessage = "Preencha a profissão")]
@@ -104,10 +104,10 @@ namespace PraticarEsportes.Models
         [DataType(DataType.PhoneNumber)]
         public string TelComercial { get; set; }
 
-        [DisplayName("Data de Abertura")]
-        [DataType(DataType.DateTime, ErrorMessage = "Formato de data inválido")]
-        [ScaffoldColumn(false)]
+        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "Preencha a data de abertura do estabelecmento")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        [DisplayName("Data de Abertura")]
         public DateTime DataAbertura { get; set; }
     }
 }
