@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PraticarEsportes.Models;
+using PraticarEsportes.Repositories;
 
 namespace PraticarEsportes.Controllers
 {
@@ -122,6 +123,60 @@ namespace PraticarEsportes.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult Denuncia(int? id)
+        {
+            Praticante praticante;
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            try
+            {
+                praticante = (Praticante)db.Pessoas.Find(id);
+            }
+            catch(Exception ex)
+            {
+                return HttpNotFound();
+            }            
+            if (praticante == null)
+            {
+                return HttpNotFound();
+            }
+            return View(praticante);
+        }
+
+        [HttpPost]
+        public ActionResult Denuncia(int id, string Motivo,  HttpPostedFileBase Arquivo)
+        {
+            if (String.IsNullOrEmpty(Motivo))
+            {
+                ViewBag.Error = "Você deve preencher o motivo!";
+                return View();
+            }
+            Praticante praticante = (Praticante)db.Pessoas.Find(id);
+
+
+            GmailEmailService gmail = new GmailEmailService();
+            EmailMessage msg = new EmailMessage();
+
+            msg.Body = "<HTML><BODY>Usuário " + System.Web.HttpContext.Current.Session["Nome"] + " acabou de realizar uma denúncia!<br />";
+            msg.Body += "Usuário denunciado: " + praticante.Nome;
+            msg.Body += "<br />Motivo:</br>";
+            msg.Body += Motivo;
+            msg.isHtml = true;
+            msg.Subject = "Denuncia de usuário";
+            msg.ToEmail = "praticaresportes.com@gmail.com";
+            if (gmail.SendEmailService(msg))
+            {
+                ViewBag.Error = "Muito obrigado, a administração irá analizar sua denúncia.";
+            }
+            else
+            {
+                ViewBag.Error = "Erro. Tente novamente!";
+            }
+            return View();
         }
     }
 }

@@ -10,7 +10,7 @@ namespace PraticarEsportes.Repositories
     
     public interface IEmailService
     {
-        bool SendEmailService(EmailMessage message);
+        bool SendEmailService(EmailMessage message, AttachmentCollection Anexos = null);
     }
 
     
@@ -51,7 +51,7 @@ namespace PraticarEsportes.Repositories
             _config.Ssl = gmailSsl;
         }
 
-        public bool SendEmailService(EmailMessage message)
+        public bool SendEmailService(EmailMessage message, AttachmentCollection Anexos = null)
         {
             var success = false;
             try

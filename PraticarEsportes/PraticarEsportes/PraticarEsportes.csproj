@@ -288,6 +288,7 @@
     <Content Include="Views\Evento\Contador.cshtml" />
     <Content Include="Views\Evento\EventoCategoria.cshtml" />
     <Content Include="Views\Shared\FullPage.cshtml" />
+    <Content Include="Views\Praticantes\Denuncia.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
