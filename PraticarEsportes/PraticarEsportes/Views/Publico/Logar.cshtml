@@ -35,5 +35,31 @@
             </div>
         </div>
     </div>
-    @Html.ActionLink("Esqueceu a senha?", "RecuperarSenha")
+    @Html.ActionLink("Esqueceu a senha?", "RecuperarSenha")<br />
+    @Html.ActionLink("Cadastre-se", "Create", "Pessoas")
+}
+
+
+@using (Html.BeginForm("Newsletter", "PublicoController", FormMethod.Post, new { }))
+{
+    <br /><br />
+    <div>
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-md-2">
+                    Cadastre seu e-mail para receber novidades!
+                </label>
+                <div>
+                    <div class="col-md-10 ">
+                        <input type="text" name="email" id="email" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Entrar" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </div>
 }

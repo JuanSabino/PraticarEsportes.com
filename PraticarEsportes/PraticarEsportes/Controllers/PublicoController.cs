@@ -138,5 +138,16 @@ namespace PraticarEsportes.Controllers
             System.Web.HttpContext.Current.Session["RecuperarSenha"] = "";
             return View();
         }
+
+        [HttpOptions]
+        public ActionResult Newsletter(string email)
+        {
+            if (String.IsNullOrEmpty(email))
+            {
+                return View();
+            }
+            ViewBag.Error = "Email cadastrado com sucesso!";
+            return View();
+        }
     }
 }
