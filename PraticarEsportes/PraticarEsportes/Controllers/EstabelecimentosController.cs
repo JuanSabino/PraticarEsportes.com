@@ -63,16 +63,14 @@ namespace PraticarEsportes.Controllers
         public ActionResult Edit(int? id)
         {
             Estabelecimento estabelecimento = (Estabelecimento) Funcoes.GetUsuario();
-
-            if (id == null || estabelecimento.PessoaId != id)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            estabelecimento = (Estabelecimento) db.Pessoas.Find(id);
             if (estabelecimento == null)
             {
                 return HttpNotFound();
             }
+            if (id != null && estabelecimento.PessoaId != id)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }            
             return View(estabelecimento);
         }
 

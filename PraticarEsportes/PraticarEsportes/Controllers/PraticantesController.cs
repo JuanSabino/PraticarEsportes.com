@@ -62,15 +62,15 @@ namespace PraticarEsportes.Controllers
         // GET: Praticantes/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Praticante praticante = (Praticante) db.Pessoas.Find(id);
+            Praticante praticante = (Praticante)Funcoes.GetUsuario();
             if (praticante == null)
             {
                 return HttpNotFound();
             }
+            if (id != null && praticante.PessoaId != id)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }    
             return View(praticante);
         }
 
