@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PraticarEsportes.Models;
+using PraticarEsportes.Repositories;
 
 namespace PraticarEsportes.Controllers
 {
@@ -21,19 +22,19 @@ namespace PraticarEsportes.Controllers
         }
 
         // GET: Estabelecimentos/Details/5
-        /*public ActionResult Details(int? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Estabelecimento estabelecimento = db.Pessoas.Find(id);
+            Estabelecimento estabelecimento = (Estabelecimento) db.Pessoas.Find(id);
             if (estabelecimento == null)
             {
                 return HttpNotFound();
             }
             return View(estabelecimento);
-        }*/
+        }
 
         // GET: Estabelecimentos/Create
        /* public ActionResult Create()
@@ -61,11 +62,13 @@ namespace PraticarEsportes.Controllers
         // GET: Estabelecimentos/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            Estabelecimento estabelecimento = (Estabelecimento) Funcoes.GetUsuario();
+
+            if (id == null || estabelecimento.PessoaId != id)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Estabelecimento estabelecimento = (Estabelecimento) db.Pessoas.Find(id);
+            estabelecimento = (Estabelecimento) db.Pessoas.Find(id);
             if (estabelecimento == null)
             {
                 return HttpNotFound();
@@ -78,7 +81,7 @@ namespace PraticarEsportes.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PessoaId,Telefone,Endereco,CEP,Cidade,Estado,Email,Senha,Habilitado,NomeFantasia,RazaoSocial,CNPJ,TelComercial,DataAbertura")] Estabelecimento estabelecimento)
+        public ActionResult Edit([Bind(Include = "PessoaId,Telefone,Endereco,CEP,Cidade,Estado,Email,NomeFantasia,RazaoSocial,CNPJ,TelComercial,DataAbertura")] Estabelecimento estabelecimento)
         {
             if (ModelState.IsValid)
             {

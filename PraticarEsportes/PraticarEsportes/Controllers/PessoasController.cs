@@ -48,57 +48,61 @@ namespace PraticarEsportes.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(ViewModelPessoas ViewModelPessoas, string tipoPessoa)
         {
-            if (tipoPessoa == "pessoaFisica")
-            {
-                var praticante = new Praticante
+           //if (ModelState.IsValid)
+           //{
+                if (tipoPessoa == "pessoaFisica")
                 {
-                    Telefone = ViewModelPessoas.Telefone,
-                    Endereco = ViewModelPessoas.Endereco,
-                    CEP = ViewModelPessoas.CEP,
-                    Cidade = ViewModelPessoas.Cidade,
-                    Estado = ViewModelPessoas.Estado,
-                    Email = ViewModelPessoas.Email,
-                    Senha = ViewModelPessoas.Senha,
-                    DataNascimento = ViewModelPessoas.DataNascimento,
-                    Habilitado = true,
-                    Nome = ViewModelPessoas.Nome,
-                    CPF = ViewModelPessoas.CPF,
-                    Profissao = ViewModelPessoas.Profissao,
-                    EstadoCivil = ViewModelPessoas.EstadoCivil,
-                    Pontos = 0
-                };
-                db.Pessoas.Add(praticante);
-                db.SaveChanges();
-                ViewBag.Error = "Cadastrado com sucesso!";
-            }
-            else if(tipoPessoa == "pessoaJuridica")
-            {
-                var estabelecimento = new Estabelecimento
+                    var praticante = new Praticante
+                    {
+                        Telefone = ViewModelPessoas.Telefone,
+                        Endereco = ViewModelPessoas.Endereco,
+                        CEP = ViewModelPessoas.CEP,
+                        Cidade = ViewModelPessoas.Cidade,
+                        Estado = ViewModelPessoas.Estado,
+                        Email = ViewModelPessoas.Email,
+                        Senha = ViewModelPessoas.Senha,
+                        DataNascimento = ViewModelPessoas.DataNascimento,
+                        Habilitado = true,
+                        Nome = ViewModelPessoas.Nome,
+                        CPF = ViewModelPessoas.CPF,
+                        Profissao = ViewModelPessoas.Profissao,
+                        EstadoCivil = ViewModelPessoas.EstadoCivil,
+                        Pontos = 0
+                    };
+                    db.Pessoas.Add(praticante);
+                    db.SaveChanges();
+                    ViewBag.Error = "Cadastrado com sucesso!";
+                }
+                else if (tipoPessoa == "pessoaJuridica")
                 {
-                    Telefone = ViewModelPessoas.Telefone,
-                    Endereco = ViewModelPessoas.Endereco,
-                    CEP = ViewModelPessoas.CEP,
-                    Cidade = ViewModelPessoas.Cidade,
-                    Estado = ViewModelPessoas.Estado,
-                    Email = ViewModelPessoas.Email,
-                    Senha = ViewModelPessoas.Senha,
-                    Habilitado = false,
-                    NomeFantasia = ViewModelPessoas.NomeFantasia,
-                    RazaoSocial = ViewModelPessoas.RazaoSocial,
-                    CNPJ = ViewModelPessoas.CNPJ,
-                    TelComercial = ViewModelPessoas.TelComercial,
-                    DataAbertura = ViewModelPessoas.DataAbertura
-                };
-                ViewBag.Error = "Cadastrado com sucesso! Aguarde a admiistração efetivar seu cadastro.";
-                db.Pessoas.Add(estabelecimento);
-                db.SaveChanges();
-            }
-            else
-            {
-                ViewBag.Error = "Selecione um tipo de usuário!";
-                return View(ViewModelPessoas);
-            }
-            return RedirectToAction("Logar","Publico");
+                    var estabelecimento = new Estabelecimento
+                    {
+                        Telefone = ViewModelPessoas.Telefone,
+                        Endereco = ViewModelPessoas.Endereco,
+                        CEP = ViewModelPessoas.CEP,
+                        Cidade = ViewModelPessoas.Cidade,
+                        Estado = ViewModelPessoas.Estado,
+                        Email = ViewModelPessoas.Email,
+                        Senha = ViewModelPessoas.Senha,
+                        Habilitado = false,
+                        NomeFantasia = ViewModelPessoas.NomeFantasia,
+                        RazaoSocial = ViewModelPessoas.RazaoSocial,
+                        CNPJ = ViewModelPessoas.CNPJ,
+                        TelComercial = ViewModelPessoas.TelComercial,
+                        DataAbertura = ViewModelPessoas.DataAbertura
+                    };
+                    ViewBag.Error = "Cadastrado com sucesso! Aguarde a admiistração efetivar seu cadastro.";
+                    db.Pessoas.Add(estabelecimento);
+                    db.SaveChanges();
+                }
+                else
+                {
+                    ViewBag.Error = "Selecione um tipo de usuário!";
+                    return View(ViewModelPessoas);
+                }
+                return RedirectToAction("Logar", "Publico");
+            //}
+            //return View(ViewModelPessoas);
         }
 
         // GET: Pessoas/Edit/5

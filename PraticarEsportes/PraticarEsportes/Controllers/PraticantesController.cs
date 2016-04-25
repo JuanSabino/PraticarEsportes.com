@@ -79,7 +79,7 @@ namespace PraticarEsportes.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PessoaId,Telefone,Endereco,CEP,Cidade,Estado,Email,Senha,Habilitado,Nome,CPF,DataNascimento,Profissao,EstadoCivil,Pontos")] Praticante praticante)
+        public ActionResult Edit([Bind(Include = "PessoaId,Telefone,Endereco,CEP,Cidade,Estado,Email,Nome,CPF,DataNascimento,Profissao,EstadoCivil,Pontos")] Praticante praticante)
         {
             if (ModelState.IsValid)
             {
@@ -93,11 +93,12 @@ namespace PraticarEsportes.Controllers
         // GET: Praticantes/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            Praticante praticante = (Praticante)Funcoes.GetUsuario();
+            if (id == null || praticante.PessoaId != id)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Praticante praticante = (Praticante)db.Pessoas.Find(id);
+            praticante = (Praticante)db.Pessoas.Find(id);
             if (praticante == null)
             {
                 return HttpNotFound();

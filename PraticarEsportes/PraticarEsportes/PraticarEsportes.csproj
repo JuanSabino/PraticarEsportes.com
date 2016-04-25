@@ -185,6 +185,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Funcoes.cs" />
     <Compile Include="Repositories\GmailEmailService.cs" />
+    <Compile Include="Repositories\ValidaCEPAttribute.cs" />
+    <Compile Include="Repositories\ValidaCNPJAttribute.cs" />
+    <Compile Include="Repositories\ValidaCPFAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />

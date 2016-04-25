@@ -24,7 +24,7 @@ namespace PraticarEsportes.Models
 
         [Required(ErrorMessage = "Preencha o CEP")]
         [DisplayName("CEP")]
-        //[ValidaCEP]
+        [ValidaCEP]
         public string CEP { get; set; }
 
         [Required(ErrorMessage = "Preencha a cidade")]
@@ -61,7 +61,7 @@ namespace PraticarEsportes.Models
 
         [Required(ErrorMessage = "Preencha o CPF")]
         [DisplayName("CPF")]
-        //[ValidaCPF]
+        [ValidaCPF]
         public string CPF { get; set; }
 
         [DisplayName("Data de Nascimento")]
@@ -96,7 +96,7 @@ namespace PraticarEsportes.Models
 
         [Required(ErrorMessage = "Preencha o CNPJ")]
         [DisplayName("CNPJ")]
-        //[ValidaCNPJ]
+        [ValidaCNPJ]
         public string CNPJ { get; set; }
 
         [Required(ErrorMessage = "Preencha o telefone comercial")]
