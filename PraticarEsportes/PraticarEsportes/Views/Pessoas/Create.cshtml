@@ -1,86 +1,4 @@
-﻿@*@model PraticarEsportes.Models.Pessoa
-
-@{
-    ViewBag.Title = "Create";
-}
-
-<h2>Create</h2>
-
-
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Pessoa</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Telefone, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Telefone, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Endereco, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Endereco, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Endereco, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CEP, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CEP, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CEP, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Cidade, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Cidade, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Cidade, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Estado, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Habilitado, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.Habilitado)
-                    @Html.ValidationMessageFor(model => model.Habilitado, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}*@
-
+﻿
 @model PraticarEsportes.Models.ViewModelPessoas
 @Scripts.Render("~/bundles/jquery")
 
@@ -155,176 +73,182 @@
             </div>
         </div>
 
-
-        <!-- Pessoa Física (Praticante): Nome -->
-        <div class="Nome">
-            @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+        <div class="DivPessoaFisica">
+            <!-- Pessoa Física (Praticante): Nome -->
+            <div class="form-group">
+                @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <!-- Pessoa Física (Praticante): CPF -->
-        <div class="CPF">
-            @Html.LabelFor(model => model.CPF, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CPF, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CPF, "", new { @class = "text-danger" })
+            <!-- Pessoa Física (Praticante): CPF -->
+            <div class="form-group">
+                @Html.LabelFor(model => model.CPF, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CPF, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CPF, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <!-- Pessoa Física (Praticante): DataNascimento -->
-        <div class="DataNascimento">
-            @Html.LabelFor(model => model.DataNascimento, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DataNascimento, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DataNascimento, "", new { @class = "text-danger" })
+            <!-- Pessoa Física (Praticante): DataNascimento -->
+            <div class="form-group">
+                @Html.LabelFor(model => model.DataNascimento, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DataNascimento, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DataNascimento, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <!-- Pessoa Física (Praticante): Profissao -->
-        <div class="Profissao">
-            @Html.LabelFor(model => model.Profissao, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Profissao, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Profissao, "", new { @class = "text-danger" })
+            <!-- Pessoa Física (Praticante): Profissao -->
+            <div class="form-group">
+                @Html.LabelFor(model => model.Profissao, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Profissao, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Profissao, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <!-- Pessoa Física (Praticante): EstadoCivil -->
-        <div class="EstadoCivil">
-            @Html.LabelFor(model => model.EstadoCivil, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.EstadoCivil, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.EstadoCivil, "", new { @class = "text-danger" })
+            <!-- Pessoa Física (Praticante): EstadoCivil -->
+            <div class="form-group">
+                @Html.LabelFor(model => model.EstadoCivil, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.EstadoCivil, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.EstadoCivil, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <!-- Pessoa Física (Praticante): Pontos -->
-        @*<div class="Pontos">
-            @Html.LabelFor(model => model.Pontos, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Pontos, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Pontos, "", new { @class = "text-danger" })
+            <!-- Pessoa Física (Praticante): Pontos -->
+            @*<div class="Pontos">
+                @Html.LabelFor(model => model.Pontos, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Pontos, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Pontos, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
             </div>
-        </div>*@
+            <div class="DivPessoaJuridica">
+                <!-- Pessoa Jurídica (Estabelecimento): NomeFantasia -->
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NomeFantasia, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.NomeFantasia, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.NomeFantasia, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
+                <!-- Pessoa Jurídica (Estabelecimento): RazaoSocial -->
+                <div class="form-group">
+                    @Html.LabelFor(model => model.RazaoSocial, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.RazaoSocial, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.RazaoSocial, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        <!-- Pessoa Jurídica (Estabelecimento): NomeFantasia -->
-        <div class="NomeFantasia">
-            @Html.LabelFor(model => model.NomeFantasia, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NomeFantasia, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NomeFantasia, "", new { @class = "text-danger" })
+                <!-- Pessoa Jurídica (Estabelecimento): CNPJ -->
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CNPJ, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.CNPJ, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CNPJ, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <!-- Pessoa Jurídica (Estabelecimento): TelComercial -->
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TelComercial, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.TelComercial, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TelComercial, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <!-- Pessoa Jurídica (Estabelecimento): DataAbertura -->
+                <div class="form-group" id="DataAberturaId">
+                    @Html.LabelFor(model => model.DataAbertura, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.DataAbertura, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DataAbertura, "", new { @class = "text-danger" })
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <!-- Pessoa Jurídica (Estabelecimento): RazaoSocial -->
-        <div class="RazaoSocial">
-            @Html.LabelFor(model => model.RazaoSocial, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.RazaoSocial, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.RazaoSocial, "", new { @class = "text-danger" })
+            <!-- Radio button para selecionar pessoa física ou jurídica -->
+            <div>
+                <input id="pessoaFisicaId" type="radio" name="tipoPessoa" value="pessoaFisica" onClick="habilitaCampo(this.id)" />Pessoa Física
+                <input id="pessoaJuridicaId" type="radio" name="tipoPessoa" value="pessoaJuridica" onClick="habilitaCampo(this.id)" />Pessoa Jurídica
             </div>
-        </div>
 
-        <!-- Pessoa Jurídica (Estabelecimento): CNPJ -->
-        <div class="CNPJ">
-            @Html.LabelFor(model => model.CNPJ, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CNPJ, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CNPJ, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    // Oculta os atributos da pessoa física
+                    $(".DivPessoaJuridica").hide();
+                    $(".Nome").hide();
+                    $(".CPF").hide();
+                    $(".DataNascimento").hide();
+                    $(".Profissao").hide();
+                    $(".EstadoCivil").hide();
+                    $(".Pontos").hide();
+                    // Oculta os atributos da pessoa jurídica
+                    $(".DivPessoaFisica").hide();
+                    $(".NomeFantasia").hide();
+                    $(".RazaoSocial").hide();
+                    $(".CNPJ").hide();
+                    $(".TelComercial").hide();
+                    $(".DataAbertura").hide();
 
-        <!-- Pessoa Jurídica (Estabelecimento): TelComercial -->
-        <div class="TelComercial">
-            @Html.LabelFor(model => model.TelComercial, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TelComercial, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TelComercial, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    $("input[name=tipoPessoa]").on("click", function () {
+                        // Se pessoa física estiver selecionado
+                        if (pessoaFisicaId.checked) {
+                            // Exibe os atributos da pessoa física
+                            $(".DivPessoaFisica").show();
+                            $(".Nome").show();
+                            $(".CPF").show();
+                            $(".DataNascimento").show();
+                            $(".Profissao").show();
+                            $(".EstadoCivil").show();
+                            $(".Pontos").show();
+                            // Oculta os atributos da pessoa jurídica
+                            $(".DivPessoaJuridica").hide();
+                            $(".NomeFantasia").hide();
+                            $(".RazaoSocial").hide();
+                            $(".CNPJ").hide();
+                            $(".TelComercial").hide();
+                            $(".DataAbertura").hide();
+                        }
 
-        <!-- Pessoa Jurídica (Estabelecimento): DataAbertura -->
-        <div class="DataAbertura" id="DataAberturaId">
-            @Html.LabelFor(model => model.DataAbertura, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DataAbertura, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DataAbertura, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                            // Se pessoa jurídica estiver selecionado
+                        else if (pessoaJuridicaId.checked) {
+                            // Exibe os atributos da pessoa jurídica
+                            $(".DivPessoaJuridica").show();
+                            $(".NomeFantasia").show();
+                            $(".RazaoSocial").show();
+                            $(".CNPJ").show();
+                            $(".TelComercial").show();
+                            $(".DataAbertura").show();
+                            // Oculta os atributos da pessoa física
+                            $(".DivPessoaFisica").hide();
+                            $(".Nome").hide();
+                            $(".CPF").hide();
+                            $(".DataNascimento").hide();
+                            $(".Profissao").hide();
+                            $(".EstadoCivil").hide();
+                            $(".Pontos").hide();
+                        }
 
-
-        <!-- Radio button para selecionar pessoa física ou jurídica -->
-        <div>
-            <input id="pessoaFisicaId" type="radio" name="tipoPessoa" value="pessoaFisica" onClick="habilitaCampo(this.id)" />Pessoa Física
-            <input id="pessoaJuridicaId" type="radio" name="tipoPessoa" value="pessoaJuridica" onClick="habilitaCampo(this.id)" />Pessoa Jurídica
-        </div>
-
-        <script type="text/javascript">
-            $(document).ready(function () {
-                // Oculta os atributos da pessoa física
-                $(".Nome").hide();
-                $(".CPF").hide();
-                $(".DataNascimento").hide();
-                $(".Profissao").hide();
-                $(".EstadoCivil").hide();
-                $(".Pontos").hide();
-                // Oculta os atributos da pessoa jurídica
-                $(".NomeFantasia").hide();
-                $(".RazaoSocial").hide();
-                $(".CNPJ").hide();
-                $(".TelComercial").hide();
-                $(".DataAbertura").hide();
-
-                $("input[name=tipoPessoa]").on("click", function () {
-                    // Se pessoa física estiver selecionado
-                    if (pessoaFisicaId.checked) {
-                        // Exibe os atributos da pessoa física
-                        $(".Nome").show();
-                        $(".CPF").show();
-                        $(".DataNascimento").show();
-                        $(".Profissao").show();
-                        $(".EstadoCivil").show();
-                        $(".Pontos").show();
-                        // Oculta os atributos da pessoa jurídica
-                        $(".NomeFantasia").hide();
-                        $(".RazaoSocial").hide();
-                        $(".CNPJ").hide();
-                        $(".TelComercial").hide();
-                        $(".DataAbertura").hide();
-                    }
-
-                    // Se pessoa jurídica estiver selecionado
-                    else if (pessoaJuridicaId.checked) {
-                        // Exibe os atributos da pessoa jurídica
-                        $(".NomeFantasia").show();
-                        $(".RazaoSocial").show();
-                        $(".CNPJ").show();
-                        $(".TelComercial").show();
-                        $(".DataAbertura").show();
-                        // Oculta os atributos da pessoa física
-                        $(".Nome").hide();
-                        $(".CPF").hide();
-                        $(".DataNascimento").hide();
-                        $(".Profissao").hide();
-                        $(".EstadoCivil").hide();
-                        $(".Pontos").hide();
-                    }
-
+                    });
                 });
-            });
-        </script>
+            </script>
 
-        <!-- Botão Salvar -->
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Salvar" class="btn btn-default" />
+            <!-- Botão Salvar -->
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Salvar" class="btn btn-default" />
+                </div>
             </div>
         </div>
-    </div>
 }
 
 

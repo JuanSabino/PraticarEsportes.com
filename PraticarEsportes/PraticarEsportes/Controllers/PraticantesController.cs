@@ -231,10 +231,31 @@ namespace PraticarEsportes.Controllers
             return View(praticante);
         }
 
-        public ActionResult Ranking()
+        [HttpPost]
+        public ActionResult Desativar(string email)
         {
-            return View(db.Pessoas.OfType<Praticante>().OrderByDescending(o => o.Pontos).ToList());
+            if (!String.IsNullOrEmpty(email))
+            {
+                Praticante praticante = (Praticante)Funcoes.GetUsuario();
+                if (praticante == null)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+
+                Context _db = new Context();
+                var query = (from u in _db.Pessoas
+                             where u.Email == email
+                             select u).SingleOrDefault();
+                query.Habilitado = false;
+                db.Entry(query).State = EntityState.Modified;
+                db.SaveChanges();
+
+                Funcoes.Deslogar();
+
+            }    
+            return RedirectToAction("Index", "Home");
         }
+
 
     }
 }

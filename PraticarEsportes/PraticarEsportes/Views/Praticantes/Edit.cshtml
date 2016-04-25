@@ -14,7 +14,7 @@
         <h4>Praticante</h4>
         <hr />
         @Html.ActionLink("Alterar Senha", "AlterarSenha") <br />
-        @Html.ActionLink("Desativar Conta", "DesativarConta")
+        @Html.ActionLink("Desativar Conta", "","", new { onclick = "someFunction();" })
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.PessoaId)
 
@@ -126,3 +126,25 @@
 <div>
     @*@Html.ActionLink("Back to List", "Index")*@
 </div>
+
+
+@section scripts{
+    <script>
+        function someFunction() {
+            resposta = confirm("Deseja desativar sua conta?");
+            if (resposta) {
+                var url = '@Url.Action("Desativar", "Praticantes")';
+                $.post(url, { email: "@Session["Usuario"]" },
+                function (data) {
+                    window.location.href = "@Url.Action("Index", "Home")";
+                })
+                .fail(function () {
+                    awindow.location.href = "@Url.Action("Edit")";
+                });
+            }
+            else {
+                return false;
+            }
+        }
+    </script>
+}
