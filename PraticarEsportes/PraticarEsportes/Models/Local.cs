@@ -25,6 +25,18 @@ namespace PraticarEsportes.Models
         [DisplayName("Longitude")]
         public double Longitude { get; set; }
 
+        [DisplayName("Endereço")]
+        public string Endereco { get; set; }
+
+        [DisplayName("CEP")]
+        public string CEP { get; set; }
+
+        [DisplayName("Cidade")]
+        public string Cidade { get; set; }
+
+        [DisplayName("Estado")]
+        public string Estado { get; set; }
+
         [DisplayName("Habilitado")]
         public Boolean Habilitado { get; set; }
 

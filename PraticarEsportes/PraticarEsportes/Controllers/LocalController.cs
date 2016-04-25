@@ -46,7 +46,7 @@ namespace PraticarEsportes.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Nome,Descricao,Latitude,Longitude,Habilitado")] Local local)
+        public ActionResult Create([Bind(Include = "ID,Nome,Descricao,Latitude,Longitude,Endereco,CEP,Cidade,Estado,Habilitado")] Local local)
         {
             //if (ModelState.IsValid)
             //{
@@ -90,7 +90,7 @@ namespace PraticarEsportes.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Nome,Descricao,Latitude,Longitude,Habilitado")] Local local)
+        public ActionResult Edit([Bind(Include = "ID,Nome,Descricao,Latitude,Longitude,Endereco,CEP,Cidade,Estado,Habilitado")] Local local)
         {
             //if (ModelState.IsValid)
             //{
