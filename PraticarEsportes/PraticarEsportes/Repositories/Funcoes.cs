@@ -22,11 +22,14 @@ namespace PraticarEsportes.Repositories
             {
                 return false;
             }
+            if (query.Habilitado == false)
+            {
+                return false;
+            }
             System.Web.Security.FormsAuthentication.SetAuthCookie(query.Email, false);
             HttpContext.Current.Session["Usuario"] = query.Email;
             HttpContext.Current.Session["Id"] = query.PessoaId;
             if (query.GetType().Name == "Estabelecimento")
-
             {
                 HttpContext.Current.Session["Tipo"] = 1;
                 HttpContext.Current.Session["Nome"] = ( (Estabelecimento) query).NomeFantasia;
