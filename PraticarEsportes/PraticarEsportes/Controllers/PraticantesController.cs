@@ -178,5 +178,58 @@ namespace PraticarEsportes.Controllers
             }
             return View();
         }
+
+
+        public ActionResult AlterarSenha()
+        {
+            Praticante praticante;
+            try
+            {
+                praticante = (Praticante) Funcoes.GetUsuario();
+            }
+            catch (Exception ex)
+            {
+                return HttpNotFound();
+            }
+            if (praticante == null)
+            {
+                return HttpNotFound();
+            }
+            return View(praticante);
+        }
+
+        [HttpPost]
+        public ActionResult AlterarSenha(string SenhaAtual, string NovaSenha1, string NovaSenha2)
+        {
+            Praticante praticante = (Praticante)Funcoes.GetUsuario();
+            if ( praticante.Senha != SenhaAtual)
+            {
+                ViewBag.Error = "Senha atual incorreta!";
+                return View(praticante);
+            }
+            if (NovaSenha1 != NovaSenha2)
+            {
+                ViewBag.Error = "Novas senhas diferentes!";
+                return View(praticante);
+            }
+            if (NovaSenha1 != SenhaAtual)
+            {
+                ViewBag.Error = "Nova senha deve ser diferente da anterior!";
+                return View(praticante);
+            }
+
+            Context _db = new Context();
+            var query = (from u in _db.Pessoas
+                         where u.Email == praticante.Email
+                         select u).SingleOrDefault();
+            query.Senha = NovaSenha1;
+            db.Entry(query).State = EntityState.Modified;
+            db.SaveChanges();
+
+            ViewBag.Error = "Senha Alterada!";
+            return View(praticante);
+        }
+
+
     }
 }
