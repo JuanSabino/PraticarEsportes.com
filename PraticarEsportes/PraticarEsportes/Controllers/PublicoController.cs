@@ -139,15 +139,19 @@ namespace PraticarEsportes.Controllers
             return View();
         }
 
-        [HttpOptions]
+        [HttpPost]
         public ActionResult Newsletter(string email)
         {
             if (String.IsNullOrEmpty(email))
             {
                 return View();
             }
+            Newsletter newsletter = new Newsletter();
+            newsletter.Email = email;
+            db.Newsletters.Add(newsletter);
+            db.SaveChanges();            
             ViewBag.Error = "Email cadastrado com sucesso!";
-            return View();
+            return RedirectToAction("Logar");
         }
     }
 }
