@@ -36,6 +36,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Dificuldade)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Habilitado)
+        </th>
         <th></th>
     </tr>
 
@@ -64,6 +67,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Dificuldade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Habilitado)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |

@@ -70,7 +70,7 @@ namespace PraticarEsportes.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Nome,Descricao,DataInicio,DataTermino,Capacidade,Dificuldade,LocalID,CategoriaID")] Evento evento)
+        public ActionResult Create([Bind(Include = "ID,Nome,Descricao,DataInicio,DataTermino,Capacidade,Dificuldade,LocalID,CategoriaID,Habilitado")] Evento evento)
         {
             if (ModelState.IsValid)
             {
@@ -112,10 +112,11 @@ namespace PraticarEsportes.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Nome,Descricao,DataInicio,DataTermino,Capacidade,Dificuldade,LocalID,CategoriaID")] Evento evento)
+        public ActionResult Edit([Bind(Include = "ID,Nome,Descricao,DataInicio,DataTermino,Capacidade,Dificuldade,LocalID,CategoriaID,Habilitado")] Evento evento)
         {
             if (ModelState.IsValid)
             {
+                evento.PessoaId = 1;
                 db.Entry(evento).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -49,6 +49,9 @@ namespace PraticarEsportes.Models
         public int PessoaId { get; set; }
         public virtual Pessoa Pessoa { get; set; }
 
+        [DisplayName("Habilitado")]
+        public Boolean Habilitado { get; set; }
+
         public virtual ICollection<Checkin> Checkins { get; set; }
     }
 }
