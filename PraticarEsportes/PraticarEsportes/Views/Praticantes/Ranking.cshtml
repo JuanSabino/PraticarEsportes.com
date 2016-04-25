@@ -1,0 +1,42 @@
+﻿@model IEnumerable<PraticarEsportes.Models.Praticante>
+
+@{
+    ViewBag.Title = "Ranking";
+}
+
+<h2>Ranking dos Praticantes</h2>
+
+
+<table class="table">
+
+    <tr>
+        <th>
+            Posição
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pontos)
+        </th>
+        <th></th>
+    </tr>
+
+    @{ int Contador = 1; }
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Contador
+                @{ Contador++; }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pontos)
+            </td>
+        </tr>
+    }
+
+</table>

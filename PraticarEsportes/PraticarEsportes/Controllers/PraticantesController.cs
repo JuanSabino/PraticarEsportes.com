@@ -231,6 +231,10 @@ namespace PraticarEsportes.Controllers
             return View(praticante);
         }
 
+        public ActionResult Ranking()
+        {
+            return View(db.Pessoas.OfType<Praticante>().OrderByDescending(o => o.Pontos).ToList());
+        }
 
     }
 }

@@ -162,13 +162,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201604241345506_historico.cs" />
-    <Compile Include="Migrations\201604241345506_historico.Designer.cs">
-      <DependentUpon>201604241345506_historico.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604242044313_evento.cs" />
-    <Compile Include="Migrations\201604242044313_evento.Designer.cs">
-      <DependentUpon>201604242044313_evento.cs</DependentUpon>
+    <Compile Include="Migrations\201604252043179_atualizacao.cs" />
+    <Compile Include="Migrations\201604252043179_atualizacao.Designer.cs">
+      <DependentUpon>201604252043179_atualizacao.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
@@ -294,6 +290,7 @@
     <Content Include="Views\Shared\FullPage.cshtml" />
     <Content Include="Views\Praticantes\Denuncia.cshtml" />
     <Content Include="Views\Praticantes\AlterarSenha.cshtml" />
+    <Content Include="Views\Praticantes\Ranking.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -307,11 +304,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201604241345506_historico.resx">
-      <DependentUpon>201604241345506_historico.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604242044313_evento.resx">
-      <DependentUpon>201604242044313_evento.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201604252043179_atualizacao.resx">
+      <DependentUpon>201604252043179_atualizacao.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
