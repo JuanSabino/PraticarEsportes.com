@@ -46,16 +46,59 @@ namespace PraticarEsportes.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PessoaId,Telefone,Endereco,CEP,Cidade,Estado,Habilitado")] Pessoa pessoa)
+        public ActionResult Create(ViewModelPessoas ViewModelPessoas, string tipoPessoa)
         {
-            if (ModelState.IsValid)
+            if (tipoPessoa == "pessoaFisica")
             {
-                db.Pessoas.Add(pessoa);
+                var praticante = new Praticante
+                {
+                    Telefone = ViewModelPessoas.Telefone,
+                    Endereco = ViewModelPessoas.Endereco,
+                    CEP = ViewModelPessoas.CEP,
+                    Cidade = ViewModelPessoas.Cidade,
+                    Estado = ViewModelPessoas.Estado,
+                    Email = ViewModelPessoas.Email,
+                    Senha = ViewModelPessoas.Senha,
+                    DataNascimento = ViewModelPessoas.DataNascimento,
+                    Habilitado = true,
+                    Nome = ViewModelPessoas.Nome,
+                    CPF = ViewModelPessoas.CPF,
+                    Profissao = ViewModelPessoas.Profissao,
+                    EstadoCivil = ViewModelPessoas.EstadoCivil,
+                    Pontos = 0
+                };
+                db.Pessoas.Add(praticante);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                ViewBag.Error = "Cadastrado com sucesso!";
             }
-
-            return View(pessoa);
+            else if(tipoPessoa == "pessoaJuridica")
+            {
+                var estabelecimento = new Estabelecimento
+                {
+                    Telefone = ViewModelPessoas.Telefone,
+                    Endereco = ViewModelPessoas.Endereco,
+                    CEP = ViewModelPessoas.CEP,
+                    Cidade = ViewModelPessoas.Cidade,
+                    Estado = ViewModelPessoas.Estado,
+                    Email = ViewModelPessoas.Email,
+                    Senha = ViewModelPessoas.Senha,
+                    Habilitado = false,
+                    NomeFantasia = ViewModelPessoas.NomeFantasia,
+                    RazaoSocial = ViewModelPessoas.RazaoSocial,
+                    CNPJ = ViewModelPessoas.CNPJ,
+                    TelComercial = ViewModelPessoas.TelComercial,
+                    DataAbertura = ViewModelPessoas.DataAbertura
+                };
+                ViewBag.Error = "Cadastrado com sucesso! Aguarde a admiistração efetivar seu cadastro.";
+                db.Pessoas.Add(estabelecimento);
+                db.SaveChanges();
+            }
+            else
+            {
+                ViewBag.Error = "Selecione um tipo de usuário!";
+                return View(ViewModelPessoas);
+            }
+            return RedirectToAction("Logar","Publico");
         }
 
         // GET: Pessoas/Edit/5

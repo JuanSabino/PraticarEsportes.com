@@ -181,6 +181,7 @@
     <Compile Include="Models\Local.cs" />
     <Compile Include="Models\Pessoa.cs" />
     <Compile Include="Models\Praticante.cs" />
+    <Compile Include="Models\ViewModelPessoas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Funcoes.cs" />
     <Compile Include="Repositories\GmailEmailService.cs" />
