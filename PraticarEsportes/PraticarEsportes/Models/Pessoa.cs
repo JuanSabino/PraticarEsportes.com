@@ -37,15 +37,9 @@ namespace PraticarEsportes.Models
 
         public virtual ICollection<Historico> Historicos { get; set; }
 
-        //eventos criados
-        public virtual ICollection<Evento> Eventos { get; set; }
-
-        public virtual ICollection<Evento> EventosConfirmados { get; set; }
-
         public Pessoa()
         {
             Habilitado = true;
-            //Eventos = new ICollection<Evento>();
         }
     }
 }
