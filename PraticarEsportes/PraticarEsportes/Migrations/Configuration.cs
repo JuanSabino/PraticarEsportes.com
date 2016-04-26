@@ -45,8 +45,8 @@ namespace PraticarEsportes.Migrations
 
 
             IList<Estabelecimento> estabelecimentos = new List<Estabelecimento>();
-            estabelecimentos.Add(new Estabelecimento() { CEP = "12000-000", Cidade = "Guaratingueta", CNPJ = "448728787857", DataAbertura = DateTime.Now, Email = "teste1@teste.com", Endereco = "blablabla", Estado = "SP", Habilitado = true, NomeFantasia = "Teste 1", RazaoSocial = "Teste 1", Senha = "123", TelComercial = "254545", Telefone = "4545545" });
-            estabelecimentos.Add(new Estabelecimento() { CEP = "12000-000", Cidade = "Guaratingueta", CNPJ = "448728787858", DataAbertura = DateTime.Now, Email = "teste2@teste.com", Endereco = "blablabla", Estado = "SP", Habilitado = true, NomeFantasia = "Teste 2", RazaoSocial = "Teste 2", Senha = "123", TelComercial = "254545", Telefone = "4545545" });
+            estabelecimentos.Add(new Estabelecimento() { CEP = "12000-000", Cidade = "Pindamonhangaba", CNPJ = "448728787857", DataAbertura = DateTime.Now, Email = "contato@sportselite.com", Endereco = "Rua da rodoviaria", Estado = "SP", Habilitado = true, NomeFantasia = "Esports Elite", RazaoSocial = "Esports Elite", Senha = "123", TelComercial = "254545", Telefone = "4545545" });
+
 
             foreach (Estabelecimento estabelecimento in estabelecimentos)
             {
@@ -55,8 +55,8 @@ namespace PraticarEsportes.Migrations
 
 
             IList<Praticante> praticantes = new List<Praticante>();
-            praticantes.Add(new Praticante() { Estado = "SP", Endereco = "ksdkasljd", Email = "teste3@teste.com", DataNascimento = DateTime.Now, CPF = "78914789875", CEP = "", Cidade = "12000000", EstadoCivil = "Solteiro", Habilitado = true, Nome = "Teste 3", Pontos = 0, Profissao = "Programeiro", Senha = "123", Telefone = "454845" });
-            praticantes.Add(new Praticante() { Estado = "SP", Endereco = "ksdkasljd", Email = "teste4@teste.com", DataNascimento = DateTime.Now, CPF = "78914789876", CEP = "", Cidade = "12000000", EstadoCivil = "Solteiro", Habilitado = true, Nome = "Teste 4", Pontos = 0, Profissao = "Programeiro", Senha = "123", Telefone = "454845" });
+            praticantes.Add(new Praticante() { Estado = "SP", Endereco = "Rua Jose Luiz Marcondes", Email = "juan.pereira@uol.com.br", DataNascimento = new DateTime(1991, 1, 28), CPF = "37900367810", CEP = "12425020", Cidade = "Pindamonhangaba", EstadoCivil = "Solteiro", Habilitado = true, Nome = "Juan Sabino", Pontos = 0, Profissao = "Assistente de TI", Senha = "123", Telefone = "991487393" });
+            praticantes.Add(new Praticante() { Estado = "SP", Endereco = "Rua dos Bentos", Email = "eugui13@gmail.com", DataNascimento = new DateTime(1993, 3, 28), CPF = "39371998881", CEP = "12400000", Cidade = "Pindamonhangaba", EstadoCivil = "Solteiro", Habilitado = true, Nome = "Guilherme Machado", Pontos = 0, Profissao = "Tecnico de Rede", Senha = "123", Telefone = "988498932" });
 
             foreach (Praticante praticante in praticantes)
             {
