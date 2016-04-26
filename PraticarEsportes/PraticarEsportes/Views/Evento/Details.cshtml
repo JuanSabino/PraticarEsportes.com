@@ -95,11 +95,11 @@
         }
         else if (Model.PessoasConfirmadas.Contains(pessoa))
         {
-            Html.ActionLink("Cancelar Presenca", "CancelarPresenca", new { id = Model.ID });
+            @Html.ActionLink("Cancelar Presenca", "CancelarPresenca", new { id = Model.ID });
         }
         else
         {
-            Html.ActionLink("Confirmar Presenca", "ConfirmarPresenca", new { id = Model.ID });
+            @Html.ActionLink("Confirmar Presenca", "ConfirmarPresenca", new { id = Model.ID });
         }
 
         if (Model.PessoaId == pessoa.PessoaId) {

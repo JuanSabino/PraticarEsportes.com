@@ -49,7 +49,7 @@ namespace PraticarEsportes.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Evento evento = db.Evento.Find(id);
+            Evento evento = db.Evento.Include("PessoasConfirmadas").Where(e => e.ID == id).FirstOrDefault<Evento>();
             if (evento == null)
             {
                 return HttpNotFound();
@@ -160,7 +160,8 @@ namespace PraticarEsportes.Controllers
 
             Pessoa pessoa = (Pessoa) Funcoes.GetUsuario();
 
-            Pessoa pessoa2 = db.Pessoas.Include("EventosConfirmados").Where(p => p.PessoaId == pessoa.PessoaId).FirstOrDefault<Pessoa>();
+            Pessoa pessoa2 = db.Pessoas.Include("EventosConfirmados").Where(p => p.PessoaId == pessoa.PessoaId).FirstOrDefault<Pessoa>();
+
 
             pessoa2.EventosConfirmados.Add(evento);
 
