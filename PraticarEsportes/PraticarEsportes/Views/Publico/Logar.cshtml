@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PraticarEsportes.Models.Pessoa>
+﻿@model PraticarEsportes.Models.Pessoa
 @{
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
     ViewBag.Title = "Login";
@@ -12,6 +12,20 @@
         <h3 class="text-center">@ViewBag.Error</h3>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
+            @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email)
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Senha, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Senha)
+                @Html.ValidationMessageFor(model => model.Senha)
+            </div>
+        </div>
+        @*<div class="form-group">
             <label class="control-label col-md-2">
                 Email
             </label>
@@ -28,7 +42,7 @@
             <div class="col-md-10">
                 <input type="password" name="senha" id="senha" class="form-control" />
             </div>
-        </div>
+        </div>*@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Entrar" class="btn btn-default" />
