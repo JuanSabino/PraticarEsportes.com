@@ -14,6 +14,25 @@
 
 <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.min.js'></script>
 
+<style>
+    .pesquisaevento {
+        position: absolute;
+        top: 150px;
+        right: 60px;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.75);
+        border-radius: 3px;
+    }
+
+    .pesquisalocal {
+        position: absolute;
+        top: 60px;
+        right: 60px;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.75);
+        border-radius: 3px;
+</style>
+
 <div id="map"></div>
 
 <div class="addLocation">
@@ -27,6 +46,19 @@
         <img src="~/Content/img/addSport.png" alt="" />
     </a>
 </div>
+
+<div class="pesquisaevento">
+    <a href="/Evento/Index" class="" title="Pesquisar Eventos">
+        <img src="~/Content/img/pes.png" alt="" />
+    </a>
+</div>
+
+<div class="pesquisalocal">
+    <a href="/Local/index" class="openModal" title="Pesquisar Locais">
+        <img src="~/Content/img/pes.png" alt="" />
+    </a>
+</div>
+
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" role="dialog">
@@ -84,7 +116,7 @@
     var estadio = new LeafIcon({ iconUrl: '../Content/img/iconStadium.png' });
 
     @foreach (var locais in local){
-        if (@locais.Habilitado == true) { 
+        if (@locais.Habilitado == true) {
             <text>
                 var latitude = "@locais.Latitude";
                 latitude = latitude.replace(/,/g, '.');
