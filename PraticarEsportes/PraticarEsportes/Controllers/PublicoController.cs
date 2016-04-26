@@ -21,14 +21,18 @@ namespace PraticarEsportes.Controllers
         }
 
         [HttpPost]
-        public ActionResult Logar(string email, string senha)
+        public ActionResult Logar([Bind(Include = "Email, Senha")] Pessoa pessoa,string email, string senha)
         {
-            if (Funcoes.AutenticarUsuario(email, senha) == false)
+            if (ModelState.IsValid)
             {
-                ViewBag.Error = "Nome de usuário e/ou senha inválida";
-                return View();
+                if (Funcoes.AutenticarUsuario(email, senha) == false)
+                {
+                    ViewBag.Error = "Nome de usuário e/ou senha inválida";
+                    return View();
+                }
+                return RedirectToAction("Index", "Home");
             }
-            return RedirectToAction("Index", "Home");
+            return View();
         }
 
         public ActionResult AcessoNegado()
