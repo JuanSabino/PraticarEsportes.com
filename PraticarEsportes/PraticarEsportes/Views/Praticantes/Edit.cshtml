@@ -14,7 +14,9 @@
         <h4>Praticante</h4>
         <hr />
         @Html.ActionLink("Alterar Senha", "AlterarSenha") <br />
-        @Html.ActionLink("Desativar Conta", "","", new { onclick = "someFunction();" })
+        @Html.ActionLink("Desativar Conta", "","", new { onclick = "someFunction();" }) <br />
+        @Html.ActionLink("Visualizar Historico", "Index", "Historicos") <br />
+        @Html.ActionLink("Visualizar Ranking", "Ranking") <br />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.PessoaId)
 

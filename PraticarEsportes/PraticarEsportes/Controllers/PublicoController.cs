@@ -85,7 +85,7 @@ namespace PraticarEsportes.Controllers
             msg.Body += "<a href='http://localhost:61063/Publico/RecuperarSenha2?email=" + query.Email +  "&uid=" + hash + "'>http://localhost:61063/Publico/RecuperarSenha2?email=" + query.Email + "&uid=" + hash + "</a>";
             msg.isHtml = true;
             msg.Subject = "Recuperacao de senha";
-            msg.ToEmail = "juan.pereira@uol.com.br";
+            msg.ToEmail = query.Email;
             if (gmail.SendEmailService(msg))
             {
                 ViewBag.Error = "Email para redefinicao de senha enviado!";

@@ -47,7 +47,7 @@ namespace PraticarEsportes.Repositories
         {
             string _login = HttpContext.Current.User.Identity.Name;
             int _tipo;
-            if (HttpContext.Current.Session.Count > 0 && HttpContext.Current.Session["Usuario"].ToString() != "")
+            if (HttpContext.Current.Session.Count > 0 && HttpContext.Current.Session["Usuario"] != "")
             {
                 _login = HttpContext.Current.Session["Usuario"].ToString();
                 if (_login == "")
