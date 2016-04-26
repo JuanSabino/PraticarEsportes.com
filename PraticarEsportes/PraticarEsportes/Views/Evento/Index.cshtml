@@ -3,9 +3,20 @@
 @{
     Layout = "~/Views/Shared/FullPage.cshtml";
     ViewBag.Title = "Index";
-}
+    
+}                      @{
+                          ViewBag.Title = "Pesquisa";
+                      }
 
-<h2>Index</h2>
+
+                      <h2></h2>
+                      @using (Html.BeginForm("Pesquisa", "Evento", null, System.Web.Mvc.FormMethod.Post))
+                      {
+                          <p>
+                              Procura por Nome : @Html.TextBox("Pesquisa")
+                              <input type="submit" value="Buscar" />
+                          </p>
+                      }
 
 <p>
     @Html.ActionLink("Create New", "Create")

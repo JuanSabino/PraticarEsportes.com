@@ -16,6 +16,23 @@ namespace PraticarEsportes.Controllers
     {
         private Context db = new Context();
 
+
+        [HttpPost]
+        public ActionResult Pesquisa (FormCollection fc, string searchString)
+        {
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                var evento = db.Evento.Include(c => c.Categoria).Include(d => d.Categoria.Evento).Where(c => c.Nome.Contains(searchString) || c.Descricao.Contains(searchString)).OrderBy(o => o.Nome);
+                return View("Index", evento.ToList());
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
+
+
         public ActionResult EventoCategoria(int? id)
         {
             //Evento evento = db.Evento.Find(id);
