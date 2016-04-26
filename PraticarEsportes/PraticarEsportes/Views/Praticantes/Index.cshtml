@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<PraticarEsportes.Models.Praticante>
 
 @{
+    Layout = "~/Views/Shared/FullPage.cshtml";
     ViewBag.Title = "Index";
 }
 
@@ -101,9 +102,9 @@
             @Html.DisplayFor(modelItem => item.Pontos)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PessoaId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PessoaId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PessoaId })
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.PessoaId }) |*@
+            @*@Html.ActionLink("Details", "Details", new { id=item.PessoaId }) |*@
+            @Html.ActionLink("Denunciar Usuario", "Denuncia", new { id=item.PessoaId })
         </td>
     </tr>
 }
