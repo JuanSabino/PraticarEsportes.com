@@ -13,7 +13,7 @@
                       @using (Html.BeginForm("Pesquisa", "Evento", null, System.Web.Mvc.FormMethod.Post))
                       {
                           <p>
-                              Procura por Nome : @Html.TextBox("Pesquisa")
+                              Procura por Nome : @Html.TextBox("searchString")
                               <input type="submit" value="Buscar" />
                           </p>
                       }
