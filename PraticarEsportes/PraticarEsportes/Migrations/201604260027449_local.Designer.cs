@@ -13,7 +13,7 @@ namespace PraticarEsportes.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201604252239065_local"; }
+            get { return "201604260027449_local"; }
         }
         
         string IMigrationMetadata.Source

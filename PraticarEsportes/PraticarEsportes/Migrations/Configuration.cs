@@ -55,7 +55,7 @@ namespace PraticarEsportes.Migrations
 
 
             IList<Praticante> praticantes = new List<Praticante>();
-            praticantes.Add( new Praticante() { Estado="SP", Endereco="ksdkasljd", Email="teste3@teste.com", DataNascimento= DateTime.Now, CPF="78914789875", CEP="", Cidade="12000000", EstadoCivil="Solteiro",Habilitado=true, Nome="Teste 3", Pontos=0, Profissao="Programeiro", Senha="123", Telefone="454845"  } );
+            praticantes.Add(new Praticante() { Estado = "SP", Endereco = "ksdkasljd", Email = "teste3@teste.com", DataNascimento = DateTime.Now, CPF = "78914789875", CEP = "", Cidade = "12000000", EstadoCivil = "Solteiro", Habilitado = true, Nome = "Teste 3", Pontos = 0, Profissao = "Programeiro", Senha = "123", Telefone = "454845" });
             praticantes.Add(new Praticante() { Estado = "SP", Endereco = "ksdkasljd", Email = "teste4@teste.com", DataNascimento = DateTime.Now, CPF = "78914789876", CEP = "", Cidade = "12000000", EstadoCivil = "Solteiro", Habilitado = true, Nome = "Teste 4", Pontos = 0, Profissao = "Programeiro", Senha = "123", Telefone = "454845" });
 
             foreach (Praticante praticante in praticantes)
@@ -63,14 +63,14 @@ namespace PraticarEsportes.Migrations
                 context.Pessoas.AddOrUpdate(x => x.PessoaId, praticante);
             }
 
-            //IList<Evento> eventos = new List<Evento>();
-            //eventos.Add(new Evento() { Nome = "Futeba da Galera", Descricao = "Teste", DataInicio = Convert.ToDateTime("2016-04-18 00:00:00"), DataTermino = Convert.ToDateTime("2016-04-18 00:00:00"), Capacidade = "20", Dificuldade = 1, LocalID = 2, CategoriaID = 17 });
-            //eventos.Add(new Evento() { Nome = "Teste2", Descricao = "Teste", DataInicio = Convert.ToDateTime("2016-04-19 00:00:00"), DataTermino = Convert.ToDateTime("2016-04-19 00:00:00"), Capacidade = "15", Dificuldade = 2, LocalID = 2, CategoriaID = 17 });
+            IList<Evento> eventos = new List<Evento>();
+            eventos.Add(new Evento() { Nome = "Futeba da Galera", Descricao = "Teste", DataInicio = Convert.ToDateTime("2016-04-18 00:00:00"), DataTermino = Convert.ToDateTime("2016-04-18 00:00:00"), Capacidade = "20", Dificuldade = 1, LocalID = 2, CategoriaID = 10, PessoaId = 1 });
+            eventos.Add(new Evento() { Nome = "Teste2", Descricao = "Teste", DataInicio = Convert.ToDateTime("2016-04-19 00:00:00"), DataTermino = Convert.ToDateTime("2016-04-19 00:00:00"), Capacidade = "15", Dificuldade = 2, LocalID = 2, CategoriaID = 10, PessoaId = 1 });
 
-            //foreach (Evento evento in eventos)
-            //{
-            //    context.Evento.AddOrUpdate(x => x.ID, evento);
-            //}
+            foreach (Evento evento in eventos)
+            {
+                context.Evento.AddOrUpdate(x => x.ID, evento);
+            }
 
         }
 
