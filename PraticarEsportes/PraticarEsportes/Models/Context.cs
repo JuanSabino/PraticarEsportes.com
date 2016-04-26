@@ -26,6 +26,17 @@ namespace PraticarEsportes.Models
         {
             modelBuilder.Conventions.Remove();
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            //relacionamento NxN
+            modelBuilder.Entity<Pessoa>()
+             .HasMany<Evento>(s => s.EventosConfirmados)
+             .WithMany(c => c.PessoasConfirmadas)
+             .Map(cs =>
+             {
+                 cs.MapLeftKey("PessoaRefId");
+                 cs.MapRightKey("EventoRefId");
+                 cs.ToTable("PessoaEvento");
+             });
+
         }
     }
 }

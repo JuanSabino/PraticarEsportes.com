@@ -152,6 +152,31 @@ namespace PraticarEsportes.Controllers
             return RedirectToAction("Index");
         }
 
+       
+       
+        public ActionResult ConfirmarPresenca(int id)
+        {
+            Evento evento = db.Evento.Find(id);
+
+            Pessoa pessoa = (Pessoa) Funcoes.GetUsuario();
+
+            Pessoa pessoa2 = db.Pessoas.Include("EventosConfirmados").Where(p => p.PessoaId == pessoa.PessoaId).FirstOrDefault<Pessoa>();
+
+            pessoa2.EventosConfirmados.Add(evento);
+
+            db.SaveChanges();
+
+            string Descricao = "Confirmou presença no evento #" + evento.ID.ToString() + " - " + evento.Nome;
+            Funcoes.InsereHistorico(pessoa2.PessoaId, Descricao);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult CancelarPresenca(int id)
+        {
+            return View();
+        }
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

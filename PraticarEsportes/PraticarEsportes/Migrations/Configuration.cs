@@ -64,8 +64,8 @@ namespace PraticarEsportes.Migrations
             }
 
             IList<Evento> eventos = new List<Evento>();
-            eventos.Add(new Evento() { Nome = "Futeba da Galera", Descricao = "Teste", DataInicio = Convert.ToDateTime("2016-04-18 00:00:00"), DataTermino = Convert.ToDateTime("2016-04-18 00:00:00"), Capacidade = "20", Dificuldade = 1, LocalID = 2, CategoriaID = 10, PessoaId = 1 });
-            eventos.Add(new Evento() { Nome = "Teste2", Descricao = "Teste", DataInicio = Convert.ToDateTime("2016-04-19 00:00:00"), DataTermino = Convert.ToDateTime("2016-04-19 00:00:00"), Capacidade = "15", Dificuldade = 2, LocalID = 2, CategoriaID = 10, PessoaId = 1 });
+            //eventos.Add(new Evento() { Nome = "Futeba da Galera", Descricao = "Teste", DataInicio = Convert.ToDateTime("2016-04-18 00:00:00"), DataTermino = Convert.ToDateTime("2016-04-18 00:00:00"), Capacidade = "20", Dificuldade = 1, LocalID = 2, CategoriaID = 10, PessoaId = 1 });
+            //eventos.Add(new Evento() { Nome = "Teste2", Descricao = "Teste", DataInicio = Convert.ToDateTime("2016-04-19 00:00:00"), DataTermino = Convert.ToDateTime("2016-04-19 00:00:00"), Capacidade = "15", Dificuldade = 2, LocalID = 2, CategoriaID = 10, PessoaId = 1 });
 
             foreach (Evento evento in eventos)
             {
