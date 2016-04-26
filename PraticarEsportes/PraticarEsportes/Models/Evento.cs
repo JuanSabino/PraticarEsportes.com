@@ -56,5 +56,15 @@ namespace PraticarEsportes.Models
         //presencas confirmadas
         public virtual ICollection<Pessoa> PessoasConfirmadas { get; set; }
 
+
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (DataTermino < DataInicio)
+            {
+                yield return new ValidationResult("Data de termino deve ser superior a data de inicio!");
+            }
+        }
+
     }
 }

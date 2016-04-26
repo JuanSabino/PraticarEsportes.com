@@ -5,11 +5,24 @@
     ViewBag.Title = "Create";
 }
 
-@using (Html.BeginForm()) 
+@{
+    if (ViewBag.salvo == 1)
+    {
+        ViewBag.salvo = 0;
+        <script type="text/javascript">
+            alert("Evento cadastrado!");
+            window.location.href = "@Url.Action("Index","Home")";
+        </script>
+    }
+}
+
+@using (Html.BeginForm("Create", "Evento",
+           FormMethod.Post, new { id = "form-accountedit" }))
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
+        <h3 class="text-center">@ViewBag.Error</h3>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -60,7 +73,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.LocalID, "LocalID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.LocalID, "Local", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("LocalID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.LocalID, "", new { @class = "text-danger" })
@@ -68,14 +81,14 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CategoriaID, "CategoriaID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.CategoriaID, "Categoria", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("CategoriaID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.CategoriaID, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.Habilitado, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
@@ -83,7 +96,7 @@
                     @Html.ValidationMessageFor(model => model.Habilitado, "", new { @class = "text-danger" })
                 </div>
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

@@ -87,24 +87,38 @@ namespace PraticarEsportes.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Nome,Descricao,DataInicio,DataTermino,Capacidade,Dificuldade,LocalID,CategoriaID,Habilitado")] Evento evento)
+        public ActionResult Create([Bind(Include = "ID,Nome,Descricao,DataInicio,DataTermino,Capacidade,Dificuldade,LocalID,CategoriaID")] Evento evento)
         {
-            if (ModelState.IsValid)
-            {
-                int PessoaId = Convert.ToInt32(System.Web.HttpContext.Current.Session["Id"]);
-                evento.PessoaId = PessoaId;
-                db.Evento.Add(evento);
-                db.SaveChanges();
-                //insere no historico
-                
-                string Descricao = "Criou evento #" + evento.ID.ToString() + " - " + evento.Nome;
-                Funcoes.InsereHistorico(PessoaId, Descricao);
-                return RedirectToAction("Index");
-            }
 
             ViewBag.CategoriaID = new SelectList(db.Categoria, "CategoriaID", "Nome", evento.CategoriaID);
             ViewBag.LocalID = new SelectList(db.Local, "ID", "Nome", evento.LocalID);
-            return View(evento);
+
+            if (DateTime.Now.CompareTo(evento.DataInicio) == 1)
+            {
+                ModelState.AddModelError(string.Empty, "Data de início deve ser superior a data de hoje.");
+            }
+            else if (evento.DataInicio.CompareTo(evento.DataTermino) == 1)
+            {
+                ViewBag.Error = "";
+                ModelState.AddModelError(string.Empty, "Data de término deve ser maior que a data de início.");
+            }            
+            if (ModelState.IsValid)
+            {
+                
+
+                int PessoaId = Convert.ToInt32(System.Web.HttpContext.Current.Session["Id"]);
+                evento.PessoaId = PessoaId;
+                evento.Habilitado = true;
+                db.Evento.Add(evento);
+                db.SaveChanges();
+                //insere no historico
+                ViewBag.salvo = 1;
+                string Descricao = "Criou evento #" + evento.ID.ToString() + " - " + evento.Nome;
+                Funcoes.InsereHistorico(PessoaId, Descricao);
+                return View(evento);
+            }
+            
+            return PartialView(evento); //View(evento);
         }
 
         // GET: Evento/Edit/5

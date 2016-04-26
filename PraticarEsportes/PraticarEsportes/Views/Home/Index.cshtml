@@ -93,6 +93,20 @@
         $('#myModal').modal('show').find('.modal-body').load(url);
     });
 
+    $("#myModal").on("submit", "#form-accountedit", function (e) {
+        e.preventDefault();  // prevent standard form submission
+
+        var form = $(this);
+        $.ajax({
+            url: form.attr("action"),
+            method: form.attr("method"),  // post
+            data: form.serialize(),
+            success: function (partialResult) {
+                $('#myModal').modal('show').find('.modal-body').html(partialResult);
+            }
+        });
+    });
+
     $(document).ready(function () {
         map.locate({ setView: true, maxZoom: 14 });
     })
