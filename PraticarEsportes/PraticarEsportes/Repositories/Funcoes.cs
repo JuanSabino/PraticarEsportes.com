@@ -103,6 +103,8 @@ namespace PraticarEsportes.Repositories
         {
             HttpContext.Current.Session["Usuario"] = "";
             HttpContext.Current.Session["Tipo"] = "";
+            HttpContext.Current.Session["Nome"] = "";
+            HttpContext.Current.Session["Id"] = "";
             //HttpContext.Current.Response.Cookies["Usuario"].Value = "";
             FormsAuthentication.SignOut();
         }
