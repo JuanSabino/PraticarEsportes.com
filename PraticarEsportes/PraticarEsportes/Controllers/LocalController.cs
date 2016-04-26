@@ -13,6 +13,19 @@ namespace PraticarEsportes.Controllers
     public class LocalController : Controller
     {
         private Context db = new Context();
+        [HttpPost]
+        public ActionResult Pesquisa(FormCollection fc, string searchString)
+        {
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                var local = db.Local.Include(c => c.Endereco).Where(c => c.Nome.Contains(searchString) || c.Descricao.Contains(searchString) || c.Estado.Contains(searchString) || c.Endereco.Contains(searchString) || c.Cidade.Contains(searchString)).OrderBy(o => o.Nome);
+                return View("Index", local.ToList());
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
 
         // GET: Local
         public ActionResult Index()

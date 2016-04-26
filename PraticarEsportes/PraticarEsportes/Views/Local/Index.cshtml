@@ -5,7 +5,19 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+                      @{
+                          ViewBag.Title = "Pesquisa";
+                      }
+
+
+                      <h2></h2>
+                      @using (Html.BeginForm("Pesquisa", "Local", null, System.Web.Mvc.FormMethod.Post))
+                      {
+                          <p>
+                              Procura por Nome : @Html.TextBox("searchString")
+                              <input type="submit" value="Buscar" />
+                          </p>
+                      }
 
 <p>
     @Html.ActionLink("Create New", "Create")
