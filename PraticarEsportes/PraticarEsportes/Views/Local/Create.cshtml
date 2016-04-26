@@ -19,7 +19,20 @@
     }
 </style>
 
-@using (Html.BeginForm())
+
+@{
+    if (ViewBag.salvo == 1)
+    {
+        ViewBag.salvo = 0;
+        <script type="text/javascript">
+            alert("Local cadastrado, aguarde a aprovação da administração!");
+            window.location.href = "@Url.Action("Index","Home")";
+        </script>
+    }
+}
+
+@using (Html.BeginForm("Create", "Local",
+           FormMethod.Post, new { id = "form-accountedit" }))
 {
     @Html.AntiForgeryToken()
 
@@ -93,7 +106,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.Habilitado, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
@@ -101,7 +114,7 @@
                     @Html.ValidationMessageFor(model => model.Habilitado, "", new { @class = "text-danger" })
                 </div>
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
