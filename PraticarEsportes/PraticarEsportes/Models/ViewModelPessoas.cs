@@ -34,7 +34,7 @@ namespace PraticarEsportes.Models
 
         [Required(ErrorMessage = "Preencha o estado")]
         [DisplayName("Estado")]
-        [StringLength(255, MinimumLength = 3, ErrorMessage = "O estado deve ter entre 3 e 255 caracteres.")]
+        [StringLength(255, MinimumLength = 2, ErrorMessage = "O estado deve ter entre 3 e 255 caracteres.")]
         public string Estado { get; set; }
 
         [Required(ErrorMessage = "Preencha o email")]

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PraticarEsportes.Models;
+using PraticarEsportes.Repositories;
 
 namespace PraticarEsportes.Controllers
 {
@@ -48,10 +49,38 @@ namespace PraticarEsportes.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(ViewModelPessoas ViewModelPessoas, string tipoPessoa)
         {
-           //if (ModelState.IsValid)
-           //{
+            var query = (from u in db.Pessoas
+                         where u.Email == ViewModelPessoas.Email 
+                         select u).SingleOrDefault();
+            if (query != null)
+            {
+                ModelState.AddModelError(string.Empty, "Email informado já cadastrado!");
+                return View(ViewModelPessoas);
+            }
+            query = null;
+            //if (ModelState.IsValid)
+            //{
+            if (!Funcoes.ValidaCep(ViewModelPessoas.CEP))
+            {
+                ModelState.AddModelError(string.Empty, "Formato de CEP inválido!");
+                return View(ViewModelPessoas);
+            }
+
                 if (tipoPessoa == "pessoaFisica")
+                 {
+                query = (from u in db.Pessoas.OfType<Praticante>()
+                         where u.CPF == ViewModelPessoas.CPF
+                         select u).SingleOrDefault();
+                if (query != null)
                 {
+                    ModelState.AddModelError(string.Empty, "CPF informado já cadastrado!");
+                    return View(ViewModelPessoas);
+                }
+                if (!Funcoes.ValidaCPF(ViewModelPessoas.CPF))
+                    {
+                        ModelState.AddModelError(string.Empty, "Formato de CPF inválido!");
+                        return View(ViewModelPessoas);
+                    }
                     var praticante = new Praticante
                     {
                         Telefone = ViewModelPessoas.Telefone,
@@ -69,12 +98,26 @@ namespace PraticarEsportes.Controllers
                         EstadoCivil = ViewModelPessoas.EstadoCivil,
                         Pontos = 0
                     };
+                    
                     db.Pessoas.Add(praticante);
                     db.SaveChanges();
                     ViewBag.Error = "Cadastrado com sucesso!";
                 }
                 else if (tipoPessoa == "pessoaJuridica")
                 {
+                    query = (from u in db.Pessoas.OfType<Estabelecimento>()
+                             where u.CNPJ == ViewModelPessoas.CNPJ
+                             select u).SingleOrDefault();
+                    if (query != null)
+                    {
+                        ModelState.AddModelError(string.Empty, "CNPJ informado já cadastrado!");
+                        return View(ViewModelPessoas);
+                    }
+                    if (!Funcoes.ValidaCNPJ(ViewModelPessoas.CNPJ))
+                    {
+                        ModelState.AddModelError(string.Empty, "Formato de CNPJ inválido!");
+                        return View(ViewModelPessoas);
+                    }
                     var estabelecimento = new Estabelecimento
                     {
                         Telefone = ViewModelPessoas.Telefone,
