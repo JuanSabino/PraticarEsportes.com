@@ -2,7 +2,7 @@
 
 @{
     Layout = "~/Views/Shared/FullPage.cshtml";
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Praticantes de esportes";
 }
 
 <h2>Index</h2>
@@ -30,12 +30,12 @@
         <th>
             @Html.DisplayNameFor(model => model.Email)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Senha)
-        </th>
-        <th>
+        </th>*@
+        @*<th>
             @Html.DisplayNameFor(model => model.Habilitado)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Nome)
         </th>
@@ -77,12 +77,12 @@
         <td>
             @Html.DisplayFor(modelItem => item.Email)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.Senha)
-        </td>
-        <td>
+        </td>*@
+        @*<td>
             @Html.DisplayFor(modelItem => item.Habilitado)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.Nome)
         </td>

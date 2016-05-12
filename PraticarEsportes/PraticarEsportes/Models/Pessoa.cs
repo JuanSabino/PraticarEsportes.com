@@ -12,6 +12,7 @@ namespace PraticarEsportes.Models
         [Key]
         public int PessoaId { get; set; }
         public string Telefone { get; set; }
+        [DisplayName("Endereço")]
         public string Endereco { get; set; }
         public string CEP { get; set; }
         public string Cidade { get; set; }

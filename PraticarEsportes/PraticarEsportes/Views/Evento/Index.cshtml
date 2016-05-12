@@ -2,7 +2,7 @@
 
 @{
     Layout = "~/Views/Shared/FullPage.cshtml";
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Eventos";
     
 }                      @{
                           ViewBag.Title = "Pesquisa";
@@ -19,7 +19,7 @@
                       }
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @*@Html.ActionLink("Create New", "Create")*@
 </p>
 <table class="table">
     <tr>
@@ -83,9 +83,9 @@
             @Html.DisplayFor(modelItem => item.Habilitado)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })*@
         </td>
     </tr>
 }

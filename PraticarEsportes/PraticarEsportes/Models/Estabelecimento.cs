@@ -15,7 +15,7 @@ namespace PraticarEsportes.Models
         public string NomeFantasia { get; set; }
 
         [Required(ErrorMessage = "Preencha a razao social")]
-        [DisplayName("Razao Social")]
+        [DisplayName("Razão Social")]
         [StringLength(255, MinimumLength = 3, ErrorMessage = "a razao social deve ter entre 3 e 255 caracteres.")]
         public string RazaoSocial { get; set; }
 
