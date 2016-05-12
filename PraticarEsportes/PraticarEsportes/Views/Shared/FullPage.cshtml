@@ -10,6 +10,15 @@
 </head>
 </head>
 <body>
+    @{
+        Object Usuario = PraticarEsportes.Repositories.Funcoes.GetUsuario();
+        if (Usuario == null)
+        {
+            <script type="text/javascript">
+                        window.location.href = "@Url.Action("AcessoNegado","Publico")";
+            </script>
+        }
+    }
     <div class="navbar navbar-inverse">
         <div class="container">
             <div class="navbar-header">
