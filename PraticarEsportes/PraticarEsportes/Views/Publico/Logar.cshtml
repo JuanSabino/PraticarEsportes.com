@@ -1,8 +1,30 @@
-﻿@model IEnumerable<PraticarEsportes.Models.Pessoa>
+﻿@model PraticarEsportes.Models.Pessoa
 @{
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
     ViewBag.Title = "Login";
+
+    if (Session["Cadastro"] != null)
+    {
+        if (Session["Cadastro"].ToString() == "1")
+        {
+            <script type="text/javascript">
+                alert("Cadastrado com sucesso!");
+                sessionStorage.clear();
+            </script>
+            Session["Cadastro"] = 0;
+            
+        }
+        else if (Session["Cadastro"].ToString() == "2")
+        {
+            <script type="text/javascript">
+            alert("Cadastrado com sucesso! Aguarde a administração liberar o acesso.");
+            </script>
+            Session["Cadastro"] = 0;
+        }
+    }
+
 }
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -12,6 +34,20 @@
         <h3 class="text-center">@ViewBag.Error</h3>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
+            @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email)
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Senha, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Senha)
+                @Html.ValidationMessageFor(model => model.Senha)
+            </div>
+        </div>
+        @*<div class="form-group">
             <label class="control-label col-md-2">
                 Email
             </label>
@@ -28,7 +64,7 @@
             <div class="col-md-10">
                 <input type="password" name="senha" id="senha" class="form-control" />
             </div>
-        </div>
+        </div>*@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Entrar" class="btn btn-default" />
@@ -38,21 +74,18 @@
     @Html.ActionLink("Esqueceu a senha?", "RecuperarSenha")<br />
     @Html.ActionLink("Cadastre-se", "Create", "Pessoas")
 }
-
-
+<hr />
 @using (Html.BeginForm("Newsletter", "Publico", FormMethod.Post, new { }))
 {
     <br /><br />
+    <h3 class="text-center">Cadastre seu e-mail para receber nossa newsletter:</h3>
     <div>
         <div class="form-horizontal">
             <div class="form-group">
-                <label class="control-label col-md-2">
-                    Cadastre seu e-mail para receber novidades!
-                </label>
-                <div>
-                    <div class="col-md-10 ">
-                        <input type="text" name="email" id="email" class="form-control" />
-                    </div>
+                @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email)
+                    @Html.ValidationMessageFor(model => model.Email)
                 </div>
             </div>
             <div class="form-group">

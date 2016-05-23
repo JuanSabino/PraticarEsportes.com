@@ -16,6 +16,23 @@ namespace PraticarEsportes.Controllers
     {
         private Context db = new Context();
 
+
+        [HttpPost]
+        public ActionResult Pesquisa (FormCollection fc, string searchString)
+        {
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                var evento = db.Evento.Include(c => c.Categoria).Include(d => d.Categoria.Evento).Where(c => c.Nome.Contains(searchString) || c.Descricao.Contains(searchString)).OrderBy(o => o.Nome);
+                return View("Index", evento.ToList());
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
+
+
         public ActionResult EventoCategoria(int? id)
         {
             //Evento evento = db.Evento.Find(id);
@@ -49,7 +66,7 @@ namespace PraticarEsportes.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Evento evento = db.Evento.Find(id);
+            Evento evento = db.Evento.Include("PessoasConfirmadas").Where(e => e.ID == id).FirstOrDefault<Evento>();
             if (evento == null)
             {
                 return HttpNotFound();
@@ -70,24 +87,38 @@ namespace PraticarEsportes.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Nome,Descricao,DataInicio,DataTermino,Capacidade,Dificuldade,LocalID,CategoriaID,Habilitado")] Evento evento)
+        public ActionResult Create([Bind(Include = "ID,Nome,Descricao,DataInicio,DataTermino,Capacidade,Dificuldade,LocalID,CategoriaID")] Evento evento)
         {
-            if (ModelState.IsValid)
-            {
-                int PessoaId = Convert.ToInt32(System.Web.HttpContext.Current.Session["Id"]);
-                evento.PessoaId = PessoaId;
-                db.Evento.Add(evento);
-                db.SaveChanges();
-                //insere no historico
-                
-                string Descricao = "Criou evento #" + evento.ID.ToString() + " - " + evento.Nome;
-                Funcoes.InsereHistorico(PessoaId, Descricao);
-                return RedirectToAction("Index");
-            }
 
             ViewBag.CategoriaID = new SelectList(db.Categoria, "CategoriaID", "Nome", evento.CategoriaID);
             ViewBag.LocalID = new SelectList(db.Local, "ID", "Nome", evento.LocalID);
-            return View(evento);
+
+            if (DateTime.Now.CompareTo(evento.DataInicio) == 1)
+            {
+                ModelState.AddModelError(string.Empty, "Data de início deve ser superior a data de hoje.");
+            }
+            else if (evento.DataInicio.CompareTo(evento.DataTermino) == 1)
+            {
+                ViewBag.Error = "";
+                ModelState.AddModelError(string.Empty, "Data de término deve ser maior que a data de início.");
+            }            
+            if (ModelState.IsValid)
+            {
+                
+
+                int PessoaId = Convert.ToInt32(System.Web.HttpContext.Current.Session["Id"]);
+                evento.PessoaId = PessoaId;
+                evento.Habilitado = true;
+                db.Evento.Add(evento);
+                db.SaveChanges();
+                //insere no historico
+                ViewBag.salvo = 1;
+                string Descricao = "Criou evento #" + evento.ID.ToString() + " - " + evento.Nome;
+                Funcoes.InsereHistorico(PessoaId, Descricao);
+                return View(evento);
+            }
+            
+            return PartialView(evento); //View(evento);
         }
 
         // GET: Evento/Edit/5
@@ -151,6 +182,32 @@ namespace PraticarEsportes.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+       
+       
+        public ActionResult ConfirmarPresenca(int id)
+        {
+            Evento evento = db.Evento.Find(id);
+
+            Pessoa pessoa = (Pessoa) Funcoes.GetUsuario();
+
+            Pessoa pessoa2 = db.Pessoas.Include("EventosConfirmados").Where(p => p.PessoaId == pessoa.PessoaId).FirstOrDefault<Pessoa>();
+
+
+            pessoa2.EventosConfirmados.Add(evento);
+
+            db.SaveChanges();
+
+            string Descricao = "Confirmou presença no evento #" + evento.ID.ToString() + " - " + evento.Nome;
+            Funcoes.InsereHistorico(pessoa2.PessoaId, Descricao);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult CancelarPresenca(int id)
+        {
+            return View();
+        }
+
 
         protected override void Dispose(bool disposing)
         {

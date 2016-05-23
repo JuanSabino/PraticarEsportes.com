@@ -1,7 +1,8 @@
 ﻿@model IEnumerable<PraticarEsportes.Models.Praticante>
 
 @{
-    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/FullPage.cshtml";
+    ViewBag.Title = "Praticantes de esportes";
 }
 
 <h2>Index</h2>
@@ -29,12 +30,12 @@
         <th>
             @Html.DisplayNameFor(model => model.Email)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Senha)
-        </th>
-        <th>
+        </th>*@
+        @*<th>
             @Html.DisplayNameFor(model => model.Habilitado)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Nome)
         </th>
@@ -76,12 +77,12 @@
         <td>
             @Html.DisplayFor(modelItem => item.Email)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.Senha)
-        </td>
-        <td>
+        </td>*@
+        @*<td>
             @Html.DisplayFor(modelItem => item.Habilitado)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.Nome)
         </td>
@@ -101,9 +102,9 @@
             @Html.DisplayFor(modelItem => item.Pontos)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PessoaId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PessoaId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PessoaId })
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.PessoaId }) |*@
+            @*@Html.ActionLink("Details", "Details", new { id=item.PessoaId }) |*@
+            @Html.ActionLink("Denunciar Usuario", "Denuncia", new { id=item.PessoaId })
         </td>
     </tr>
 }

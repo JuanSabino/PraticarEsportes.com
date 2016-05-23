@@ -9,11 +9,10 @@ namespace PraticarEsportes.Models
 {
     public class ViewModelPessoas
     {
+        /* Campos de Pessoa */
         // Deixe PessoaId apenas se for fazer a edição da mesma forma.
         public int PessoaId { get; set; }
 
-        [Required(ErrorMessage = "Preencha o telefone")]
-        [DisplayName("Telefone")]
         [DataType(DataType.PhoneNumber)]
         public string Telefone { get; set; }
 
@@ -23,69 +22,68 @@ namespace PraticarEsportes.Models
         public string Endereco { get; set; }
 
         [Required(ErrorMessage = "Preencha o CEP")]
-        [DisplayName("CEP")]
         [ValidaCEP]
         public string CEP { get; set; }
 
         [Required(ErrorMessage = "Preencha a cidade")]
-        [DisplayName("Cidade")]
         [StringLength(255, MinimumLength = 3, ErrorMessage = "A cidade deve ter entre 3 e 255 caracteres.")]
         public string Cidade { get; set; }
 
         [Required(ErrorMessage = "Preencha o estado")]
-        [DisplayName("Estado")]
-        [StringLength(255, MinimumLength = 3, ErrorMessage = "O estado deve ter entre 3 e 255 caracteres.")]
+        [StringLength(2, MinimumLength = 2, ErrorMessage = "O estado deve ter 2 caracteres.")]
         public string Estado { get; set; }
 
-        [Required(ErrorMessage = "Preencha o email")]
-        [DisplayName("Email")]
+        [Required(ErrorMessage = "Preencha o e-mail")]
+        [DisplayName("E-mail")]
         [DataType(DataType.EmailAddress)]
         [EmailAddress(ErrorMessage = "E-mail inválido")]
-        [StringLength(255, MinimumLength = 3, ErrorMessage = "O email deve ter entre 3 e 255 caracteres.")]
+        [StringLength(255, MinimumLength = 3, ErrorMessage = "O e-mail deve ter entre 3 e 255 caracteres.")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Preencha a senha")]
-        [DisplayName("Senha")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "A senha deve ter entre 3 e 50 caracteres.")]
         [DataType(DataType.Password)]
+        [StringLength(30, MinimumLength = 3, ErrorMessage = "A senha deve ter entre 3 e 30 caracteres.")]
         public string Senha { get; set; }
 
-        [DisplayName("Habilitado")]
+        [DisplayName("Confirmar senha")]
+        [Required(ErrorMessage = "Preencha o confirmar senha")]
+        [DataType(DataType.Password)]
+        [StringLength(30, MinimumLength = 3, ErrorMessage = "A senha deve ter entre 3 e 30 caracteres.")]
+        public string ConfirmarSenha { get; set; }
+
+        [DefaultValue(true)]
         public bool Habilitado { get; set; }
 
         /* Campos de Praticante */
         [Required(ErrorMessage = "Preencha o nome")]
-        [DisplayName("Nome")]
         [StringLength(255, MinimumLength = 3, ErrorMessage = "O nome deve ter entre 3 e 255 caracteres.")]
         public string Nome { get; set; }
 
         [Required(ErrorMessage = "Preencha o CPF")]
-        [DisplayName("CPF")]
+        //[StringLength(11, MinimumLength = 11, ErrorMessage = "O CPF deve ter 11 números.")]
         [ValidaCPF]
         public string CPF { get; set; }
 
         [DataType(DataType.Date)]
-        [Required(ErrorMessage = "Preencha a data de nascimento")]
+        [DisplayName("Data de nascimento")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
-        [DisplayName("Data de Nascimento:")]
         public DateTime DataNascimento { get; set; }
 
-        [Required(ErrorMessage = "Preencha a profissão")]
         [DisplayName("Profissão")]
         [StringLength(255, MinimumLength = 3, ErrorMessage = "A profissão deve ter entre 3 e 255 caracteres.")]
         public string Profissao { get; set; }
 
-        [Required(ErrorMessage = "Preencha o estado civil")]
         [DisplayName("Estado Civil")]
-        [StringLength(255, MinimumLength = 3, ErrorMessage = "O estado civil deve ter entre 3 e 255 caracteres.")]
+        [StringLength(15, MinimumLength = 3, ErrorMessage = "O estado civil deve ter entre 3 e 15 caracteres.")]
+        [DefaultValue("Solteiro")]
         public string EstadoCivil { get; set; }
 
-        [DisplayName("Pontos")]
+        [DefaultValue(0)]
         public int Pontos { get; set; }
 
         /* Campos de Estabelecimento */
-        [Required(ErrorMessage = "Preencha o nome fantasia")]
         [DisplayName("Nome Fantasia")]
+        [Required(ErrorMessage = "Preencha o nome fantasia")]
         [StringLength(255, MinimumLength = 3, ErrorMessage = "O nome fantasia deve ter entre 3 e 255 caracteres.")]
         public string NomeFantasia { get; set; }
 
@@ -95,7 +93,6 @@ namespace PraticarEsportes.Models
         public string RazaoSocial { get; set; }
 
         [Required(ErrorMessage = "Preencha o CNPJ")]
-        [DisplayName("CNPJ")]
         [ValidaCNPJ]
         public string CNPJ { get; set; }
 
@@ -105,9 +102,8 @@ namespace PraticarEsportes.Models
         public string TelComercial { get; set; }
 
         [DataType(DataType.Date)]
-        [Required(ErrorMessage = "Preencha a data de abertura do estabelecmento")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
-        [DisplayName("Data de Abertura")]
+        [DisplayName("Data de abertura do estabelecimento")]
         public DateTime DataAbertura { get; set; }
     }
 }

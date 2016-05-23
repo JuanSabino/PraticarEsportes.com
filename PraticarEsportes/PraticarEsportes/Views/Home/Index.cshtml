@@ -14,19 +14,63 @@
 
 <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.min.js'></script>
 
+<style>
+    .pesquisaevento {
+        position: absolute;
+        top: 150px;
+        right: 60px;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.75);
+        border-radius: 3px;
+    }
+
+    .pesquisalocal {
+        position: absolute;
+        top: 60px;
+        right: 60px;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.75);
+        border-radius: 3px;
+    }
+</style>
+
 <div id="map"></div>
 
-<div class="addLocation">
-    <a href="/Local/Create" class="openModal" title="Cadastro de Locais">
-        <img src="~/Content/img/addLocation.png" alt="" />
-    </a>
-</div>
+@{
+    //cadastro de local somente para Estabelecimentos(conforme sprint planning)
+    if (Session["Tipo"] != null)
+    {
+        if (Session["Tipo"].ToString() == "1")
+        {
+            <div class="addLocation">
+                <a href="/Local/Create" class="openModal" title="Cadastro de Locais">
+                    <img src="~/Content/img/addLocation.png" alt="" />
+                </a>
+            </div>
+        }
+    }
+
+
+}
 
 <div class="addSport">
     <a href="/Evento/Create" class="openModal" title="Cadastro de Eventos">
         <img src="~/Content/img/addSport.png" alt="" />
     </a>
 </div>
+
+<div class="pesquisaevento">
+    <a href="/Evento/Index" class="" title="Pesquisar Eventos">
+        <img src="~/Content/img/pes.png" alt="" />
+    </a>
+</div>
+
+<div class="pesquisalocal">
+    <a href="/Local/index" class="" title="Pesquisar Locais">
+        <img src="~/Content/img/pes.png" alt="" />
+    </a>
+</div>
+
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" role="dialog">
@@ -61,6 +105,20 @@
         $('#myModal').modal('show').find('.modal-body').load(url);
     });
 
+    $("#myModal").on("submit", "#form-accountedit", function (e) {
+        e.preventDefault();  // prevent standard form submission
+
+        var form = $(this);
+        $.ajax({
+            url: form.attr("action"),
+            method: form.attr("method"),  // post
+            data: form.serialize(),
+            success: function (partialResult) {
+                $('#myModal').modal('show').find('.modal-body').html(partialResult);
+            }
+        });
+    });
+
     $(document).ready(function () {
         map.locate({ setView: true, maxZoom: 14 });
     })
@@ -84,7 +142,7 @@
     var estadio = new LeafIcon({ iconUrl: '../Content/img/iconStadium.png' });
 
     @foreach (var locais in local){
-        if (@locais.Habilitado == true) { 
+        if (@locais.Habilitado == true) {
             <text>
                 var latitude = "@locais.Latitude";
                 latitude = latitude.replace(/,/g, '.');

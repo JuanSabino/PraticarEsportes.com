@@ -1,10 +1,11 @@
 ﻿@model PraticarEsportes.Models.Praticante
 
 @{
-    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/FullPage.cshtml";
+    ViewBag.Title = "Praticar Esportes";
 }
 
-<h2>Edit</h2>
+<h2>Meu Perfil</h2>
 
 @using (Html.BeginForm())
 {
@@ -14,7 +15,9 @@
         <h4>Praticante</h4>
         <hr />
         @Html.ActionLink("Alterar Senha", "AlterarSenha") <br />
-        @Html.ActionLink("Desativar Conta", "","", new { onclick = "someFunction();" })
+        @Html.ActionLink("Desativar Conta", "","", new { onclick = "someFunction();" }) <br />
+        @Html.ActionLink("Visualizar Histórico", "Index", "Historicos") <br />
+        @Html.ActionLink("Visualizar Ranking", "Ranking") <br />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.PessoaId)
 
@@ -127,7 +130,7 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
+                    <input type="submit" value="Salvar" class="btn btn-default" />
                 </div>
             </div>
         </div>

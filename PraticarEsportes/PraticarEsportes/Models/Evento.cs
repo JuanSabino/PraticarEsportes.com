@@ -45,13 +45,26 @@ namespace PraticarEsportes.Models
 
         public int CategoriaID { get; set; }
         public virtual Categoria Categoria { get; set; }
-
+        //criador do evento
         public int PessoaId { get; set; }
         public virtual Pessoa Pessoa { get; set; }
 
         [DisplayName("Habilitado")]
         public Boolean Habilitado { get; set; }
-
+        //checkins
         public virtual ICollection<Checkin> Checkins { get; set; }
+        //presencas confirmadas
+        public virtual ICollection<Pessoa> PessoasConfirmadas { get; set; }
+
+
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (DataTermino < DataInicio)
+            {
+                yield return new ValidationResult("Data de termino deve ser superior a data de inicio!");
+            }
+        }
+
     }
 }

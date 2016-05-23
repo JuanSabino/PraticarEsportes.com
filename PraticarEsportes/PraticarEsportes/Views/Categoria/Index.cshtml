@@ -2,13 +2,13 @@
 
 @{
     Layout = "~/Views/Shared/FullPage.cshtml";
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Categorias";
 }
 
-<h2>Index</h2>
+@*<h2>Index</h2>*@
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Criar nova categoria", "Create")
 </p>
 <table class="table">
     <tr>
@@ -24,9 +24,9 @@
             @Html.DisplayFor(modelItem => item.Nome)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CategoriaID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CategoriaID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CategoriaID })
+            @Html.ActionLink("Editar", "Edit", new { id=item.CategoriaID }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.CategoriaID }) |
+            @Html.ActionLink("Deletar", "Delete", new { id=item.CategoriaID })
         </td>
     </tr>
 }

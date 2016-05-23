@@ -2,13 +2,25 @@
 
 @{
     Layout = "~/Views/Shared/FullPage.cshtml";
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Locais";
+    
 }
+    
+                  @{
+                          ViewBag.Title = "Pesquisa";
+                      }
+                      <h2></h2>
+                      @using (Html.BeginForm("Pesquisa", "Local", null, System.Web.Mvc.FormMethod.Post))
+                      {
+                          <p>
+                              Procura por Nome : @Html.TextBox("searchString")
+                              <input type="submit" value="Buscar" />
+                          </p>
+                      }
 
-<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @*@Html.ActionLink("Create New", "Create")*@
 </p>
 <table class="table">
     <tr>
@@ -24,12 +36,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Longitude)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Endereco)
-        </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.CEP)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Cidade)
         </th>
@@ -56,12 +65,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.Longitude)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Endereco)
-        </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.CEP)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.Cidade)
         </td>
@@ -72,9 +78,9 @@
             @Html.DisplayFor(modelItem => item.Habilitado)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })*@
         </td>
     </tr>
 }

@@ -1,10 +1,11 @@
 ﻿@model IEnumerable<PraticarEsportes.Models.Estabelecimento>
 
 @{
-    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/FullPage.cshtml";
+    ViewBag.Title = "Estabalecimentos Esportivos";
 }
 
-<h2>Index</h2>
+<h2>Estabalecimentos Esportivos</h2>
 
 <p>
     @*@Html.ActionLink("Create New", "Create")*@
@@ -29,12 +30,12 @@
         <th>
             @Html.DisplayNameFor(model => model.Email)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Senha)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Habilitado)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.NomeFantasia)
         </th>
@@ -73,12 +74,12 @@
         <td>
             @Html.DisplayFor(modelItem => item.Email)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.Senha)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Habilitado)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.NomeFantasia)
         </td>
@@ -95,9 +96,9 @@
             @Html.DisplayFor(modelItem => item.DataAbertura)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.PessoaId }) |
+            @*@Html.ActionLink("Editar", "Edit", new { id=item.PessoaId }) |*@
             @*@Html.ActionLink("Details", "Details", new { id=item.PessoaId }) |*@
-            @Html.ActionLink("Deletar", "Delete", new { id=item.PessoaId })
+            @*@Html.ActionLink("Deletar", "Delete", new { id=item.PessoaId })*@
         </td>
     </tr>
 }

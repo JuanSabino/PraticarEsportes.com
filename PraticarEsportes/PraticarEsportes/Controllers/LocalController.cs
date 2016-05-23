@@ -13,6 +13,19 @@ namespace PraticarEsportes.Controllers
     public class LocalController : Controller
     {
         private Context db = new Context();
+        [HttpPost]
+        public ActionResult Pesquisa(FormCollection fc, string searchString)
+        {
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                var local = db.Local.Where(c => c.Nome.Contains(searchString) || c.Descricao.Contains(searchString) || c.Estado.Contains(searchString) || c.Endereco.Contains(searchString) || c.Cidade.Contains(searchString)).OrderBy(o => o.Nome);
+                return View("Index", local.ToList());
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
 
         // GET: Local
         public ActionResult Index()
@@ -46,27 +59,28 @@ namespace PraticarEsportes.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Nome,Descricao,Latitude,Longitude,Endereco,CEP,Cidade,Estado,Habilitado")] Local local)
+        public ActionResult Create([Bind(Include = "ID,Nome,Descricao,Latitude,Longitude,Endereco,CEP,Cidade,Estado")] Local local)
         {
             //if (ModelState.IsValid)
             //{
 
-            string latitude = Request["Latitude"];
-            latitude = latitude.Replace(".", ",");
+                string latitude = Request["Latitude"];
+                latitude = latitude.Replace(".", ",");
 
-            string longitude = Request["Longitude"];
-            longitude = longitude.Replace(".", ",");
+                string longitude = Request["Longitude"];
+                longitude = longitude.Replace(".", ",");
 
-            local.Latitude = Convert.ToDouble(latitude);
-            local.Longitude = Convert.ToDouble(longitude);
-
-            db.Local.Add(local);
-            db.SaveChanges();
-            ViewBag.Mensagem = "Cadastrado com sucesso!";
-            return RedirectToAction("Index", "Home");
+                local.Latitude = Convert.ToDouble(latitude);
+                local.Longitude = Convert.ToDouble(longitude);
+                local.Habilitado = false;
+                ViewBag.salvo = 1;
+                db.Local.Add(local);
+                db.SaveChanges();
+                ViewBag.Mensagem = "Cadastrado com sucesso!";
+                return View(local);
             //}
 
-            //return View(local);
+            //return PartialView(local);
         }
 
         // GET: Local/Edit/5
