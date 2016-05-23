@@ -9,38 +9,21 @@ namespace PraticarEsportes.Models
 {
     public class Pessoa
     {
-        [Key]
         public int PessoaId { get; set; }
         public string Telefone { get; set; }
-        [DisplayName("Endereço")]
         public string Endereco { get; set; }
         public string CEP { get; set; }
         public string Cidade { get; set; }
         public string Estado { get; set; }
-
-        [Required(ErrorMessage = "Preencha o e-mail")]
-        [DisplayName("E-mail")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "o e-mail deve ter entre 3 e 50 caracteres.")]
-        [EmailAddress(ErrorMessage = "E-mail inválido")]
         public string Email { get; set; }
-
-        [Required(ErrorMessage = "Preencha a senha")]
-        [DisplayName("Senha")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "A senha deve ter entre 3 e 50 caracteres.")]
-        [DataType(DataType.Password)]
         public string Senha { get; set; }
-
-        [DefaultValue(true)]
+        public string ConfirmarSenha { get; set; }
         public bool Habilitado { get; set; }
 
         public virtual ICollection<Checkin> Checkins { get; set; }
-
-
         public virtual ICollection<Historico> Historicos { get; set; }
-
         //eventos criados
         public virtual ICollection<Evento> Eventos { get; set; }
-
         public virtual ICollection<Evento> EventosConfirmados { get; set; }
 
         public Pessoa()

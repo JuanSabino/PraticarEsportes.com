@@ -2,7 +2,29 @@
 @{
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
     ViewBag.Title = "Login";
+
+    if (Session["Cadastro"] != null)
+    {
+        if (Session["Cadastro"].ToString() == "1")
+        {
+            <script type="text/javascript">
+                alert("Cadastrado com sucesso!");
+                sessionStorage.clear();
+            </script>
+            Session["Cadastro"] = 0;
+            
+        }
+        else if (Session["Cadastro"].ToString() == "2")
+        {
+            <script type="text/javascript">
+            alert("Cadastrado com sucesso! Aguarde a administração liberar o acesso.");
+            </script>
+            Session["Cadastro"] = 0;
+        }
+    }
+
 }
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()

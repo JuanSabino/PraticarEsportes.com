@@ -161,6 +161,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605192217417_atualizacao.cs" />
+    <Compile Include="Migrations\201605192217417_atualizacao.Designer.cs">
+      <DependentUpon>201605192217417_atualizacao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605230124311_atualiza.cs" />
+    <Compile Include="Migrations\201605230124311_atualiza.Designer.cs">
+      <DependentUpon>201605230124311_atualiza.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Checkin.cs" />
@@ -310,6 +318,14 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201605192217417_atualizacao.resx">
+      <DependentUpon>201605192217417_atualizacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605230124311_atualiza.resx">
+      <DependentUpon>201605230124311_atualiza.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
