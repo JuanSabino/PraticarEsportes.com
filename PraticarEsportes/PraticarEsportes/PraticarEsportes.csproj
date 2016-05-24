@@ -161,13 +161,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201605192217417_atualizacao.cs" />
-    <Compile Include="Migrations\201605192217417_atualizacao.Designer.cs">
-      <DependentUpon>201605192217417_atualizacao.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605230124311_atualiza.cs" />
-    <Compile Include="Migrations\201605230124311_atualiza.Designer.cs">
-      <DependentUpon>201605230124311_atualiza.cs</DependentUpon>
+    <Compile Include="Migrations\201605232315597_banco.cs" />
+    <Compile Include="Migrations\201605232315597_banco.Designer.cs">
+      <DependentUpon>201605232315597_banco.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
@@ -194,7 +190,19 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\img\backgroundBaskteball.jpg" />
+    <Content Include="Content\img\backgroundBike.jpg" />
+    <Content Include="Content\img\backgroundSlackline.jpg" />
+    <Content Include="Content\img\backgroundSoccer.jpg" />
+    <Content Include="Content\img\backgroundTennis.jpg" />
+    <Content Include="Content\img\iconCheckin.png" />
+    <Content Include="Content\img\iconTeam.png" />
+    <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\pes.png" />
+    <Content Include="Content\img\sports_icon.png" />
+    <Content Include="Content\img\team_icon.png" />
+    <Content Include="Content\Login.css" />
+    <Content Include="Content\mapa.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -310,6 +318,7 @@
     <Content Include="Views\Praticantes\Denuncia.cshtml" />
     <Content Include="Views\Praticantes\AlterarSenha.cshtml" />
     <Content Include="Views\Praticantes\Ranking.cshtml" />
+    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -320,11 +329,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201605192217417_atualizacao.resx">
-      <DependentUpon>201605192217417_atualizacao.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605230124311_atualiza.resx">
-      <DependentUpon>201605230124311_atualiza.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201605232315597_banco.resx">
+      <DependentUpon>201605232315597_banco.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
