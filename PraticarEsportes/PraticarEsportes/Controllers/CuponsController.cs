@@ -17,7 +17,8 @@ namespace PraticarEsportes.Controllers
         // GET: Cupons
         public ActionResult Index()
         {
-            return View(db.Cupons.ToList());
+            var cupons = db.Cupons.Include(c => c.Evento);
+            return View(cupons.ToList());
         }
 
         // GET: Cupons/Details/5
@@ -38,6 +39,7 @@ namespace PraticarEsportes.Controllers
         // GET: Cupons/Create
         public ActionResult Create()
         {
+            ViewBag.EventoID = new SelectList(db.Evento, "ID", "Nome");
             return View();
         }
 
@@ -46,7 +48,7 @@ namespace PraticarEsportes.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CupomId,Valor,Tipo,Quantidade,Validade")] Cupom cupom)
+        public ActionResult Create([Bind(Include = "CupomId,Valor,Tipo,Quantidade,Validade,EventoID")] Cupom cupom)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +57,7 @@ namespace PraticarEsportes.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.EventoID = new SelectList(db.Evento, "ID", "Nome", cupom.EventoID);
             return View(cupom);
         }
 
@@ -70,6 +73,7 @@ namespace PraticarEsportes.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.EventoID = new SelectList(db.Evento, "ID", "Nome", cupom.EventoID);
             return View(cupom);
         }
 
@@ -78,7 +82,7 @@ namespace PraticarEsportes.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CupomId,Valor,Tipo,Quantidade,Validade")] Cupom cupom)
+        public ActionResult Edit([Bind(Include = "CupomId,Valor,Tipo,Quantidade,Validade,EventoID")] Cupom cupom)
         {
             if (ModelState.IsValid)
             {
@@ -86,6 +90,7 @@ namespace PraticarEsportes.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.EventoID = new SelectList(db.Evento, "ID", "Nome", cupom.EventoID);
             return View(cupom);
         }
 
@@ -123,6 +128,5 @@ namespace PraticarEsportes.Controllers
             }
             base.Dispose(disposing);
         }
-
     }
 }

@@ -1,8 +1,8 @@
 ﻿@model IEnumerable<PraticarEsportes.Models.Cupom>
 
 @{
-    Layout = "~/Views/Shared/FullPage.cshtml";
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/FullPage.cshtml";
 }
 
 <h2>Index</h2>
@@ -12,6 +12,9 @@
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Evento.Nome)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Valor)
         </th>
@@ -29,6 +32,9 @@
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Evento.Nome)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Valor)
         </td>

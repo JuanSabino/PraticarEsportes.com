@@ -56,6 +56,9 @@ namespace PraticarEsportes.Models
         //presencas confirmadas
         public virtual ICollection<Pessoa> PessoasConfirmadas { get; set; }
 
+        //Cupons relacionados ao evento
+        public virtual ICollection<Cupom> Cupom { get; set; }
+
 
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)

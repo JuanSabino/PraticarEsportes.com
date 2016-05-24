@@ -165,6 +165,14 @@
     <Compile Include="Migrations\201605232315597_banco.Designer.cs">
       <DependentUpon>201605232315597_banco.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605242251553_cupomEvento.cs" />
+    <Compile Include="Migrations\201605242251553_cupomEvento.Designer.cs">
+      <DependentUpon>201605242251553_cupomEvento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605242315289_cupomEvento2.cs" />
+    <Compile Include="Migrations\201605242315289_cupomEvento2.Designer.cs">
+      <DependentUpon>201605242315289_cupomEvento2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Checkin.cs" />
@@ -331,6 +339,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201605232315597_banco.resx">
       <DependentUpon>201605232315597_banco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605242251553_cupomEvento.resx">
+      <DependentUpon>201605242251553_cupomEvento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605242315289_cupomEvento2.resx">
+      <DependentUpon>201605242315289_cupomEvento2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
