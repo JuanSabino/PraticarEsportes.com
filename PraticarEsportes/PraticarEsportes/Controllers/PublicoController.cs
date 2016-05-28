@@ -1,9 +1,11 @@
-﻿using PraticarEsportes.Models;
+﻿using Facebook;
+using PraticarEsportes.Models;
 using PraticarEsportes.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
+using System.Dynamic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -16,6 +18,7 @@ namespace PraticarEsportes.Controllers
         // GET: Publico
         public ActionResult Logar()
         {
+            ViewBag.UrlFb = GetFacebookLoginUrl();
             ViewBag.Categoria = db.Categoria.ToList();
             return View();
         }
@@ -156,6 +159,87 @@ namespace PraticarEsportes.Controllers
             db.SaveChanges();            
             ViewBag.Error = "Email cadastrado com sucesso!";
             return RedirectToAction("Logar");
+        }
+
+        public ActionResult Politica()
+        {
+            return View();
+        }
+
+        public ActionResult RetornoFb()
+        {
+            var _fb = new FacebookClient();
+            FacebookOAuthResult oauthResult;
+
+            _fb.TryParseOAuthCallbackUrl(Request.Url, out oauthResult);
+
+            if (oauthResult.IsSuccess)
+            {
+                //Pega o Access Token "permanente"
+                dynamic parameters = new ExpandoObject();
+                parameters.client_id = "1728002444152079";
+                parameters.redirect_uri = "http://localhost:61063/publico/retornofb";
+                parameters.client_secret = "9a5728d23d39d3c9f45e53682d07526a";
+                parameters.code = oauthResult.Code;
+
+                dynamic result = _fb.Get("/oauth/access_token", parameters);
+                
+
+                var accessToken = result.access_token;
+
+                //TODO: Guardar no banco
+                Session.Add("FbUserToken", accessToken);
+
+
+                _fb = new FacebookClient(Session["FbuserToken"].ToString());
+                dynamic request = _fb.Get("me?fields=name,email");
+                string email = request.email;
+
+                //busca o email no banco
+                Context _db = new Context();
+                var query = (from u in _db.Pessoas
+                             where u.Email == email
+                             select u).SingleOrDefault();
+                //se nao existe, cadastra com as informacoes basicas
+                if (query == null)
+                {
+                    Praticante praticante = new Praticante();
+                    praticante.Nome = request.name;
+                    praticante.Email = request.email;
+                    praticante.Habilitado = true;
+                    db.Pessoas.Add(praticante);
+                    db.SaveChanges();
+                }               
+
+                //puxa as informacoes do banco
+                if (Funcoes.AutenticarUsuario(email, "", true) == true)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Logar");
+            }
+
+            return RedirectToAction("Logar");
+        }
+
+        public string GetFacebookLoginUrl()
+        {
+            dynamic parameters = new ExpandoObject();
+            parameters.client_id = "1728002444152079";
+            parameters.redirect_uri = "http://localhost:61063/publico/retornofb";
+            parameters.response_type = "code";
+            parameters.display = "page";
+
+            var extendedPermissions = "public_profile,email";
+            parameters.scope = extendedPermissions;
+
+            var _fb = new FacebookClient();
+            var url = _fb.GetLoginUrl(parameters);
+
+            return url.ToString();
         }
     }
 }

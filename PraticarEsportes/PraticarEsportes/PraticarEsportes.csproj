@@ -326,6 +326,7 @@
     <Content Include="Views\Praticantes\AlterarSenha.cshtml" />
     <Content Include="Views\Praticantes\Ranking.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\Publico\Politica.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
