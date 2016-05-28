@@ -151,13 +151,13 @@ namespace PraticarEsportes.Controllers
         [HttpPost]
         public ActionResult Denuncia(int id, string Motivo,  HttpPostedFileBase Arquivo)
         {
+            Praticante praticante = (Praticante)db.Pessoas.Find(id);
             if (String.IsNullOrEmpty(Motivo))
             {
                 ViewBag.Error = "Você deve preencher o motivo!";
-                return View();
+                return View(praticante);
             }
-            Praticante praticante = (Praticante)db.Pessoas.Find(id);
-
+            
 
             GmailEmailService gmail = new GmailEmailService();
             EmailMessage msg = new EmailMessage();
@@ -177,7 +177,7 @@ namespace PraticarEsportes.Controllers
             {
                 ViewBag.Error = "Erro. Tente novamente!";
             }
-            return View();
+            return View(praticante);
         }
 
 
