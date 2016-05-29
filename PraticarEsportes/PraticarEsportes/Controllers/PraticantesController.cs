@@ -18,6 +18,10 @@ namespace PraticarEsportes.Controllers
         // GET: Praticantes
         public ActionResult Index()
         {
+            Pessoa usuario = (Pessoa)Funcoes.GetUsuario();
+            Pessoa pessoa2 = db.Pessoas.Include("Seguindo").Where(p => p.PessoaId == usuario.PessoaId).FirstOrDefault<Pessoa>();
+
+            ViewBag.Seguindo = pessoa2.Seguindo;
             return View(db.Pessoas.OfType<Praticante>().ToList());
         }
 
@@ -259,6 +263,39 @@ namespace PraticarEsportes.Controllers
         public ActionResult Ranking()
         {
             return View(db.Pessoas.OfType<Praticante>().OrderByDescending(o => o.Pontos).ToList());
+        }
+
+        public ActionResult Follow(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("Index", "Praticantes");
+            }
+            Pessoa usuario = (Pessoa) Funcoes.GetUsuario();
+            Pessoa pessoa2 = db.Pessoas.Include("Seguindo").Where(p => p.PessoaId == usuario.PessoaId).FirstOrDefault<Pessoa>();
+
+
+            Praticante seguir = (Praticante) db.Pessoas.Find(id);
+
+            bool segue = false;
+            if (pessoa2.Seguindo != null)
+            {
+                foreach (Pessoa p1 in pessoa2.Seguindo)
+                {
+                    if (p1.PessoaId == id)
+                    {
+                        segue = true;
+                        break;
+                    }
+                }
+            }            
+            if (!segue)
+            {
+                pessoa2.Seguindo.Add(seguir);
+                db.Entry(pessoa2).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index", "Praticantes");
         }
 
 

@@ -72,7 +72,7 @@ namespace PraticarEsportes.Migrations
                 context.Evento.AddOrUpdate(x => x.ID, evento);
             }
 
-        }
+            }
 
-    }
+        }
 }
