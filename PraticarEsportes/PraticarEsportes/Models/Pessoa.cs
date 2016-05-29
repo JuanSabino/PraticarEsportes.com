@@ -27,8 +27,11 @@ namespace PraticarEsportes.Models
         public virtual ICollection<Evento> EventosConfirmados { get; set; }
 
         //pessoas que voce segue
-        public virtual ICollection<Pessoa> Seguindo { get; set; } 
-
+        public virtual ICollection<Pessoa> Seguindo { get; set; }
+        //eventos curtidos
+        public virtual ICollection<Evento> EventosCurtidos { get; set; }
+        //locais curtidos
+        public virtual ICollection<Local> LocaisCurtidos { get; set; }
 
         public Pessoa()
         {

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PraticarEsportes.Models;
+using PraticarEsportes.Repositories;
 
 namespace PraticarEsportes.Controllers
 {
@@ -16,6 +17,11 @@ namespace PraticarEsportes.Controllers
         [HttpPost]
         public ActionResult Pesquisa(FormCollection fc, string searchString)
         {
+            Pessoa usuario = (Pessoa)Funcoes.GetUsuario();
+            Pessoa pessoa2 = db.Pessoas.Include("LocaisCurtidos").Where(p => p.PessoaId == usuario.PessoaId).FirstOrDefault<Pessoa>();
+
+            ViewBag.LocaisCurtidos = pessoa2.LocaisCurtidos;
+
             if (!String.IsNullOrEmpty(searchString))
             {
                 var local = db.Local.Where(c => c.Nome.Contains(searchString) || c.Descricao.Contains(searchString) || c.Estado.Contains(searchString) || c.Endereco.Contains(searchString) || c.Cidade.Contains(searchString)).OrderBy(o => o.Nome);
@@ -30,6 +36,11 @@ namespace PraticarEsportes.Controllers
         // GET: Local
         public ActionResult Index()
         {
+            Pessoa usuario = (Pessoa)Funcoes.GetUsuario();
+            Pessoa pessoa2 = db.Pessoas.Include("LocaisCurtidos").Where(p => p.PessoaId == usuario.PessoaId).FirstOrDefault<Pessoa>();
+
+            ViewBag.LocaisCurtidos = pessoa2.LocaisCurtidos;
+
             return View(db.Local.ToList());
         }
 
@@ -157,6 +168,39 @@ namespace PraticarEsportes.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult Like(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("Index", "Local");
+            }
+            Pessoa usuario = (Pessoa)Funcoes.GetUsuario();
+            Pessoa pessoa2 = db.Pessoas.Include("LocaisCurtidos").Where(p => p.PessoaId == usuario.PessoaId).FirstOrDefault<Pessoa>();
+
+
+            Local curtir = db.Local.Find(id);
+
+            bool segue = false;
+            if (pessoa2.LocaisCurtidos != null)
+            {
+                foreach (Local p1 in pessoa2.LocaisCurtidos)
+                {
+                    if (p1.ID == id)
+                    {
+                        segue = true;
+                        break;
+                    }
+                }
+            }
+            if (!segue)
+            {
+                pessoa2.LocaisCurtidos.Add(curtir);
+                db.Entry(pessoa2).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index", "Local");
         }
     }
 }

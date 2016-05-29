@@ -200,12 +200,14 @@
     <Content Include="Content\img\iconCheckin.png" />
     <Content Include="Content\img\iconShare.png" />
     <Content Include="Content\img\iconTeam.png" />
+    <Content Include="Content\img\like.png" />
     <Content Include="Content\img\like_icon.png" />
     <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\pes.png" />
     <Content Include="Content\img\podium_icon.png" />
     <Content Include="Content\img\sports_icon.png" />
     <Content Include="Content\img\team_icon.png" />
+    <Content Include="Content\img\unlike.png" />
     <Content Include="Content\img\user_add.png" />
     <Content Include="Content\img\user_del.png" />
     <Content Include="Content\Login.css" />

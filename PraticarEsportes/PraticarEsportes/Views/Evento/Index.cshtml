@@ -84,10 +84,38 @@
             @Html.DisplayFor(modelItem => item.Habilitado)
         </td>
         <td>
-            @*@Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })*@
+        <td>
+            @{
+
+                var segue = false;
+                if (ViewBag.EventosCurtidos != null)
+                {
+                    foreach (var p1 in ViewBag.EventosCurtidos)
+                    {
+                        if (p1.ID == item.ID)
+                        {
+                            segue = true;
+                            break;
+                        }
+                    }
+                }
+                if (segue)
+                {
+                    <a href="/Local/Index">
+                        <img src="~/Content/img/unlike.png" title="Descurtir Local" />
+                    </a>
+                }
+                else
+                {
+                    <a href="/Local/Like/@item.ID">
+                        <img src="~/Content/img/like.png" width="48" height="48" title="Curtir Local" />
+                    </a>
+                }
+
+            }
+
         </td>
+        
     </tr>
 }
 

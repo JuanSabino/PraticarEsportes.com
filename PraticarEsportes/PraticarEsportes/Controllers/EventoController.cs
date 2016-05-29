@@ -20,6 +20,11 @@ namespace PraticarEsportes.Controllers
         [HttpPost]
         public ActionResult Pesquisa (FormCollection fc, string searchString)
         {
+            Pessoa usuario = (Pessoa)Funcoes.GetUsuario();
+            Pessoa pessoa2 = db.Pessoas.Include("EventosCurtidos").Where(p => p.PessoaId == usuario.PessoaId).FirstOrDefault<Pessoa>();
+
+            ViewBag.EventosCurtidos = pessoa2.EventosCurtidos;
+
             if (!String.IsNullOrEmpty(searchString))
             {
                 var evento = db.Evento.Include(c => c.Categoria).Include(d => d.Categoria.Evento).Where(c => c.Nome.Contains(searchString) || c.Descricao.Contains(searchString)).OrderBy(o => o.Nome);
@@ -55,6 +60,11 @@ namespace PraticarEsportes.Controllers
         // GET: Evento
         public ActionResult Index()
         {
+            Pessoa usuario = (Pessoa)Funcoes.GetUsuario();
+            Pessoa pessoa2 = db.Pessoas.Include("EventosCurtidos").Where(p => p.PessoaId == usuario.PessoaId).FirstOrDefault<Pessoa>();
+
+            ViewBag.EventosCurtidos = pessoa2.EventosCurtidos;
+
             var evento = db.Evento.Include(e => e.Categoria).Include(e => e.Local);
             return View(evento.ToList());
         }
@@ -216,6 +226,39 @@ namespace PraticarEsportes.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult Like(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("Index", "Evento");
+            }
+            Pessoa usuario = (Pessoa)Funcoes.GetUsuario();
+            Pessoa pessoa2 = db.Pessoas.Include("EventosCurtidos").Where(p => p.PessoaId == usuario.PessoaId).FirstOrDefault<Pessoa>();
+
+
+            Evento curtir =db.Evento.Find(id);
+
+            bool segue = false;
+            if (pessoa2.EventosCurtidos != null)
+            {
+                foreach (Evento p1 in pessoa2.EventosCurtidos)
+                {
+                    if (p1.ID == id)
+                    {
+                        segue = true;
+                        break;
+                    }
+                }
+            }
+            if (!segue)
+            {
+                pessoa2.EventosCurtidos.Add(curtir);
+                db.Entry(pessoa2).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index", "Evento");
         }
     }
 }
