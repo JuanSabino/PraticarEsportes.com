@@ -56,8 +56,9 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Categoria.Nome)
-        </td>
+
+            <a href="@this.Url.Action("Details", "Evento", new { id = @Html.DisplayFor(modelItem => item.Local.ID) })  "> @Html.DisplayFor(modelItem => item.Categoria.Nome).ToString()</a>
+        </td> 
         <td>
             @Html.DisplayFor(modelItem => item.Local.Nome)
         </td>
