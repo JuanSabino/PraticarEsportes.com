@@ -41,5 +41,8 @@ namespace PraticarEsportes.Models
         public Boolean Habilitado { get; set; }
 
         public virtual ICollection<Evento> Evento { get; set; }
+
+        //curtidas
+        public virtual ICollection<Pessoa> Curtidas { get; set; }
     }
 }

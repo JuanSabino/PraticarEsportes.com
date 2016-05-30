@@ -18,6 +18,11 @@ namespace PraticarEsportes.Controllers
         // GET: Estabelecimentos
         public ActionResult Index()
         {
+            Pessoa usuario = (Pessoa)Funcoes.GetUsuario();
+            Pessoa pessoa2 = db.Pessoas.Include("Seguindo").Where(p => p.PessoaId == usuario.PessoaId).FirstOrDefault<Pessoa>();
+
+            ViewBag.Seguindo = pessoa2.Seguindo;
+
             return View(db.Pessoas.OfType<Estabelecimento>().ToList());
         }
 
@@ -124,5 +129,40 @@ namespace PraticarEsportes.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+        public ActionResult Follow(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("Index", "Estabelecimentos");
+            }
+            Pessoa usuario = (Pessoa)Funcoes.GetUsuario();
+            Pessoa pessoa2 = db.Pessoas.Include("Seguindo").Where(p => p.PessoaId == usuario.PessoaId).FirstOrDefault<Pessoa>();
+
+
+            Estabelecimento seguir = (Estabelecimento)db.Pessoas.Find(id);
+
+            bool segue = false;
+            if (pessoa2.Seguindo != null)
+            {
+                foreach (Pessoa p1 in pessoa2.Seguindo)
+                {
+                    if (p1.PessoaId == id)
+                    {
+                        segue = true;
+                        break;
+                    }
+                }
+            }
+            if (!segue)
+            {
+                pessoa2.Seguindo.Add(seguir);
+                db.Entry(pessoa2).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index", "Estabelecimentos");
+        }
+
     }
 }

@@ -3,13 +3,28 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <meta property="fb:app_id" content="1728002444152079" />
     <title>@ViewBag.Title</title>
-
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-social.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 </head>
 <body>
+    <div id="fb-root"></div>
+    <div id="fb-root"></div>
+    <script>
+        (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.6&appId=1728002444152079";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
     @{
         Object Usuario = PraticarEsportes.Repositories.Funcoes.GetUsuario();
         if (Usuario == null)

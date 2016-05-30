@@ -96,9 +96,37 @@
             @Html.DisplayFor(modelItem => item.DataAbertura)
         </td>
         <td>
-            @*@Html.ActionLink("Editar", "Edit", new { id=item.PessoaId }) |*@
-            @*@Html.ActionLink("Details", "Details", new { id=item.PessoaId }) |*@
-            @*@Html.ActionLink("Deletar", "Delete", new { id=item.PessoaId })*@
+            @{
+                if (item.PessoaId.ToString() != Session["Id"].ToString())
+                {
+                    var segue = false;
+                    if (ViewBag.Seguindo != null)
+                    {
+                        foreach (var p1 in ViewBag.Seguindo)
+                        {
+                            if (p1.PessoaId == item.PessoaId)
+                            {
+                                segue = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (segue)
+                    {
+                        <a href="/Estabelecimentos/Index">
+                            <img src="~/Content/img/user_del.png" title="Deixar de seguir Estabelecimento" />
+                        </a>
+                    }
+                    else
+                    {
+                        <a href="/Estabelecimentos/Follow/@item.PessoaId">
+                            <img src="~/Content/img/user_add.png" title="Seguir Estabelecimento" />
+                        </a>
+                    }
+
+                }
+            }
+
         </td>
     </tr>
 }

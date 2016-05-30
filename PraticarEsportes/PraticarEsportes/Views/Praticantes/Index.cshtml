@@ -55,6 +55,7 @@
             @Html.DisplayNameFor(model => model.Pontos)
         </th>
         <th></th>
+        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -90,7 +91,15 @@
             @Html.DisplayFor(modelItem => item.CPF)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DataNascimento)
+            @{ 
+                var data = item.DataNascimento.ToString();
+                if (data != "01/01/0001 00:00:00")
+                {
+                    @data.Substring(0,10);
+                }
+            }
+
+            
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Profissao)
@@ -104,7 +113,44 @@
         <td>
             @*@Html.ActionLink("Edit", "Edit", new { id=item.PessoaId }) |*@
             @*@Html.ActionLink("Details", "Details", new { id=item.PessoaId }) |*@
-            @Html.ActionLink("Denunciar Usuario", "Denuncia", new { id=item.PessoaId })
+            @if (item.PessoaId.ToString() != Session["Id"].ToString())
+            {
+                @Html.ActionLink("Denunciar Usuario", "Denuncia", new { id = item.PessoaId })
+            }
+           
+        </td>
+        <td>
+            @{
+                if (item.PessoaId.ToString() != Session["Id"].ToString())
+                {
+                    var segue = false;
+                    if (ViewBag.Seguindo != null)
+                    {
+                        foreach (var p1 in ViewBag.Seguindo)
+                        {
+                            if (p1.PessoaId == item.PessoaId)
+                            {
+                                segue = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (segue)
+                    {
+                        <a href="/Praticantes/Index">
+                            <img src="~/Content/img/user_del.png" title="Deixar de seguir Praticante" />
+                        </a>
+                    }
+                    else
+                    {
+                        <a href="/Praticantes/Follow/@item.PessoaId">
+                            <img src="~/Content/img/user_add.png" title="Seguir Praticante" />
+                        </a>
+                    }
+
+                }
+            }
+            
         </td>
     </tr>
 }

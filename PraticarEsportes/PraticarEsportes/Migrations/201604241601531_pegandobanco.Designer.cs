@@ -7,13 +7,13 @@ namespace PraticarEsportes.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class final : IMigrationMetadata
+    public sealed partial class pegandobanco : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(final));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(pegandobanco));
         
         string IMigrationMetadata.Id
         {
-            get { return "201605250048320_final"; }
+            get { return "201604241601531_pegandobanco"; }
         }
         
         string IMigrationMetadata.Source
