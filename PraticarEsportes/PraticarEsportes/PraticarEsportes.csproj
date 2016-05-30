@@ -161,17 +161,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201605232315597_banco.cs" />
-    <Compile Include="Migrations\201605232315597_banco.Designer.cs">
-      <DependentUpon>201605232315597_banco.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605242251553_cupomEvento.cs" />
-    <Compile Include="Migrations\201605242251553_cupomEvento.Designer.cs">
-      <DependentUpon>201605242251553_cupomEvento.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605242315289_cupomEvento2.cs" />
-    <Compile Include="Migrations\201605242315289_cupomEvento2.Designer.cs">
-      <DependentUpon>201605242315289_cupomEvento2.cs</DependentUpon>
+    <Compile Include="Migrations\201605250048320_final.cs" />
+    <Compile Include="Migrations\201605250048320_final.Designer.cs">
+      <DependentUpon>201605250048320_final.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
@@ -237,6 +229,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="Properties\PublishProfiles\Gui.pubxml" />
     <None Include="Properties\PublishProfiles\teste.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -340,14 +333,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201605232315597_banco.resx">
-      <DependentUpon>201605232315597_banco.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605242251553_cupomEvento.resx">
-      <DependentUpon>201605242251553_cupomEvento.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605242315289_cupomEvento2.resx">
-      <DependentUpon>201605242315289_cupomEvento2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201605250048320_final.resx">
+      <DependentUpon>201605250048320_final.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
