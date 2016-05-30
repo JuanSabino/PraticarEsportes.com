@@ -11,34 +11,66 @@ namespace PraticarEsportes.Repositories
 {
     public class Funcoes
     {
-        public static bool AutenticarUsuario(string login, string senha)
+        public static bool AutenticarUsuario(string login, string senha, bool facebook = false)
         {
             Context _db = new Context();
-            var query = (from u in _db.Pessoas
-                         where u.Email == login &&
-                         u.Senha == senha
-                         select u).SingleOrDefault();
-            if (query == null)
+            if (facebook)
             {
-                return false;
-            }
-            if (query.Habilitado == false)
-            {
-                return false;
-            }
-            System.Web.Security.FormsAuthentication.SetAuthCookie(query.Email, false);
-            HttpContext.Current.Session["Usuario"] = query.Email;
-            HttpContext.Current.Session["Id"] = query.PessoaId;
-            if (query.GetType().Name == "Estabelecimento")
-            {
-                HttpContext.Current.Session["Tipo"] = 1;
-                HttpContext.Current.Session["Nome"] = ( (Estabelecimento) query).NomeFantasia;
+                var query = (from u in _db.Pessoas
+                             where u.Email == login 
+                             select u).SingleOrDefault();
+                if (query == null)
+                {
+                    return false;
+                }
+                if (query.Habilitado == false)
+                {
+                    return false;
+                }
+                System.Web.Security.FormsAuthentication.SetAuthCookie(query.Email, false);
+                HttpContext.Current.Session["Usuario"] = query.Email;
+                HttpContext.Current.Session["Id"] = query.PessoaId;
+                if (query.GetType().Name == "Estabelecimento")
+                {
+                    HttpContext.Current.Session["Tipo"] = 1;
+                    HttpContext.Current.Session["Nome"] = ((Estabelecimento)query).NomeFantasia;
+                }
+                else
+                {
+                    HttpContext.Current.Session["Tipo"] = 2;
+                    HttpContext.Current.Session["Nome"] = ((Praticante)query).Nome;
+                }
             }
             else
             {
-                HttpContext.Current.Session["Tipo"] = 2;
-                HttpContext.Current.Session["Nome"] = ( (Praticante) query).Nome;
+                var query = (from u in _db.Pessoas
+                             where u.Email == login &&
+                             u.Senha == senha
+                             select u).SingleOrDefault();
+                if (query == null)
+                {
+                    return false;
+                }
+                if (query.Habilitado == false)
+                {
+                    return false;
+                }
+                System.Web.Security.FormsAuthentication.SetAuthCookie(query.Email, false);
+                HttpContext.Current.Session["Usuario"] = query.Email;
+                HttpContext.Current.Session["Id"] = query.PessoaId;
+                if (query.GetType().Name == "Estabelecimento")
+                {
+                    HttpContext.Current.Session["Tipo"] = 1;
+                    HttpContext.Current.Session["Nome"] = ((Estabelecimento)query).NomeFantasia;
+                }
+                else
+                {
+                    HttpContext.Current.Session["Tipo"] = 2;
+                    HttpContext.Current.Session["Nome"] = ((Praticante)query).Nome;
+                }
             }
+            
+           
             
             return true;
         }

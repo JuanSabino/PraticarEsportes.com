@@ -121,6 +121,7 @@
                     <h4 class="modal-title">Login</h4>
                 </div>
                 <div class="modal-body">
+                    <p><a href="@ViewBag.UrlFb" class="btn btn-primary btn-large">Login com Facebook</a></p>
                     @using (Html.BeginForm()){
                         @Html.AntiForgeryToken()
                         <div class="form-horizontal">
