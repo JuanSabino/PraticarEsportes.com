@@ -2,6 +2,26 @@
 @{
     Layout = "~/Views/Shared/_LayoutLogin.cshtml";
 
+    if (Session["Cadastro"] != null)
+    {
+        if (Session["Cadastro"].ToString() == "1")
+        {
+            <script type="text/javascript">
+                alert("Cadastrado com sucesso!");
+                sessionStorage.clear();
+            </script>
+            Session["Cadastro"] = 0;
+
+        }
+        else if (Session["Cadastro"].ToString() == "2")
+        {
+            <script type="text/javascript">
+                alert("Cadastrado com sucesso! Aguarde a administração liberar o acesso.");
+            </script>
+            Session["Cadastro"] = 0;
+        }
+    }
+
     <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
