@@ -32,7 +32,7 @@ namespace PraticarEsportes.Migrations
             }
 
             IList<Local> locais = new List<Local>();
-            locais.Add(new Local() { Nome = "Clube Literário", Descricao = "Teste", Latitude = -22.670000076293945, Longitude = -45.0099983215332, Habilitado = true });
+            locais.Add(new Local() { Nome = "Clube Literário", Descricao = "Teste", Latitude = -22.668317463969, Longitude = -45.005881901931, Habilitado = true });
             locais.Add(new Local() { Nome = "Estádio Municipal", Descricao = "Teste", Latitude = -22.662254511777707, Longitude = -45.013641715049744, Habilitado = true });
             locais.Add(new Local() { Nome = "Cachoeira Futebol Clube", Descricao = "Teste", Latitude = -22.666729458183095, Longitude = -45.009371638298035, Habilitado = true });
             locais.Add(new Local() { Nome = "Parque Ecológico", Descricao = "Teste", Latitude = -22.66237331755043, Longitude = -45.01147717237472, Habilitado = true });

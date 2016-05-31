@@ -156,6 +156,7 @@
     <Compile Include="Controllers\CuponsController.cs" />
     <Compile Include="Controllers\EstabelecimentosController.cs" />
     <Compile Include="Controllers\EventoController.cs" />
+    <Compile Include="Controllers\FacebookController.cs" />
     <Compile Include="Controllers\HistoricosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocalController.cs" />
@@ -242,7 +243,6 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
-    <Content Include="ClassDiagram1.cd" />
     <None Include="Properties\PublishProfiles\teste.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -340,6 +340,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Facebook\" />
     <Folder Include="Views\Newsletter\" />
   </ItemGroup>
   <ItemGroup>
