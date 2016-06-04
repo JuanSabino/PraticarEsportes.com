@@ -5,6 +5,20 @@
     ViewBag.Title = "Details";
 }
 
+
+@{ 
+    if (Session["Checkin"]!= null)
+    {
+        if (Session["Checkin"].ToString() == "1")
+        {
+            Session["Checkin"] = 0;
+            <script>
+                alert("Checkin realizado com sucesso!");
+            </script>
+        }
+    }
+}
+
 <h2>Details</h2>
 
 <div>
@@ -91,6 +105,16 @@
         <i class="fa fa-facebook"></i> Compartilhar no Facebook
     </a>
 
+@if (Session["FbuserToken"] != null)
+{
+    var fullUrl = this.Url.Action("Checkin", "Facebook", new { id = Model.ID }, this.Request.Url.Scheme);
+
+    <a class="btn btn-block btn-xs btn-social btn-facebook" style="width:500px;" href="@fullUrl">
+        <i class="fa fa-facebook"></i> Fazer Checkin
+    </a>
+
+}
+
 
 <p>
     @{
@@ -118,13 +142,15 @@
 
     <div id="fb-root"></div>
     <script>
-        (function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=1728002444152079";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
+            (function(d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) return;
+              js = d.createElement(s); js.id = id;
+              js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=1728002444152079";
+              fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
     </script>
     <div class="fb-comments" data-href="@Request.Url" data-numposts="5"></div>
+
+    
 </p>
