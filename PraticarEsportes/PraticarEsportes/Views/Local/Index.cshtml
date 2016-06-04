@@ -3,82 +3,86 @@
 @{
     Layout = "~/Views/Shared/FullPage.cshtml";
     ViewBag.Title = "Locais";
-    
+
 }
-    
-                  @{
-                          ViewBag.Title = "Pesquisa";
-                      }
-                      <h2></h2>
-                      @using (Html.BeginForm("Pesquisa", "Local", null, System.Web.Mvc.FormMethod.Post))
-                      {
-                          <p>
-                              Procura por Nome : @Html.TextBox("searchString")
-                              <input type="submit" value="Buscar" />
-                          </p>
-                      }
+
+@{
+    ViewBag.Title = "Pesquisa";
+}
+
+<div class="container">
+    <h2>Lista de Locais</h2>
+    @using (Html.BeginForm("Pesquisa", "Local", null, System.Web.Mvc.FormMethod.Post))
+    {
+        <p>
+            Procura por Nome : @Html.TextBox("searchString")
+            <input type="submit" value="Buscar" />
+        </p>
+    }
 
 
-<p>
-    @*@Html.ActionLink("Create New", "Create")*@
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descricao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Latitude)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Longitude)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.CEP)
-        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.Cidade)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Estado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Habilitado)
-        </th>
-        <th></th>
-    </tr>
+    <p>
+        @*@Html.ActionLink("Create New", "Create")*@
+    </p>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Descricao)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Latitude)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Longitude)
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.CEP)
+                    </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.Cidade)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Estado)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Habilitado)
+                </th>
+                <th></th>
+            </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descricao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Latitude)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Longitude)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.CEP)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.Cidade)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Estado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Habilitado)
-        </td>
-        <td>
-            @{
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descricao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Latitude)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Longitude)
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.CEP)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cidade)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Estado)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Habilitado)
+                    </td>
+                    <td>
+                        @{
 
                 var segue = false;
                 if (ViewBag.LocaisCurtidos != null)
@@ -101,15 +105,18 @@
                 else
                 {
                     <a href="/Local/Like/@item.ID">
-                        <img src="~/Content/img/like.png" width="48" height="48"  title="Curtir Local" />
+                        <img src="~/Content/img/like.png" width="48" height="48" title="Curtir Local" />
                     </a>
                 }
 
+                        }
+
+                    </td>
+
+                </tr>
             }
 
-        </td>
+        </table>
 
-    </tr>
-}
-
-</table>
+    </div>
+</div>

@@ -151,7 +151,7 @@
                 longitude = longitude.replace(/,/g, '.');
 
                 var contentPopup = "<h4>@locais.Nome</h4>";
-                contentPopup += "<a href='/Evento/Contador?id=@locais.ID' class='openModal btn btn-primary' title='@locais.Nome'>Ver Local e Eventos</a>";
+                contentPopup += "<a href='/Evento/Contador?id=@locais.ID' class='openModal btn btn-green raised' title='@locais.Nome'>Ver Local e Eventos</a>";
 
                 L.marker([latitude, longitude], { icon: estadio }).addTo(map).bindPopup(contentPopup);
             </text>

@@ -5,122 +5,123 @@
     ViewBag.Title = "Praticantes de esportes";
 }
 
-<h2>Index</h2>
+<div class="container">
 
-<p>
-    @*@Html.ActionLink("Create New", "Create")*@
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Telefone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Endereco)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CEP)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cidade)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Estado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.Senha)
-        </th>*@
-        @*<th>
-            @Html.DisplayNameFor(model => model.Habilitado)
-        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CPF)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataNascimento)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Profissao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EstadoCivil)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Pontos)
-        </th>
-        <th></th>
-        <th></th>
-    </tr>
+    <h2>Lista de Praticantes</h2>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Telefone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Endereco)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CEP)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cidade)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Estado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Senha)
-        </td>*@
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Habilitado)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CPF)
-        </td>
-        <td>
-            @{ 
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Telefone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Endereco)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CEP)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cidade)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Estado)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.Senha)
+                    </th>*@
+                @*<th>
+                        @Html.DisplayNameFor(model => model.Habilitado)
+                    </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CPF)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DataNascimento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Profissao)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EstadoCivil)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pontos)
+                </th>
+                <th></th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Telefone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Endereco)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CEP)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cidade)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Estado)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Senha)
+                        </td>*@
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Habilitado)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CPF)
+                    </td>
+                    <td>
+                        @{
                 var data = item.DataNascimento.ToString();
                 if (data != "01/01/0001 00:00:00")
                 {
-                    @data.Substring(0,10);
+                    @data.Substring(0, 10);
                 }
-            }
+                        }
 
-            
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Profissao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EstadoCivil)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Pontos)
-        </td>
-        <td>
-            @*@Html.ActionLink("Edit", "Edit", new { id=item.PessoaId }) |*@
-            @*@Html.ActionLink("Details", "Details", new { id=item.PessoaId }) |*@
-            @if (item.PessoaId.ToString() != Session["Id"].ToString())
-            {
-                @Html.ActionLink("Denunciar Usuario", "Denuncia", new { id = item.PessoaId })
-            }
-           
-        </td>
-        <td>
-            @{
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Profissao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EstadoCivil)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Pontos)
+                    </td>
+                    <td>
+                        @*@Html.ActionLink("Edit", "Edit", new { id=item.PessoaId }) |*@
+                        @*@Html.ActionLink("Details", "Details", new { id=item.PessoaId }) |*@
+                        @if (item.PessoaId.ToString() != Session["Id"].ToString())
+                        {
+                            @Html.ActionLink("Denunciar Usuario", "Denuncia", new { id = item.PessoaId })
+                        }
+
+                    </td>
+                    <td>
+                        @{
                 if (item.PessoaId.ToString() != Session["Id"].ToString())
                 {
                     var segue = false;
@@ -149,10 +150,11 @@
                     }
 
                 }
-            }
-            
-        </td>
-    </tr>
-}
+                        }
 
-</table>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

@@ -86,11 +86,10 @@
 .leaflet-top,
 .leaflet-bottom {
 	position: absolute;
-	z-index: 1000;
 	pointer-events: none;
 	}
 .leaflet-top {
-	top: 0;
+	top: 60px;
 	}
 .leaflet-right {
 	right: 0;
