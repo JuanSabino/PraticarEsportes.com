@@ -1,9 +1,14 @@
 ﻿body{
   /*font-family: 'Roboto';*/
+  padding: 0;
 }
 
 .full-width {
     width: 100%;
+}
+
+.navbar{
+    margin: 0;
 }
 
 .navbar-btn{

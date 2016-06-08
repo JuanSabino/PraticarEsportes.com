@@ -1,15 +1,13 @@
 ﻿@model IEnumerable<PraticarEsportes.Models.Evento>
 
 @{
-    Layout = "~/Views/Shared/FullPage.cshtml";
+    Layout = "~/Views/Shared/Modal.cshtml";
     ViewBag.Title = "Eventos";
     
 }                      @{
                           ViewBag.Title = "Pesquisa";
                       }
 
-<div class="container">
-    <h2>Lista de Eventos</h2>
     @using (Html.BeginForm("Pesquisa", "Evento", null, System.Web.Mvc.FormMethod.Post))
     {
         <p>
@@ -123,4 +121,3 @@
 
         </table>
     </div>
-</div>

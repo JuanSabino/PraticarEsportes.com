@@ -27,7 +27,7 @@
 
     <link rel="stylesheet" href="~/Content/Login.css" />
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
-    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">*@
+    <link rel="stylesheet" href="~/Content/bootstrap.css">
     
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
@@ -77,7 +77,7 @@
                 <img src="~/Content/img/backgroundBike.jpg" data-color="lightblue" alt="First Image">
                 <div class="carousel-caption">
                     <div class="content-caption">
-                        <h3>PRATICAR ESPORTES!</h3>
+                        <h3>PRATICAR ESPORTES</h3>
                         <img src="~/Content/img/logo.png" alt="" />
                     </div>
                 </div>
@@ -141,7 +141,10 @@
                     <h4 class="modal-title">Login</h4>
                 </div>
                 <div class="modal-body">
-                    <p><a href="@ViewBag.UrlFb" class="btn btn-primary btn-large">Login com Facebook</a></p>
+                    <div class="text-center"><a href="@ViewBag.UrlFb" class="btn btn-primary btn-large">Login com Facebook</a></div>
+
+                    <hr />
+
                     @using (Html.BeginForm()){
                         @Html.AntiForgeryToken()
                         <div class="form-horizontal">
@@ -169,11 +172,15 @@
                         </div>
                         
                         <hr />
-                        
-                        @Html.ActionLink("Esqueceu a senha?", "RecuperarSenha")<br />
-                        @Html.ActionLink("Cadastre-se", "Create", "Pessoas")
-                    }
-                </div>
+
+                        <div class="text-center">
+                            <a href="/RecuperarSenha" role="button" class="btn btn btn-danger">Esqueceu a senha?</a>
+                            <a href="/Pessoas/Create" role="button" class="btn btn btn-danger">Cadastre-se</a>
+                        </div>
+        @*@Html.ActionLink("Esqueceu a senha?", "RecuperarSenha")
+            @Html.ActionLink("Cadastre-se", "Create", "Pessoas")*@
+        }
+    </div>
                 @*<div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>*@

@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<PraticarEsportes.Models.Local>
 
 @{
-    Layout = "~/Views/Shared/FullPage.cshtml";
+    Layout = "~/Views/Shared/Modal.cshtml";
     ViewBag.Title = "Locais";
 
 }
@@ -10,8 +10,7 @@
     ViewBag.Title = "Pesquisa";
 }
 
-<div class="container">
-    <h2>Lista de Locais</h2>
+
     @using (Html.BeginForm("Pesquisa", "Local", null, System.Web.Mvc.FormMethod.Post))
     {
         <p>
@@ -24,6 +23,7 @@
     <p>
         @*@Html.ActionLink("Create New", "Create")*@
     </p>
+    <div class="form-group">
     <div class="table-responsive">
         <table class="table table-striped table-bordered">
             <tr>
@@ -58,7 +58,7 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Nome)
+                        <a href="@this.Url.Action("Details", "Local", new { id = @Html.DisplayFor(modelItem => item.ID) })">@Html.DisplayFor(modelItem => item.Nome)</a>
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Descricao)
@@ -117,6 +117,5 @@
             }
 
         </table>
-
     </div>
-</div>
+    </div>

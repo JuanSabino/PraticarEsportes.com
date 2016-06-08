@@ -5,87 +5,90 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>Local</h4>
+<div class="container">
+    <h2>Detalhes do Evento</h2>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
+    <div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Descricao)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Descricao)
-        </dd>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Nome)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Latitude)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Nome)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Latitude)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Longitude)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Descricao)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Longitude)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Latitude)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Endereco)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Latitude)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Endereco)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Longitude)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CEP)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Longitude)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.CEP)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Endereco)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Cidade)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Endereco)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Cidade)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.CEP)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Estado)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CEP)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Estado)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Cidade)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Habilitado)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Cidade)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Habilitado)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Estado)
+            </dt>
 
-    </dl>
+            <dd>
+                @Html.DisplayFor(model => model.Estado)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Habilitado)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Habilitado)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

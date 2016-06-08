@@ -18,139 +18,139 @@
         }
     }
 }
-
-<h2>Details</h2>
-
-<div>
-    <h4>Evento</h4>
+<div class="container">
+    <h2>Detalhes do Evento</h2>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Categoria.Nome)
-        </dt>
+    <div>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Categoria.Nome)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Categoria.Nome)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Categoria.Nome)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Local.Nome)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Local.Nome)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Local.Nome)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Local.Nome)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Nome)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Nome)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Descricao)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Descricao)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Descricao)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DataInicio)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.DataInicio)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DataInicio)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.DataInicio)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DataTermino)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.DataTermino)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DataTermino)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.DataTermino)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Capacidade)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Capacidade)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Capacidade)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Capacidade)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Dificuldade)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Dificuldade)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Dificuldade)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Dificuldade)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Habilitado)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Habilitado)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Habilitado)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Habilitado)
+            </dd>
 
-    </dl>
-</div>
+        </dl>
+    </div>
 
 
     <a class="btn btn-block btn-xs btn-social btn-facebook" style="width:500px;" href="https://www.facebook.com/sharer/sharer.php?u=http://praticaresportes.com/@Request.Url.Query" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Compartilhe no Facebook">
         <i class="fa fa-facebook"></i> Compartilhar no Facebook
     </a>
 
-@if (Session["FbuserToken"] != null)
-{
-    var fullUrl = this.Url.Action("Checkin", "Facebook", new { id = Model.ID }, this.Request.Url.Scheme);
+    @if (Session["FbuserToken"] != null)
+    {
+        var fullUrl = this.Url.Action("Checkin", "Facebook", new { id = Model.ID }, this.Request.Url.Scheme);
 
-    <a class="btn btn-block btn-xs btn-social btn-facebook" style="width:500px;" href="@fullUrl">
-        <i class="fa fa-facebook"></i> Fazer Checkin
-    </a>
+        <a class="btn btn-block btn-xs btn-social btn-facebook" style="width:500px;" href="@fullUrl">
+            <i class="fa fa-facebook"></i> Fazer Checkin
+        </a>
 
-}
-
-
-<p>
-    @{
-        PraticarEsportes.Models.Pessoa pessoa = (PraticarEsportes.Models.Pessoa) PraticarEsportes.Repositories.Funcoes.GetUsuario();
-
-        if (Model.PessoasConfirmadas == null)
-        {
-            @Html.ActionLink("Confirmar Presenca", "ConfirmarPresenca", new { id = Model.ID });
-        }
-        else if (Model.PessoasConfirmadas.Contains(pessoa))
-        {
-            @Html.ActionLink("Cancelar Presenca", "CancelarPresenca", new { id = Model.ID });
-        }
-        else
-        {
-            @Html.ActionLink("Confirmar Presenca", "ConfirmarPresenca", new { id = Model.ID });
-        }
-
-        if (Model.PessoaId == pessoa.PessoaId) {
-            Html.ActionLink("Editar", "Edit", new { id = Model.ID });
-        }
     }
-    |
-    @Html.ActionLink("Voltar", "Index")
 
-    <div id="fb-root"></div>
-    <script>
-            (function(d, s, id) {
-              var js, fjs = d.getElementsByTagName(s)[0];
-              if (d.getElementById(id)) return;
-              js = d.createElement(s); js.id = id;
-              js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=1728002444152079";
-              fjs.parentNode.insertBefore(js, fjs);
+
+    <p>
+        @{
+            PraticarEsportes.Models.Pessoa pessoa = (PraticarEsportes.Models.Pessoa)PraticarEsportes.Repositories.Funcoes.GetUsuario();
+
+            if (Model.PessoasConfirmadas == null)
+            {
+                @Html.ActionLink("Confirmar Presenca", "ConfirmarPresenca", new { id = Model.ID });
+            }
+            else if (Model.PessoasConfirmadas.Contains(pessoa))
+            {
+                @Html.ActionLink("Cancelar Presenca", "CancelarPresenca", new { id = Model.ID });
+            }
+            else
+            {
+                @Html.ActionLink("Confirmar Presenca", "ConfirmarPresenca", new { id = Model.ID });
+            }
+
+            if (Model.PessoaId == pessoa.PessoaId)
+            {
+                Html.ActionLink("Editar", "Edit", new { id = Model.ID });
+            }
+        }
+        |
+        @Html.ActionLink("Voltar", "Index")
+
+        <div id="fb-root"></div>
+        <script>
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=1728002444152079";
+                fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
-    </script>
-    <div class="fb-comments" data-href="@Request.Url" data-numposts="5"></div>
+        </script>
+        <div class="fb-comments" data-href="@Request.Url" data-numposts="5"></div>
 
-    
-</p>
+
+    </p>
+</div>
