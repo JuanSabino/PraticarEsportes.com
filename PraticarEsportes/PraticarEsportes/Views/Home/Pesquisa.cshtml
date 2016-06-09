@@ -4,28 +4,31 @@
     Layout = "~/Views/Shared/Modal.cshtml";
 }
 
-<script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="~/Content/bootstrap.css">
+
+<style>
+    .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus{
+        background-color: #14b943;
+        box-shadow: 0 3px 0 0 #188336;
+    }
+</style>
 
 <div id="exTab1" class="container-fluid">
     <ul id="myTabs" class="nav nav-pills">
         <li class="active">
-            <a href="#1a" data-url="/Local/Index">Locais</a>
+            <a data-target="#locais" data-url="/Local/Index" data-toggle="tab">Locais</a>
         </li>
         <li>
-            <a href="#2a" data-url="/Evento/Index">Eventos</a>
+            <a data-target="#eventos" data-url="/Evento/Index" data-toggle="tab">Eventos</a>
         </li>
     </ul>
 
     <div class="tab-content clearfix">
         <hr />
 
-        <div class="tab-pane active" id="1a">
+        <div class="tab-pane active" id="locais">
         </div>
-        <div class="tab-pane" id="2a">
+        <div class="tab-pane" id="eventos">
         </div>
     </div>
 </div>
@@ -34,18 +37,20 @@
     $('#myTabs a').click(function (e) {
         e.preventDefault();
 
-        var url = $(this).attr("data-url");
-        var href = this.hash;
-        var pane = $(this);
+        var $this = $(this),
+        loadurl = $this.attr('data-url'),
+        targ = $this.attr('data-target');
 
-        // ajax load from data-url
-        $(href).load(url, function (result) {
-            pane.tab('show');
+        $.get(loadurl, function (data) {
+            $(targ).html(data);
         });
+
+        $this.tab('show');
+        return false;
     });
 
     // load first tab content
-    $('#1a').load($('.active a').attr("data-url"), function (result) {
+    $('#locais').load($('.active a').attr("data-url"), function (result) {
         $('.active a').tab('show');
     });
 </script>

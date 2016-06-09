@@ -8,6 +8,14 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/Scripts/jquery-1.10.2.min.js")
+    @Scripts.Render("~/Scripts/leaflet-0.7.3.js")
+    @Scripts.Render("~/Scripts/L.Control.Locate.min.js")
+    @Scripts.Render("~/bundles/bootstrap")
+    <link rel="stylesheet" href="~/Content/leaflet.css" />
+    <link rel="stylesheet" href="~/Content/mapa.css" />
+    <link rel='stylesheet' href='~/Content/font-awsome.min.css' />
+    <link rel='stylesheet' href='~/Content/L.Control.Locate.mapbox.css' />
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -94,9 +102,6 @@
     </div>
     
     @RenderBody()   
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
 </html>

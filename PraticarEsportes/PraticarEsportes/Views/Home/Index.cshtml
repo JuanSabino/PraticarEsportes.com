@@ -5,35 +5,6 @@
 
 }
 
-@Scripts.Render("~/Scripts/jquery-1.10.2.min.js")
-@Scripts.Render("~/Scripts/leaflet-0.7.3.js")
-<link rel="stylesheet" href="~/Content/leaflet.css" />
-<link rel="stylesheet" href="~/Content/mapa.css" />
-<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/css/font-awesome.min.css' rel='stylesheet' />
-<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.mapbox.css' rel='stylesheet' />
-
-<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.min.js'></script>
-
-<style>
-    .pesquisaevento {
-        position: absolute;
-        top: 150px;
-        right: 60px;
-        padding: 10px;
-        background: rgba(255, 255, 255, 0.75);
-        border-radius: 3px;
-    }
-
-    .pesquisalocal {
-        position: absolute;
-        top: 60px;
-        right: 60px;
-        padding: 10px;
-        background: rgba(255, 255, 255, 0.75);
-        border-radius: 3px;
-    }
-</style>
-
 <div id="map"></div>
 
 @{
@@ -61,7 +32,7 @@
 
 <div class="pesquisaevento">
     <a href="/Home/Pesquisa" class="openModal" title="Pesquisar">
-        <img src="~/Content/img/pes.png" alt="" />
+        <img src="~/Content/img/searchIcon.png" alt="" />
     </a>
 </div>
 
@@ -168,7 +139,7 @@
     }
 
     function onLocationError(e) {
-        alert(e.message);
+        //alert(e.message);
     }
 
     map.on('locationerror', onLocationError);

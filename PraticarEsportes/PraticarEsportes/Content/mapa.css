@@ -43,3 +43,21 @@ body, html {
 .leaflet-control-locate a {
     padding: 0;
 }
+
+.pesquisaevento {
+        position: absolute;
+        top: 80px;
+        right: 5px;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.75);
+        border-radius: 3px;
+    }
+
+    .pesquisalocal {
+        position: absolute;
+        top: 60px;
+        right: 60px;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.75);
+        border-radius: 3px;
+    }
