@@ -77,7 +77,13 @@ namespace PraticarEsportes.Controllers
             //cria hash
             string hash = Funcoes.Hash(query.Email + DateTime.Now.ToString());
             System.Web.HttpContext.Current.Session["RecuperarSenha"] = hash;
-
+            var context = HttpContext;
+            var appPath = string.Format("{0}://{1}{2}",
+                                    context.Request.Url.Scheme,
+                                    context.Request.Url.Host,
+                                    context.Request.Url.Port == 80
+                                        ? string.Empty
+                                        : ":" + context.Request.Url.Port);
 
             GmailEmailService gmail = new GmailEmailService();
             EmailMessage msg = new EmailMessage();
@@ -85,7 +91,7 @@ namespace PraticarEsportes.Controllers
             msg.Body += "Para voltar a acessar a sua conta do Praticar Esportes, você precisa criar uma nova senha. <br />";
             msg.Body += "É fácil:<br />";
             msg.Body += "<br />Clique no link abaixo ou copie e cole na barra de enderecos do seu navegador:<br />";
-            msg.Body += "<a href='http://localhost:61063/Publico/RecuperarSenha2?email=" + query.Email +  "&uid=" + hash + "'>http://localhost:61063/Publico/RecuperarSenha2?email=" + query.Email + "&uid=" + hash + "</a>";
+            msg.Body += "<a href='" + appPath  + "/Publico/RecuperarSenha2?email=" + query.Email +  "&uid=" + hash + "'>" + appPath + "/Publico/RecuperarSenha2?email=" + query.Email + "&uid=" + hash + "</a>";
             msg.isHtml = true;
             msg.Subject = "Recuperacao de senha";
             msg.ToEmail = query.Email;
@@ -175,10 +181,18 @@ namespace PraticarEsportes.Controllers
 
             if (oauthResult.IsSuccess)
             {
+                var context = HttpContext;
+                var appPath = string.Format("{0}://{1}{2}",
+                                        context.Request.Url.Scheme,
+                                        context.Request.Url.Host,
+                                        context.Request.Url.Port == 80
+                                            ? string.Empty
+                                            : ":" + context.Request.Url.Port);
+
                 //Pega o Access Token "permanente"
                 dynamic parameters = new ExpandoObject();
                 parameters.client_id = "1728002444152079";
-                parameters.redirect_uri = "http://localhost:61063/publico/retornofb";
+                parameters.redirect_uri = appPath + "/publico/retornofb";
                 parameters.client_secret = "9a5728d23d39d3c9f45e53682d07526a";
                 parameters.code = oauthResult.Code;
 
@@ -229,7 +243,15 @@ namespace PraticarEsportes.Controllers
         {
             dynamic parameters = new ExpandoObject();
             parameters.client_id = "1728002444152079";
-            parameters.redirect_uri = "http://localhost:61063/publico/retornofb";
+            var context = HttpContext;
+            var appPath = string.Format("{0}://{1}{2}",
+                                    context.Request.Url.Scheme,
+                                    context.Request.Url.Host,
+                                    context.Request.Url.Port == 80
+                                        ? string.Empty
+                                        : ":" + context.Request.Url.Port);
+
+            parameters.redirect_uri = appPath + "/publico/retornofb";
             parameters.response_type = "code";
             parameters.display = "page";
 
