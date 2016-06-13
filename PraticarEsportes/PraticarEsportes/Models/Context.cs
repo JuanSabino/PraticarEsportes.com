@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Web;
+
 namespace PraticarEsportes.Models
 {
     public class Context : DbContext

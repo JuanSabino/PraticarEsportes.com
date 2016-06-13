@@ -11,7 +11,7 @@ namespace PraticarEsportes.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(PraticarEsportes.Models.Context context)

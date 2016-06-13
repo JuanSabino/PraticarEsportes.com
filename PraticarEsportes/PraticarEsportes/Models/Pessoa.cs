@@ -16,6 +16,7 @@ namespace PraticarEsportes.Models
         public string Cidade { get; set; }
         public string Estado { get; set; }
         public string Email { get; set; }
+        [DataType(DataType.Password)]
         public string Senha { get; set; }
         public string ConfirmarSenha { get; set; }
         public bool Habilitado { get; set; }
