@@ -20,17 +20,21 @@ namespace PraticarEsportes.Controllers
         {
             ViewBag.UrlFb = GetFacebookLoginUrl();
             ViewBag.Categoria = db.Categoria.ToList();
+            Session["Logar"] = null;
             return View();
         }
 
         [HttpPost]
         public ActionResult Logar([Bind(Include = "Email, Senha")] Pessoa pessoa,string email, string senha)
         {
+            ViewBag.UrlFb = GetFacebookLoginUrl();
+
             if (ModelState.IsValid)
             {
                 if (Funcoes.AutenticarUsuario(email, senha) == false)
                 {
                     ViewBag.Error = "Nome de usuário e/ou senha inválida";
+                    Session["Logar"] = "1";
                     return View();
                 }
                 return RedirectToAction("Index", "Home");

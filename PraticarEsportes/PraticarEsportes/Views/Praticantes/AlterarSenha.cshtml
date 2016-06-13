@@ -1,47 +1,49 @@
 ﻿@model PraticarEsportes.Models.Praticante
 @{
-    ViewBag.Title = "AlterarSenha";
+    Layout = "~/Views/Shared/FullPage.cshtml";
+    ViewBag.Title = "Alterar Senha";
 }
 
-<h2>AlterarSenha</h2>
+<div class="container">
+    <h2>Alterar Senha</h2>
 
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            <hr />
+            <h3 class="text-center">@ViewBag.Error</h3>
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    <div class="form-horizontal">
-        <hr />
-        <h3 class="text-center">@ViewBag.Error</h3>
-
-        <div class="form-group">
-            <label class="control-label col-md-2">
-                Senha atual
-            </label>
-            <div class="col-md-10">
-                <input type="password" name="SenhaAtual" id="SenhaAtual" class="form-control" />
+            <div class="form-group">
+                <label class="control-label col-md-2">
+                    Senha atual
+                </label>
+                <div class="col-md-10">
+                    <input type="password" name="SenhaAtual" id="SenhaAtual" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">
+                    Nova senha
+                </label>
+                <div class="col-md-10">
+                    <input type="password" name="NovaSenha1" id="NovaSenha1" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">
+                    Confirme a nova senha
+                </label>
+                <div class="col-md-10">
+                    <input type="password" name="NovaSenha2" id="NovaSenha2" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Alterar" class="btn btn-default" />
+                </div>
             </div>
         </div>
-        <div class="form-group">
-            <label class="control-label col-md-2">
-                Nova senha
-            </label>
-            <div class="col-md-10">
-                <input type="password" name="NovaSenha1" id="NovaSenha1" class="form-control" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-md-2">
-                Confirme a nova senha
-            </label>
-            <div class="col-md-10">
-                <input type="password" name="NovaSenha2" id="NovaSenha2" class="form-control" />
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Alterar" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-    @Html.ActionLink("Voltar", "Details/" + Model.PessoaId)
-}
+        @Html.ActionLink("Voltar", "Details/" + Model.PessoaId)
+    }
+</div>

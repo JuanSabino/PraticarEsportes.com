@@ -2,33 +2,46 @@
 @{
     Layout = "~/Views/Shared/_LayoutLogin.cshtml";
 
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    if (Session["Logar"] != null)
+    {
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#myModal').modal('show');
+                sessionStorage.clear();
+            });
+        </script>
+    }
+
     if (Session["Cadastro"] != null)
     {
         if (Session["Cadastro"].ToString() == "1")
         {
             <script type="text/javascript">
-                alert("Cadastrado com sucesso!");
-                sessionStorage.clear();
+                $(document).ready(function () {
+                    $('#myModal').modal('show');
+                    sessionStorage.clear();
+                });
+                    
             </script>
-            Session["Cadastro"] = 0;
-
         }
         else if (Session["Cadastro"].ToString() == "2")
         {
             <script type="text/javascript">
-                alert("Cadastrado com sucesso! Aguarde a administração liberar o acesso.");
+                $(document).ready(function () {
+                    $('#myModal').modal('show');
+                    sessionStorage.clear();
+                });
             </script>
-            Session["Cadastro"] = 0;
         }
     }
-
-    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="~/Content/Login.css" />
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="~/Content/bootstrap.css">
-    
+
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -141,11 +154,28 @@
                     <h4 class="modal-title">Login</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="text-center"><a href="@ViewBag.UrlFb" class="btn btn-primary btn-large">Login com Facebook</a></div>
+                    @{
+                        if (Session["Cadastro"] != null)
+                        {
+                            if (Session["Cadastro"].ToString() == "1"){
+                                @Html.Raw("<h3 class='text-center'>Cadastrado com sucesso!</h3><hr />");
+                                Session["Cadastro"] = 0;
+                            }
+                            else if (Session["Cadastro"].ToString() == "2"){
+                                @Html.Raw("<h3 class='text-center'>Cadastrado com sucesso! Aguarde a administração liberar o acesso.</h3><hr />");
+                                Session["Cadastro"] = 0;
+                            }
+                        }
+                    }
+
+                    <div class="text-center">
+                        <a href="@ViewBag.UrlFb" class="btn btn-primary btn-large">Login com Facebook</a>
+                    </div>
 
                     <hr />
 
-                    @using (Html.BeginForm()){
+                    @using (Html.BeginForm())
+                    {
                         @Html.AntiForgeryToken()
                         <div class="form-horizontal">
                             <h3 class="text-center">@ViewBag.Error</h3>
@@ -160,7 +190,7 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Senha, new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.Senha, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.PasswordFor(model => model.Senha, new { @class = "form-control" })
                                     @Html.ValidationMessageFor(model => model.Senha)
                                 </div>
                             </div>
@@ -170,24 +200,24 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <hr />
 
                         <div class="text-center">
                             <a href="/RecuperarSenha" role="button" class="btn btn btn-danger">Esqueceu a senha?</a>
                             <a href="/Pessoas/Create" role="button" class="btn btn btn-danger">Cadastre-se</a>
                         </div>
-        @*@Html.ActionLink("Esqueceu a senha?", "RecuperarSenha")
-            @Html.ActionLink("Cadastre-se", "Create", "Pessoas")*@
-        }
-    </div>
+                        @*@Html.ActionLink("Esqueceu a senha?", "RecuperarSenha")
+                            @Html.ActionLink("Cadastre-se", "Create", "Pessoas")*@
+                    }
+                </div>
                 @*<div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>*@
             </div>
         </div>
     </div>
-        
+
     <script>
         $('.carousel').carousel({
             interval: 10000,
@@ -225,96 +255,96 @@
 
     @*ViewBag.Title = "Login";
 
-    if (Session["Cadastro"] != null)
-    {
-        if (Session["Cadastro"].ToString() == "1")
-        {
-            <script type="text/javascript">
-                alert("Cadastrado com sucesso!");
-                sessionStorage.clear();
-            </script>
-            Session["Cadastro"] = 0;
-            
-        }
-        else if (Session["Cadastro"].ToString() == "2")
-        {
-            <script type="text/javascript">
-            alert("Cadastrado com sucesso! Aguarde a administração liberar o acesso.");
-            </script>
-            Session["Cadastro"] = 0;
-        }
-    }
+            if (Session["Cadastro"] != null)
+            {
+                if (Session["Cadastro"].ToString() == "1")
+                {
+                    <script type="text/javascript">
+                        alert("Cadastrado com sucesso!");
+                        sessionStorage.clear();
+                    </script>
+                    Session["Cadastro"] = 0;
 
-}
+                }
+                else if (Session["Cadastro"].ToString() == "2")
+                {
+                    <script type="text/javascript">
+                    alert("Cadastrado com sucesso! Aguarde a administração liberar o acesso.");
+                    </script>
+                    Session["Cadastro"] = 0;
+                }
+            }
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    <br /><br />
-    <div class="form-horizontal">
+        }
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <br /><br />
+            <div class="form-horizontal">
+                <hr />
+                <h3 class="text-center">@ViewBag.Error</h3>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Email)
+                        @Html.ValidationMessageFor(model => model.Email)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Senha, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Senha)
+                        @Html.ValidationMessageFor(model => model.Senha)
+                    </div>
+                </div>
+                @*<div class="form-group">
+                    <label class="control-label col-md-2">
+                        Email
+                    </label>
+                    <div>
+                        <div class="col-md-10 ">
+                            <input type="text" name="email" id="email" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">
+                        Senha
+                    </label>
+                    <div class="col-md-10">
+                        <input type="password" name="senha" id="senha" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Entrar" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+            @Html.ActionLink("Esqueceu a senha?", "RecuperarSenha")<br />
+            @Html.ActionLink("Cadastre-se", "Create", "Pessoas")
+        }
         <hr />
-        <h3 class="text-center">@ViewBag.Error</h3>
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Email)
-                @Html.ValidationMessageFor(model => model.Email)
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Senha, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Senha)
-                @Html.ValidationMessageFor(model => model.Senha)
-            </div>
-        </div>
-        @*<div class="form-group">
-            <label class="control-label col-md-2">
-                Email
-            </label>
+        @using (Html.BeginForm("Newsletter", "Publico", FormMethod.Post, new { }))
+        {
+            <br /><br />
+            <h3 class="text-center">Cadastre seu e-mail para receber nossa newsletter:</h3>
             <div>
-                <div class="col-md-10 ">
-                    <input type="text" name="email" id="email" class="form-control" />
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Email)
+                            @Html.ValidationMessageFor(model => model.Email)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Entrar" class="btn btn-default" />
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-md-2">
-                Senha
-            </label>
-            <div class="col-md-10">
-                <input type="password" name="senha" id="senha" class="form-control" />
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Entrar" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-    @Html.ActionLink("Esqueceu a senha?", "RecuperarSenha")<br />
-    @Html.ActionLink("Cadastre-se", "Create", "Pessoas")
+            </div>*@
 }
-<hr />
-@using (Html.BeginForm("Newsletter", "Publico", FormMethod.Post, new { }))
-{
-    <br /><br />
-    <h3 class="text-center">Cadastre seu e-mail para receber nossa newsletter:</h3>
-    <div>
-        <div class="form-horizontal">
-            <div class="form-group">
-                @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Email)
-                    @Html.ValidationMessageFor(model => model.Email)
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Entrar" class="btn btn-default" />
-                </div>
-            </div>
-        </div>
-    </div>*@
-                    }
