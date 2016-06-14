@@ -19,7 +19,14 @@ namespace PraticarEsportes.Controllers
         public ActionResult Logar()
         {
             ViewBag.UrlFb = GetFacebookLoginUrl();
-            ViewBag.Categoria = db.Categoria.ToList();
+            try
+            {
+                ViewBag.Categoria = db.Categoria.ToList();
+            }
+            catch(Exception e)
+            {
+                ViewBag.Categoria = new List<Categoria>();
+            }            
             return View();
         }
 
