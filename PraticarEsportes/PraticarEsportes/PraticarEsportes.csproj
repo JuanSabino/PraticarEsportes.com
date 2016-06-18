@@ -170,6 +170,10 @@
     <Compile Include="Migrations\201605300229422_banco.Designer.cs">
       <DependentUpon>201605300229422_banco.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606150038251_evento.cs" />
+    <Compile Include="Migrations\201606150038251_evento.Designer.cs">
+      <DependentUpon>201606150038251_evento.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Checkin.cs" />
@@ -366,6 +370,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201605300229422_banco.resx">
       <DependentUpon>201605300229422_banco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606150038251_evento.resx">
+      <DependentUpon>201606150038251_evento.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

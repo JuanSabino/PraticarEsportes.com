@@ -1,39 +1,41 @@
 ﻿@model IEnumerable<PraticarEsportes.Models.Historico>
 
 @{
-    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/FullPage.cshtml";
+    ViewBag.Title = "Meu Histórico";
 }
 
-<h2>Index</h2>
 
-<p>
-    @*@Html.ActionLink("Create New", "Create")*@
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Horario)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descricao)
-        </th>
-        <th></th>
-    </tr>
+<div class="container">
+    <h2>Meu Histórico</h2>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Horario)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descricao)
-        </td>
-        <td>
-            @*@Html.ActionLink("Edit", "Edit", new { id=item.HistoricoId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.HistoricoId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.HistoricoId })*@
-        </td>
-    </tr>
-}
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Horario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th></th>
+        </tr>
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Horario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </td>
+                <td>
+                    @*@Html.ActionLink("Edit", "Edit", new { id=item.HistoricoId }) |
+                        @Html.ActionLink("Details", "Details", new { id=item.HistoricoId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id=item.HistoricoId })*@
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

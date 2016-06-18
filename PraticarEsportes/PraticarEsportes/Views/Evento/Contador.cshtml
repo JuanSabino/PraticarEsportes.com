@@ -7,6 +7,12 @@
     int contador = evento.Count;
 }
 
+<style>
+    .panel-group{
+        margin-bottom: 10px;
+    }
+</style>
+
 <h3>Informações do Local</h3>
 @foreach (var locais in local){
     <div class="form-horizontal">
@@ -57,66 +63,81 @@
 }
 
 <h3>Eventos</h3>
-@if (contador > 0) {
+@if (contador > 0)
+{
     foreach (var eventos in evento)
     {
-        <div class="form-horizontal">
-            <div class="form-group">
-                <div class="col-md-3">Nome:</div>
-                <div class="col-md-9">
-                    @eventos.Nome
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="heading_@eventos.ID">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_@eventos.ID" aria-expanded="false" aria-controls="collapse_@eventos.ID">
+                            @eventos.Nome
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse_@eventos.ID" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_@eventos.ID">
+                    <div class="panel-body">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <div class="col-md-3">Nome:</div>
+                                <div class="col-md-9">
+                                    @eventos.Nome
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-3">Descrição:</div>
+                                <div class="col-md-9">
+                                    @eventos.Descricao
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-3">Data Início:</div>
+                                <div class="col-md-9">
+                                    @eventos.DataInicio
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-3">Data Término:</div>
+                                <div class="col-md-9">
+                                    @eventos.DataTermino
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-3">Capacidade:</div>
+                                <div class="col-md-9">
+                                    @eventos.Capacidade
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-3">Dificuldade:</div>
+                                <div class="col-md-9">
+                                    @eventos.Dificuldade
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-3">Categoria:</div>
+                                <div class="col-md-9">
+                                    @eventos.CategoriaID
+                                </div>
+                            </div>
+
+                            @*<div class="form-group">
+                        <div class="col-md-3">Local:</div>
+                        <div class="col-md-9">
+                            @eventos.LocalID
+                        </div>
+                    </div>*@
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <div class="form-group">
-                <div class="col-md-3">Descrição:</div>
-                <div class="col-md-9">
-                    @eventos.Descricao
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-3">Data Início:</div>
-                <div class="col-md-9">
-                    @eventos.DataInicio
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-3">Data Término:</div>
-                <div class="col-md-9">
-                    @eventos.DataTermino
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-3">Capacidade:</div>
-                <div class="col-md-9">
-                    @eventos.Capacidade
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-3">Dificuldade:</div>
-                <div class="col-md-9">
-                    @eventos.Dificuldade
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-3">Categoria:</div>
-                <div class="col-md-9">
-                    @eventos.CategoriaID
-                </div>
-            </div>
-
-            @*<div class="form-group">
-                <div class="col-md-3">Local:</div>
-                <div class="col-md-9">
-                    @eventos.LocalID
-                </div>
-            </div>*@
-            <hr />
         </div>
     }
 }else {

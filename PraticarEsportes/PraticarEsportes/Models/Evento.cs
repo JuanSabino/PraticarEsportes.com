@@ -21,14 +21,14 @@ namespace PraticarEsportes.Models
 
         [DataType(DataType.Date)]
         [Required(ErrorMessage = "Preencha a data de incío do evento")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         [DisplayName("Data Início")]
         public DateTime DataInicio { get; set; }
 
 
         [DataType(DataType.Date)]
         [Required(ErrorMessage = "Preencha a data de término do evento")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         [DisplayName("Data Término")]
         public DateTime DataTermino { get; set; }
 

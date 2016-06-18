@@ -17,9 +17,9 @@
                     @*<th>
                         @Html.DisplayNameFor(model => model.Categoria.Nome)
                     </th>*@
-                    <th>
+                    @*<th>
                         @Html.DisplayNameFor(model => model.Local.Nome)
-                    </th>
+                    </th>*@
                     <th>
                         @Html.DisplayNameFor(model => model.Nome)
                     </th>
@@ -29,7 +29,7 @@
                     <th>
                         @Html.DisplayNameFor(model => model.DataInicio)
                     </th>
-                    <th>
+                    @*<th>
                         @Html.DisplayNameFor(model => model.DataTermino)
                     </th>
                     <th>
@@ -37,7 +37,7 @@
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Dificuldade)
-                    </th>
+                    </th>*@
                     @*<th>
                         @Html.DisplayNameFor(model => model.Habilitado)
                     </th>*@
@@ -53,9 +53,9 @@
                         @*<td>
                             <a href="@this.Url.Action("Details", "Evento", new { id = @Html.DisplayFor(modelItem => item.Local.ID) })  "> @Html.DisplayFor(modelItem => item.Categoria.Nome).ToString()</a>
                         </td>*@
-                        <td>
+                        @*<td>
                             @Html.DisplayFor(modelItem => item.Local.Nome)
-                        </td>
+                        </td>*@
                         <td>
                             @Html.DisplayFor(modelItem => item.Nome)
                         </td>
@@ -65,7 +65,7 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.DataInicio)
                         </td>
-                        <td>
+                        @*<td>
                             @Html.DisplayFor(modelItem => item.DataTermino)
                         </td>
                         <td>
@@ -73,7 +73,7 @@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Dificuldade)
-                        </td>
+                        </td>*@
                         @*<td>
                             @Html.DisplayFor(modelItem => item.Habilitado)
                         </td>*@
@@ -94,9 +94,7 @@
                     }
                     if (segue)
                     {
-                        <a href="/Evento/Like/@item.ID">
-                            <img src="~/Content/img/unlike.png" title="Descurtir Local" />
-                        </a>
+                        <span>Curtido!</span>
                     }
                     else
                     {
