@@ -13,15 +13,19 @@
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
-            @Html.ActionLink("Alterar Senha", "AlterarSenha") <br />
-            @Html.ActionLink("Desativar Conta", "", "", new { onclick = "someFunction();" }) <br />
-            @Html.ActionLink("Visualizar Histórico", "Index", "Historicos") <br />
-            @Html.ActionLink("Visualizar Ranking", "Ranking") <br />
+            <hr />
+
+            <a href="/Praticantes/AlterarSenha" role="button" class="btn btn-danger">Alterar Senha</a>
+            <a href="#" role="button" class="btn btn-danger" onclick="someFunction();">Desativar Conta</a>
+            @*@Html.ActionLink("Visualizar Histórico", "Index", "Historicos") <br />
+            @Html.ActionLink("Visualizar Ranking", "Ranking") <br />*@
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.HiddenFor(model => model.PessoaId)
 
+            <hr />
+
             <div class="form-group">
-                <div class="control-label col-md-2">Pontuacao: </div>
+                <label class="control-label col-md-2">Pontuacao: </label>
                 <div class="col-md-10">
                     @Model.Pontos
                 </div>
