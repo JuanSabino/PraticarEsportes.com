@@ -18,6 +18,7 @@ namespace PraticarEsportes.Controllers
         // GET: Publico
         public ActionResult Logar()
         {
+            ViewBag.Title = "Praticar Esportes";
             ViewBag.UrlFb = GetFacebookLoginUrl();
             try
             {
