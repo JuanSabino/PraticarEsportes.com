@@ -20,7 +20,7 @@ body, html {
 
 .addLocation {
     position: absolute;
-    top: 60px;
+    top: 220px;
     right: 5px;
     padding: 10px;
     background: rgba(255, 255, 255, 0.75);

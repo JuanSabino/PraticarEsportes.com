@@ -10,9 +10,12 @@
     {
         ViewBag.salvo = 0;
         <script type="text/javascript">
-            alert("Evento cadastrado!");
+            $('#myModal .modal-body').html('<p>Evento cadastrado!</p>');
+            $('#myModal').modal('show');
+            //alert("Local cadastrado, aguarde a aprovação da administração!");
+            setTimeout(function(){ window.location.href = "@Url.Action("Index","Home")"; }, 3000);
             window.location.href = "@Url.Action("Index","Home")";
-        </script>
+</script>
     }
 }
 
