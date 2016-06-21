@@ -138,19 +138,17 @@
                     }
                     if (segue)
                     {
-                        <a href="/Praticantes/Index">
-                            <img src="~/Content/img/user_del.png" title="Deixar de seguir Praticante" />
-                        </a>
+                        <span>Seguindo!</span>
                     }
                     else
                     {
-                        <a href="/Praticantes/Follow/@item.PessoaId">
-                            <img src="~/Content/img/user_add.png" title="Seguir Praticante" />
+                        <a href="/Praticantes/Follow/@item.PessoaId" role="button" class="btn btn-primary btn-sm">
+                            Seguir
                         </a>
                     }
 
                 }
-                        }
+}
                     </td>
                 </tr>
             }

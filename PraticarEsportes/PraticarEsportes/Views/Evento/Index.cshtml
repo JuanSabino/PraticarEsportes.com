@@ -57,7 +57,7 @@
                             @Html.DisplayFor(modelItem => item.Local.Nome)
                         </td>*@
                         <td>
-                            @Html.DisplayFor(modelItem => item.Nome)
+                            <a href="@this.Url.Action("Details", "Evento", new { id = @Html.DisplayFor(modelItem => item.ID) })" target="_self">@Html.DisplayFor(modelItem => item.Nome)</a>
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Descricao)
@@ -94,12 +94,12 @@
                     }
                     if (segue)
                     {
-                        <span>Curtido!</span>
+                        <span>Seguindo!</span>
                     }
                     else
                     {
-                        <a href="/Evento/Like/@item.ID">
-                            <img src="~/Content/img/like.png" width="48" height="48" title="Curtir Local" />
+                        <a href="/Evento/Like/@item.ID" role="button" class="btn btn-primary btn-sm">
+                            Seguir
                         </a>
                     }
 

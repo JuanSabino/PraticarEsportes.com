@@ -242,6 +242,7 @@
     <Content Include="Content\img\iconTeam.png" />
     <Content Include="Content\img\like.png" />
     <Content Include="Content\img\like_icon.png" />
+    <Content Include="Content\img\logo-hd.png" />
     <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\pes.png" />
     <Content Include="Content\img\podium_icon.png" />

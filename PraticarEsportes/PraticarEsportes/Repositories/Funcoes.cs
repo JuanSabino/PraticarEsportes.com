@@ -43,10 +43,8 @@ namespace PraticarEsportes.Repositories
             }
             else
             {
-                var query = (from u in _db.Pessoas
-                             where u.Email == login &&
-                             u.Senha == senha
-                             select u).SingleOrDefault();
+                var query = (from u in _db.Pessoas where u.Email == login && u.Senha == senha select u).SingleOrDefault();
+
                 if (query == null)
                 {
                     return false;

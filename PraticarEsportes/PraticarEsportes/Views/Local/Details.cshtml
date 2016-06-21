@@ -2,93 +2,63 @@
 
 @{
     Layout = "~/Views/Shared/FullPage.cshtml";
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalhes do Local";
 }
 
 <div class="container">
-    <h2>Detalhes do Evento</h2>
+    <h2>Detalhes do Local</h2>
+    <hr />
+
+    <div class="bd-example" data-example-id="">
+        <ol class="breadcrumb" style="margin-bottom: 5px;">
+            <li><a href="/Home/Index">Home</a></li>
+            <li><a href="#">Local</a></li>
+            <li class="active">Detalhes</li>
+        </ol>
+    </div>
+
     <hr />
 
     <div>
+        <form>
+            <div class="form-group row">
+                <label class="col-sm-2 form-control-label">@Html.DisplayNameFor(model => model.Nome)</label>
+                <div class="col-sm-10">
+                    <p>@Html.DisplayFor(model => model.Nome)</p>
+                </div>
+            </div>
 
+            <div class="form-group row">
+                <label class="col-sm-2 form-control-label">@Html.DisplayNameFor(model => model.Descricao)</label>
+                <div class="col-sm-10">
+                    <p>@Html.DisplayFor(model => model.Descricao)</p>
+                </div>
+            </div>
 
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Nome)
-            </dt>
+            <div class="form-group row">
+                <label class="col-sm-2 form-control-label">@Html.DisplayNameFor(model => model.Endereco)</label>
+                <div class="col-sm-10">
+                    <p>@Html.DisplayFor(model => model.Endereco)</p>
+                </div>
+            </div>
 
-            <dd>
-                @Html.DisplayFor(model => model.Nome)
-            </dd>
+            <div class="form-group row">
+                <label class="col-sm-2 form-control-label">@Html.DisplayNameFor(model => model.CEP)</label>
+                <div class="col-sm-10">
+                    <p>@Html.DisplayFor(model => model.CEP)</p>
+                </div>
+            </div>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Descricao)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Descricao)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Latitude)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Latitude)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Longitude)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Longitude)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Endereco)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Endereco)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.CEP)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.CEP)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Cidade)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Cidade)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Estado)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Estado)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Habilitado)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Habilitado)
-            </dd>
-
-        </dl>
+            <div class="form-group row">
+                <label class="col-sm-2 form-control-label">@Html.DisplayNameFor(model => model.Cidade)</label>
+                <div class="col-sm-10">
+                    <p>@Html.DisplayFor(model => model.Estado)</p>
+                </div>
+            </div>
+        </form>
     </div>
-    <p>
+    @*<p>
         @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
         @Html.ActionLink("Back to List", "Index")
-    </p>
+    </p>*@
 </div>

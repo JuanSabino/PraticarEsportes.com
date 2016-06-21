@@ -88,47 +88,47 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             <div class="item active">
-                <img src="~/Content/img/backgroundBike.jpg" data-color="lightblue" alt="First Image">
+                <img src="~/Content/img/backgroundBike.jpg" class="background" data-color="lightblue" alt="First Image">
                 <div class="carousel-caption">
                     <div class="content-caption">
                         <h3>PRATICAR ESPORTES</h3>
-                        <img src="~/Content/img/logo.png" alt="" />
+                        <img src="~/Content/img/logo-hd.png" width="222" height="222" alt="" />
                     </div>
                 </div>
             </div>
             <div class="item">
-                <img src="~/Content/img/backgroundSoccer.jpg" data-color="firebrick" alt="Second Image">
+                <img src="~/Content/img/backgroundSoccer.jpg" class="background" data-color="firebrick" alt="Second Image">
                 <div class="carousel-caption">
                     <div class="content-caption">
                         <h3>COMPARTILHE SEUS EVENTOS E MONTE SEU TIME!</h3>
-                        <img src="~/Content/img/iconShare.png" alt="" />
+                        <img src="~/Content/img/iconShare.png" width="222" height="222" alt="" />
                     </div>
                 </div>
             </div>
             <div class="item">
-                <img src="~/Content/img/backgroundTennis.jpg" data-color="firebrick" alt="Second Image">
+                <img src="~/Content/img/backgroundTennis.jpg" class="background" data-color="firebrick" alt="Second Image">
                 <div class="carousel-caption">
                     <div class="content-caption">
                         <h3>VEJA SUA POSIÇÃO NO RANKING E DESAFIE SEUS AMIGOS</h3>
-                        <img src="~/Content/img/podium_icon.png" alt="" />
+                        <img src="~/Content/img/podium_icon.png" width="222" height="222" alt="" />
                     </div>
                 </div>
             </div>
             <div class="item">
-                <img src="~/Content/img/backgroundSlackline.jpg" data-color="firebrick" alt="Second Image">
+                <img src="~/Content/img/backgroundSlackline.jpg" class="background" data-color="firebrick" alt="Second Image">
                 <div class="carousel-caption">
                     <div class="content-caption">
                         <h3>FAÇA CHECK-IN EM EVENTOS E GANHE DESCONTOS</h3>
-                        <img src="~/Content/img/iconCheckin.png" alt="" />
+                        <img src="~/Content/img/iconCheckin.png" width="222" height="222" alt="" />
                     </div>
                 </div>
             </div>
             <div class="item">
-                <img src="~/Content/img/backgroundBaskteball.jpg" data-color="firebrick" alt="Second Image">
+                <img src="~/Content/img/backgroundBaskteball.jpg" class="background" data-color="firebrick" alt="Second Image">
                 <div class="carousel-caption">
                     <div class="content-caption">
                         <h3>SIGA E CURTA SEUS LOCAIS FAVORITOS</h3>
-                        <img src="~/Content/img/like_icon.png" alt="" />
+                        <img src="~/Content/img/like_icon.png" width="222" height="222" alt="" />
                     </div>
                 </div>
             </div>
@@ -231,7 +231,7 @@
         $item.height($wHeight);
         $item.addClass('full-screen');
 
-        $('.carousel img').each(function () {
+        $('.carousel img.background').each(function () {
             var $src = $(this).attr('src');
             var $color = $(this).attr('data-color');
             $(this).parent().css({

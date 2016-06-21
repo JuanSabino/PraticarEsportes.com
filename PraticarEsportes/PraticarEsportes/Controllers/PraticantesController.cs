@@ -295,7 +295,7 @@ namespace PraticarEsportes.Controllers
                 db.Entry(pessoa2).State = EntityState.Modified;
                 db.SaveChanges();
             }
-            return RedirectToAction("Index", "Praticantes");
+            return View();
         }
 
 
