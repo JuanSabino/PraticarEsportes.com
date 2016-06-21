@@ -17,7 +17,7 @@
 
             <hr />
 
-            <a href="/Praticantes/AlterarSenha" role="button" class="btn btn-danger">Alterar Senha</a>
+            <a href="/Estabelecimentos/AlterarSenha" role="button" class="btn btn-danger">Alterar Senha</a>
             <a href="#" role="button" class="btn btn-danger" onclick="someFunction();">Desativar Conta</a>
 
             <hr />
@@ -121,3 +121,24 @@
         </div>
     }
 </div>
+
+@section scripts{
+    <script>
+        function someFunction() {
+            resposta = confirm("Deseja desativar sua conta?");
+            if (resposta) {
+                var url = '@Url.Action("Desativar", "Estabelecimentos")';
+                $.post(url, { email: "@Session["Usuario"]" },
+                function (data) {
+                    window.location.href = "@Url.Action("Index", "Home")";
+                })
+                .fail(function () {
+                    awindow.location.href = "@Url.Action("Edit")";
+                });
+            }
+            else {
+                return false;
+            }
+        }
+    </script>
+}

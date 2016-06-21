@@ -217,7 +217,7 @@ namespace PraticarEsportes.Controllers
                 ViewBag.Error = "Novas senhas diferentes!";
                 return View(praticante);
             }
-            if (NovaSenha1 != SenhaAtual)
+            if (NovaSenha1 == SenhaAtual)
             {
                 ViewBag.Error = "Nova senha deve ser diferente da anterior!";
                 return View(praticante);

@@ -121,6 +121,81 @@ namespace PraticarEsportes.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult AlterarSenha()
+        {
+            Estabelecimento estabelecimento;
+            try
+            {
+                estabelecimento = (Estabelecimento)Funcoes.GetUsuario();
+            }
+            catch (Exception ex)
+            {
+                return HttpNotFound();
+            }
+            if (estabelecimento == null)
+            {
+                return HttpNotFound();
+            }
+            return View(estabelecimento);
+        }
+
+        [HttpPost]
+        public ActionResult AlterarSenha(string SenhaAtual, string NovaSenha1, string NovaSenha2)
+        {
+            Estabelecimento estabelecimento = (Estabelecimento)Funcoes.GetUsuario();
+            if (estabelecimento.Senha != SenhaAtual)
+            {
+                ViewBag.Error = "Senha atual incorreta!";
+                return View(estabelecimento);
+            }
+            if (NovaSenha1 != NovaSenha2)
+            {
+                ViewBag.Error = "Novas senhas diferentes!";
+                return View(estabelecimento);
+            }
+            if (NovaSenha1 == SenhaAtual)
+            {
+                ViewBag.Error = "Nova senha deve ser diferente da anterior!";
+                return View(estabelecimento);
+            }
+
+            Context _db = new Context();
+            var query = (from u in _db.Pessoas
+                         where u.Email == estabelecimento.Email
+                         select u).SingleOrDefault();
+            query.Senha = NovaSenha1;
+            db.Entry(query).State = EntityState.Modified;
+            db.SaveChanges();
+
+            ViewBag.Error = "Senha Alterada!";
+            return View(estabelecimento);
+        }
+
+        [HttpPost]
+        public ActionResult Desativar(string email)
+        {
+            if (!String.IsNullOrEmpty(email))
+            {
+                Estabelecimento estabelecimento = (Estabelecimento)Funcoes.GetUsuario();
+                if (estabelecimento == null)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+
+                Context _db = new Context();
+                var query = (from u in _db.Pessoas
+                             where u.Email == email
+                             select u).SingleOrDefault();
+                query.Habilitado = false;
+                db.Entry(query).State = EntityState.Modified;
+                db.SaveChanges();
+
+                Funcoes.Deslogar();
+
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
