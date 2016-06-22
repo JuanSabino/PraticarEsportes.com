@@ -16,12 +16,12 @@
     <div id="fb-root"></div>
     <div id="fb-root"></div>
     <script>
-        (function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.6&appId=1728002444152079";
-          fjs.parentNode.insertBefore(js, fjs);
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.6&appId=1728002444152079";
+            fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
     </script>
 
@@ -38,7 +38,8 @@
 
             @{
                 Object Usuario = PraticarEsportes.Repositories.Funcoes.GetUsuario();
-                if (Usuario != null){    
+                if (Usuario != null)
+                {
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bem-Vindo, @Session["Nome"].ToString().Split(' ')[0]!<span class="caret"></span></a>
@@ -61,13 +62,13 @@
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
                             @*<li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Listas<span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="~/Categoria/Index">Categorias</a></li>
-                                    <li><a href="~/Praticantes/Index">Praticantes</a></li>
-                                    <li><a href="~/Estabelecimentos/Index">Estabelecimentos</a></li>
-                                </ul>
-                            </li>*@
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Listas<span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="~/Categoria/Index">Categorias</a></li>
+                                        <li><a href="~/Praticantes/Index">Praticantes</a></li>
+                                        <li><a href="~/Estabelecimentos/Index">Estabelecimentos</a></li>
+                                    </ul>
+                                </li>*@
 
                             @*<li>@Html.ActionLink("Home", "Index", "Home")</li>
                                 <li>@Html.ActionLink("Pessoas", "Index", "Pessoas")</li>
@@ -78,13 +79,16 @@
                                 <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                         </ul>
                     </div>
+                }
+                else
+                {
                     <script type="text/javascript">
                         window.location.href = "@Url.Action("Logar","Publico")";
                     </script>
-                    }
                 }
-            </div>
+}
         </div>
+    </div>
 
     <div class="body-content">
         @RenderBody()
@@ -94,4 +98,5 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
+
 </html>
