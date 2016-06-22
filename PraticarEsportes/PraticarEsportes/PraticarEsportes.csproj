@@ -385,6 +385,7 @@
     <Content Include="Scripts\leaflet-0.7.3.min.js.map">
       <DependentUpon>leaflet-0.7.3.min.js</DependentUpon>
     </Content>
+    <Content Include="Views\Home\Pesquisa.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
