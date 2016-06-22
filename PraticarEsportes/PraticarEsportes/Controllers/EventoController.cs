@@ -210,7 +210,7 @@ namespace PraticarEsportes.Controllers
 
             string Descricao = "Confirmou presença no evento #" + evento.ID.ToString() + " - " + evento.Nome;
             Funcoes.InsereHistorico(pessoa2.PessoaId, Descricao);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index","Home");
         }
 
         public ActionResult CancelarPresenca(int id)

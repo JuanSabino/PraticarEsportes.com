@@ -9135,10 +9135,10 @@ L.Map.include({
 			this.fitWorld();
 		}
 
-		this.fire('locationerror', {
-			code: c,
-			message: 'Geolocation error: ' + message + '.'
-		});
+		//this.fire('locationerror', {
+		//	code: c,
+		//	message: 'Geolocation error: ' + message + '.'
+		//});
 	},
 
 	_handleGeolocationResponse: function (pos) {

@@ -151,10 +151,10 @@
     }
 
     function onLocationError(e) {
-        alert(e.message);
+        //alert(e.message);
     }
 
-    map.on('locationerror', onLocationError);
+    //map.on('locationerror', onLocationError);
     map.on('locationfound', onLocationFound);
     //map.scrollWheelZoom.disable();
     L.control.locate().addTo(map);

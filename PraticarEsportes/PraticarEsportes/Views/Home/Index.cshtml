@@ -96,9 +96,9 @@
 
     var map = L.map('map');
 
-    map.on('click', function (e) {
-        console.log("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
-    });
+    //map.on('click', function (e) {
+    //    console.log("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
+    //});
 
     L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 18,
@@ -130,7 +130,7 @@
     }
 
     function onLocationFound(e) {
-        var radius = e.accuracy;
+        var radius = e.accuracy/2;
 
         L.marker(e.latlng).addTo(map)
             .bindPopup("Você está aqui!").openPopup();
@@ -142,7 +142,7 @@
         //alert(e.message);
     }
 
-    map.on('locationerror', onLocationError);
+    //map.on('locationerror', onLocationError);
     map.on('locationfound', onLocationFound);
     //map.scrollWheelZoom.disable();
     L.control.locate().addTo(map);
