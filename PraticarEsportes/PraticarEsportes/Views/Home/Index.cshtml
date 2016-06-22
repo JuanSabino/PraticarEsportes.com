@@ -130,7 +130,7 @@
     }
 
     function onLocationFound(e) {
-        var radius = e.accuracy / 2;
+        var radius = e.accuracy;
 
         L.marker(e.latlng).addTo(map)
             .bindPopup("Você está aqui!").openPopup();
