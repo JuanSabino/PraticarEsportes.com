@@ -52,6 +52,15 @@
                                 </ul>
                             </li>
 
+                            @if (Session["Tipo"].ToString() == "1"){
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastros<span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/Cupons/Create">Cupons</a></li>
+                                        <li><a href="/Local'/Create" class="openModal" title="Cadastro de Locais">Locais</a></li>
+                                    </ul>
+                                </li>
+                            }
                             @*<li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Listas<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
