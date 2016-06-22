@@ -284,7 +284,6 @@
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="praticaresportes.snk" />
-    <Content Include="esportes.pfx" />
     <None Include="Properties\PublishProfiles\dbtec.pubxml" />
     <None Include="Properties\PublishProfiles\KingHost.pubxml" />
     <None Include="Properties\PublishProfiles\teste.pubxml" />
